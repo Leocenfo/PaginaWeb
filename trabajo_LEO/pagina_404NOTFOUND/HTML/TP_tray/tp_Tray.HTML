@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transporte Público</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navegacion">
+      <ul>
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Anuncios</a></li>
+        <li><a href="#">Emprendimientos</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#" class="activo">Transporte</a></li>
+        <li><a href="#">Reportes y sugerencia</a></li>
+        <li><a href="#">Administración</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <section class="info-transporte">
+      <h1>TRANSPORTE<br>PÚBLICO</h1>
+      <p>Check out the stations in your area.<br>Click below to view business hours.</p>
+      
+      <div class="linea"></div>
+      <div class="linea gris"></div>
+
+      <p class="puntos">. . . .</p>
+
+      <div class="linea negra"></div>
+      <div class="contacto">
+        <p><strong>Teléfono:</strong> +506 2222-2122</p>
+        <p><strong>Correo:</strong> 404NotFound@ucenfotec.ac.cr</p>
+        <p><strong>Dirección:</strong> San José, Costa Rica</p>
+      </div>
+    </section>
+
+    <section class="mapa">
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="iconos-sociales">
+      <span>© 2025 404 Not Found. Todos los derechos reservados.</span>
+      <span>📧 404NotFound@ucenfotec.ac.cr</span>
+      <span>📞 +506 2222-2122</span>
+    </div>
+  </footer>
+
+  <!-- Script de Google Maps -->
+  
+  <script src="main.js"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
+
+
+</body>
+</html>

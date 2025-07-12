@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Usuarios</title>
+  <link rel="stylesheet" href="/pagina_404NOTFOUND/css/estilos_Leo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navegacion">
+      <img src="/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
+      <div class="divMenu">
+        <i class="fa fa-bars" id="menuCambio"></i>
+        <ul id="menu">
+          <li><a href="#">Perfil</a></li>
+          <li><a href="#">Anuncios</a></li>
+          <li><a href="#">Emprendimientos</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="#">Transporte</a></li>
+          <li><a href="#">Reportes y sugerencias</a></li>
+          <li><a href="#" class="activo">Administración</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <h2>Menu de Administración</h2>
+      <ul>
+        <li><a href="usuarios.html" class="activo">Gestión de Usuarios</a></li>
+        <li><a href="anuncios.html">Gestión de Anuncios</a></li>
+        <li><a href="eventos.html">Gestión de Eventos</a></li>
+        <li><a href="transporte.html">Gestión de Transporte</a></li>
+        <li><a href="reportes.html">Reportes y Sugerencias</a></li>
+      </ul>
+    </aside>
+
+    <section class="main-content">
+      <h1>Gestión de Usuarios</h1>
+
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="ID">1</td>
+            <td data-label="Nombre">Valeria Barrantes</td>
+            <td data-label="Correo">vale@example.com</td>
+            <td data-label="Rol">Ciudadana</td>
+            <td data-label="Estado" class="estado">❌ Inactivo</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aceptar</button>
+              <button class="eliminar">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">2</td>
+            <td data-label="Nombre">Steven Delgadillo</td>
+            <td data-label="Correo">stevend@example.com</td>
+            <td data-label="Rol">Emprendedor</td>
+            <td data-label="Estado" class="estado">✔️ Activo</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aceptar</button>
+              <button class="eliminar">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">3</td>
+            <td data-label="Nombre">Trayce Gonzales</td>
+            <td data-label="Correo">gonzales@example.com</td>
+            <td data-label="Rol">Ciudadana</td>
+            <td data-label="Estado" class="estado">❌ Inactivo</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aceptar</button>
+              <button class="eliminar">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">4</td>
+            <td data-label="Nombre">Marco Antonio</td>
+            <td data-label="Correo">marco@example.com</td>
+            <td data-label="Rol">Moderador</td>
+            <td data-label="Estado" class="estado">✔️ Activo</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aceptar</button>
+              <button class="eliminar">Eliminar</button>
+            </td>
+          </tr>
+           <tr>
+            <td data-label="ID">5</td>
+            <td data-label="Nombre">Leonardo Quesada</td>
+            <td data-label="Correo">quesada@example.com</td>
+            <td data-label="Rol">Ciudadano</td>
+            <td data-label="Estado" class="estado">✔️ Activo</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aceptar</button>
+              <button class="eliminar">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+<footer>
+    <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
+    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+    <a href="tel:2222-2222" class="fa fa-phone"></a> <p>‪+(506) 2222-2222‬</p>
+    <a href="info@comunidadconectada.ac.cr" class="fa fa-envelope"></a> <p>info@comunidadconectada.ac.cr</p> <br>
+    <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="/pagina_404NOTFOUND/js/GestionDeUsuarios.js"></script>
+</body>
+</html>
+
+
+
