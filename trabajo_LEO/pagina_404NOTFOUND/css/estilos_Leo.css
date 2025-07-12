@@ -688,3 +688,36 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+/* Estilo para el contenedor del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* El contenido del dropdown, inicialmente oculto */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Estilo de los enlaces dentro del dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Efecto hover sobre los enlaces */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Cuando el mouse pasa sobre .dropdown, se muestra el contenido */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
