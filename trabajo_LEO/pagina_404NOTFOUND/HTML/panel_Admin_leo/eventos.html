@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Eventos</title>
+  <link rel="stylesheet" href="/pagina_404NOTFOUND/css/estilos_Leo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+<body>
+
+  <header>
+    <nav class="navegacion">
+      <img src="/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
+      <div class="divMenu">
+        <i class="fa fa-bars" id="menuCambio"></i>
+        <ul id="menu">
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="anuncios.html">Anuncios</a></li>
+          <li><a href="emprendimientos.html">Emprendimientos</a></li>
+          <li><a href="eventos.html">Eventos</a></li> 
+          <li class="dropdown"> <!--esta parte es prueba-->
+    <a href="javascript:void(0)" class="dropbtn">Más <i class="fa fa-caret-down"></i></a>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div> <!-- hasta esta linea hay que borrar la prueba-->
+          <li><a href="transporte.html">Transporte</a></li>
+          <li><a href="reportes.html">Reportes y sugerencias</a></li>
+          <li><a href="administracion.html" class="activo">Administración</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <h2>Menú de Administración</h2>
+      <ul>
+        <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+        <li><a href="anuncios.html">Gestión de Anuncios</a></li>
+        <li><a href="eventos.html" class="activo">Gestión de Eventos</a></li>
+        <li><a href="transporte.html">Gestión de Transporte</a></li>
+        <li><a href="reportes.html">Reportes y Sugerencias</a></li>
+      </ul>
+    </aside>
+
+    <section class="main-content">
+      <h1>Gestión de Eventos</h1>
+
+      <table id="eventoTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="ID">1</td>
+            <td data-label="Nombre">Feria de Emprendedores</td>
+            <td data-label="Fecha">15/07/2025</td>
+            <td data-label="Estado" class="estado">Pendiente</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aprobar</button>
+              <button class="rechazar">Rechazar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">2</td>
+            <td data-label="Nombre">Concierto Comunitario</td>
+            <td data-label="Fecha">20/07/2025</td>
+            <td data-label="Estado" class="estado">Pendiente</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aprobar</button>
+              <button class="rechazar">Rechazar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">3</td>
+            <td data-label="Nombre">Taller de Reciclaje</td>
+            <td data-label="Fecha">22/07/2025</td>
+            <td data-label="Estado" class="estado">Pendiente</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aprobar</button>
+              <button class="rechazar">Rechazar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">4</td>
+            <td data-label="Nombre">Día de la Familia</td>
+            <td data-label="Fecha">28/07/2025</td>
+            <td data-label="Estado" class="estado">Pendiente</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aprobar</button>
+              <button class="rechazar">Rechazar</button>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="ID">5</td>
+            <td data-label="Nombre">Caminata por la Salud</td>
+            <td data-label="Fecha">30/07/2025</td>
+            <td data-label="Estado" class="estado">Pendiente</td>
+            <td data-label="Acciones">
+              <button class="aceptar">Aprobar</button>
+              <button class="rechazar">Rechazar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+    <a href="tel:2222-2222" class="fa fa-phone"></a>
+    <p>+(506) 2222-2222</p>
+    <a href="mailto:info@comunidadconectada.ac.cr" class="fa fa-envelope"></a>
+    <p>info@comunidadconectada.ac.cr</p><br>
+    <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="/pagina_404NOTFOUND/js/panelAdminEventos_Leo.js"></script>
+</body>
+</html>
