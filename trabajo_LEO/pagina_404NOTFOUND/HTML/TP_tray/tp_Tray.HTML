@@ -2,69 +2,107 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transporte Público</title>
-  <link rel="stylesheet" href="estilos.css">
-  <style>
-    #map {
-      height: 400px;
-      width: 100%;
-      border: 1px solid #ccc;
-    }
-  </style>
+  <title>Transporte - Comunidad Conectada</title>
+  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Trayce.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-  <header>
-    <nav class="navegacion">
-      <ul>
-        <li><a href="#">Perfil</a></li>
-        <li><a href="#">Anuncios</a></li>
-        <li><a href="#">Emprendimientos</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#" class="activo">Transporte</a></li>
-        <li><a href="#">Reportes y sugerencia</a></li>
-        <li><a href="#">Administración</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Barra de Navegación -->
+<header class="navegacion">
+  <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" class="logo-grande">
+  <div class="divMenu">
+    <span id="menuCambio">&#9776;</span>
+    <ul id="menu">
+      <li><a href="#">Perfil</a></li>
+      <li><a href="#">Comunidad</a></li>
+      <li><a class="activo" href="#">Transporte Público</a></li>
+      <li><a href="#">Anuncios</a></li>
+      <li><a href="#">Eventos</a></li>
+      <li><a href="#">Emprendimientos</a></li>
+    </ul>
+  </div>
+</header>
 
-  <main class="contenedor">
-    <section class="info-transporte">
-      <h1>TRANSPORTE<br>PÚBLICO</h1>
-      <p>Check out the stations in your area.<br>Click below to view business hours.</p>
-      
-      <div class="linea"></div>
-      <div class="linea gris"></div>
+<!-- Sección de búsqueda -->
+<div class="claro">
+  <h1>Transporte en Hacienda Vieja, Curridabat</h1>
+  <p>Consulta rutas, horarios, consejos y ubicación de paradas cercanas a tu comunidad.</p>
+  <div style="display:flex; gap:10px; margin: 20px 0;">
+    <input type="text" placeholder="Buscar ruta, parada o destino..." style="flex:1;">
+    <button class="boton">Buscar</button>
+  </div>
+</div>
 
-      <p class="puntos">. . . .</p>
+<!-- Tarjetas de rutas disponibles -->
+<div class="contenedor-cartas">
+  <div class="carta">
+    <h4>Ruta 50 - Curridabat ⇄ San José</h4>
+    <p>Frecuencia: cada 15 minutos</p>
+    <p>Horario: 5:00 am - 10:00 pm</p>
+    <p>Paradas: Plaza del Sol, Fuente de la Hispanidad, San Pedro, San José Centro</p>
+  </div>
+  <div class="carta">
+    <h4>Ruta 28 - Hacienda Vieja ⇄ Zapote</h4>
+    <p>Frecuencia: cada 30 minutos</p>
+    <p>Horario: 6:00 am - 8:00 pm</p>
+    <p>Paradas: Hacienda Vieja, Freses, Zapote, Catedral Metropolitana</p>
+  </div>
+  <div class="carta">
+    <h4>Ruta Local - Curridabat ⇄ Terramall</h4>
+    <p>Frecuencia: cada hora</p>
+    <p>Horario: 7:00 am - 7:00 pm</p>
+    <p>Paradas: Curridabat Centro, Walmart, Terramall</p>
+  </div>
+</div>
 
-      <div class="linea negra"></div>
-      <div class="contacto">
-        <p><strong>Teléfono:</strong> +506 2222-2122</p>
-        <p><strong>Correo:</strong> 404NotFound@ucenfotec.ac.cr</p>
-        <p><strong>Dirección:</strong> San José, Costa Rica</p>
-      </div>
-    </section>
+<!-- Mapa Interactivo -->
+<div class="claro" style="margin-top: 40px;">
+  <h2>Mapa de Paradas y Rutas</h2>
+  <p>Visualiza en el siguiente mapa las paradas principales y rutas más utilizadas en Hacienda Vieja.</p>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.08950106349!2d-84.03100398500974!3d9.917647876191204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2bbf279e5df%3A0x6a1d7cfad788490b!2sHacienda%20Vieja%2C%20Curridabat!5e0!3m2!1ses-419!2scr!4v1710012345678"
+    width="100%" height="400" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy">
+  </iframe>
+</div>
 
-    <section class="mapa">
-      <div id="map"></div>
-    </section>
-  </main>
+<!-- Consejos útiles -->
+<div class="oscuro">
+  <h2>Tips de Usuarios</h2>
+  <ul>
+      <li>Evita horas pico: 6:00 - 8:00 am y 4:30 - 6:30 pm.</li>
+      <li>Lleva siempre cambio de baja denominación para el pasaje.</li>
+    <li>Verifica el clima antes de salir, algunas paradas no tienen techo.</li>
+    <li>Si tienes dudas, consulta con los choferes o vecinos.</li>
+  </ul>
+</div>
 
-  <footer class="pie-pagina">
-    <div class="iconos-sociales">
-      <span>© 2025 404 Not Found. Todos los derechos reservados.</span>
-      <span>📧 404NotFound@ucenfotec.ac.cr</span>
-      <span>📞 +506 2222-2122</span>
-    </div>
-  </footer>
+<!-- Opiniones comunitarias -->
+<div class="claro">
+  <h2>Lo que opinan los vecinos</h2>
+  <p><strong>María P:</strong> “Muy puntual la ruta 50, pero en las tardes suele ir muy llena.”</p>
+  <p><strong>Carlos M:</strong> “Ojalá hubiera más frecuencia los domingos.”</p>
+  <p><strong>Sofía R:</strong> “Me encanta que ahora hay información clara y accesible.”</p>
+</div>
 
-  <!-- Script de Google Maps -->
-  
-  <script src="main.js"></script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
+<!-- Botón flotante de ayuda -->
+<a href="#" onclick="alert('¿Necesitás ayuda? Escribinos a transporte@comunidadconectada.ac.cr')"
+   style="position: fixed; bottom: 20px; right: 20px; background-color: #4A90E2; color: white; padding: 15px; border-radius: 50%; font-size: 24px; text-align: center; text-decoration: none;">
+  ?
+</a>
 
+<!-- Footer -->
+<footer>
+  <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+  <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+  <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+  <a href="tel:2222-2222" class="fa fa-phone"></a>
+  <p>+(506) 2222-2222</p>
+  <a href="mailto:info@comunidadconectada.ac.cr" class="fa fa-envelope"></a>
+  <p>info@comunidadconectada.ac.cr</p><br>
+  <p>&copy; Comunidad Conectada 2025. Todos los derechos reservados.</p>
+</footer>
 
+<script src="/trabajo_LEO/pagina_404NOTFOUND/js/tp.JS"></script>
 </body>
 </html>

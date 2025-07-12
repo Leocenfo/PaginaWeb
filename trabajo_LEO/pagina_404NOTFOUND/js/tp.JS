@@ -1,22 +1,45 @@
-function initMap() {
-  const centro = { lat: 9.9333, lng: -84.0833 }; // San José, Costa Rica
 
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 13,
-    center: centro
-  });
+// FILTRO DE BÚSQUEDA EN RUTAS
+document.addEventListener('DOMContentLoaded', function () {
+    const buscador = document.getElementById('buscadorRuta');
+    const cartas = document.querySelectorAll('.carta');
 
-  // Marcadores de ejemplo (puedes agregar más aquí)
-  const lugares = [
-    { lat: 9.9375, lng: -84.088 },
-    { lat: 9.929, lng: -84.07 },
-    { lat: 9.920, lng: -84.09 }
-  ];
+    buscador.addEventListener('input', function () {
+        const texto = buscador.value.toLowerCase();
 
-  lugares.forEach(pos => {
-    new google.maps.Marker({
-      position: pos,
-      map: map
+        cartas.forEach(function (carta) {
+            const contenido = carta.textContent.toLowerCase();
+            carta.style.display = contenido.includes(texto) ? 'block' : 'none';
+        });
     });
-  });
-}
+});
+
+
+// MENÚ RESPONSIVE
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('menuCambio');
+    const menu = document.getElementById('menu');
+
+    if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+            menu.classList.toggle('active');
+        });
+    }
+});
+
+
+// BOTÓN ¿NECESITÁS AYUDA?
+document.addEventListener('DOMContentLoaded', function () {
+    const btnAyuda = document.querySelector('.btn-normal');
+
+    btnAyuda.addEventListener('click', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            title: '¿En qué podemos ayudarte?',
+            text: 'Podés contactarnos al 2222-2222 o escribirnos a info@comunidadconectada.ac.cr',
+            icon: 'info',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#4A90E2'
+        });
+    });
+});
