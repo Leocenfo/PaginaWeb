@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reportes y Sugerencias</title>
+  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Steven.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav class="navegacion">
+        <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
+        <div class="divMenu">
+            <i class="fa fa-bars" id="menuCambio"></i>
+            <ul id="menu">
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Anuncios</a></li>
+                <li><a href="#">Emprendimientos</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Transporte</a></li>
+                <li><a href="#" class="activo">Reportes y sugerencias</a></li>
+                <li><a href="#">Administración</a></li>
+                <li><a href="#">Comunidad</a></li>
+
+            </ul>
+        </div>
+    </nav>
+  </header>
+
+  <!-- FORM PUBLICACIÓN -->
+  <main>
+    <section class="claro" style="text-align: center;">
+      <h2>Mantén la comunidad actualizada</h2>
+      <p>Comparte reportes, noticias, sugerencias...</p>
+
+      <form id="form-publicacion" style="max-width: 600px; margin: 0 auto;">
+        <select id="categoria" name="categoria" required>
+          <option value="">Selecciona una categoría</option>
+          <option value="Reporte">Reporte</option>
+          <option value="Sugerencia">Sugerencia</option>
+        </select>
+
+        <select id="tema" required>
+            <option value="" disabled selected>Selecciona un tema</option>
+            <option value="Deporte">Deporte</option>
+            <option value="Arte">Arte</option>
+            <option value="Vía pública">Vía pública</option>
+            <option value="Seguridad">Seguridad</option>
+            <option value="Otros">Otros</option>
+          </select>        <textarea id="contenido" name="contenido" rows="4" placeholder="¿Qué deseas compartir?" required></textarea>
+
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button type="reset" class="boton" style="background-color: #FFFFFF; color:#4A4A4A; border:1px solid #4A4A4A;">Cancel</button>
+          <button type="submit" class="boton">Post</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- TODAS LAS PUBLICACIONES -->
+    <section class="oscuro">
+      <h2 style="text-align: center;">Todas las publicaciones</h2>
+      <div class="contenedor-cartas" id="contenedor-publicaciones"></div>
+    </section>
+
+    <!-- MIS PUBLICACIONES -->
+    <section class="claro">
+      <h2 style="text-align: center;">Mis publicaciones</h2>
+      <p style="text-align: center;">Opciones para editar o eliminar mis publicaciones</p>
+      <div class="contenedor-cartas" id="mis-publicaciones"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="redes-sociales">
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <a href="#" class="fa fa-whatsapp"></a>
+      <a href="tel:2222-2222" class="fa fa-phone"></a>
+      <a href="mailto:info@comunidadconectada.ac.cr" class="fa fa-envelope"></a>
+    </div>
+    <address>
+      <p>+(506) 2222-2222</p>
+      <p>404NotFound@ucenfotec.ac.cr</p>
+    </address>
+    <p>&copy; 2025 404 Not Found. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/trabajo_LEO/pagina_404NOTFOUND/js/reportes_sugerencias.js"></script>
+
+</body>
+</html>
