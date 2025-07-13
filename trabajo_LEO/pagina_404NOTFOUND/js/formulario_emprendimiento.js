@@ -5,15 +5,21 @@ const btnEnviar = document.getElementById("btnEnviarRegistro");
 //referencias a los inputs del formulario
 const inputs ={
     nombreCompleto:document.getElementById("nombreCompleto"),
-    tipoAnuncio:document.getElementById("tipoAnuncio"),
-    descripAnun:document.getElementById("descripAnun"),
+    correo:document.getElementById("correo"),
+    numTel:document.getElementById("numTel"),
+    tipoEmprendimiento:document.getElementById("tipoEmprendimiento"),
+    nomEmprendimiento:document.getElementById("nomEmprendimiento"),
+    descripEmprendimiento:document.getElementById("descripEmprendimiento"),
 };
 
 //logica de validacion
 const validations = {
     nombreCompleto: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
-    tipoAnuncio: (input) => input.value !== "" ? true : "Debe seleccionar una categoría de emprendimiento.",
-    descripAnun:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese una descripcion valida.",
+    correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
+    numTel: (input) => /^\d{8}$/.test(input.value.replace(/[\s-]/g, '')) ? true : "El número telefónico debe ser de 8 dígitos y solo contener números.",
+    tipoEmprendimiento: (input) => input.value !== "" ? true : "Debe seleccionar una categoría de emprendimiento.",
+    nomEmprendimiento:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese un nombre valido.",
+    descripEmprendimiento:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese una descripcion valida.",
 };
 
 //Funcion para mostrar u ocultar errores en el span correspondiente

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Emprendimiento</title>
+    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Marco.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+    <nav class="navegacion">
+        <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
+        <div class="divMenu">
+            <i class="fa fa-bars" id="menuCambio"></i> <!-- hamburger icon -->
+            <ul id="menu">
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Anuncios</a></li>
+                <li><a href="#">Emprendimientos</a></li>
+                <li><a href="#"class="activo">Solicitud de Emprendimiento</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Transporte</a></li>
+                <li><a href="#">Reportes y sugerencias</a></li>
+                <li><a href="#">Administración</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+        
+    <section id="solicitudEmprendimiento">
+    <hr>
+        <h1>Formulario solicitud emprendedor</h1>
+    <hr>
+        <!--Formulario-->
+        <form id="formularioSolicitud">
+        <label for="nombreCompleto">Nombre Completo:</label>
+        <input type="text" id="nombreCompleto" placeholder="Nombre Completo..." required>
+        <span class="rojo"></span>
+
+        <label for="correo">Correo electronico:</label>
+        <input type="email" id="correo" placeholder="Correo..." required>
+        <span class="rojo"></span>
+
+        <label for="numTel">Numero de telefono:</label>
+        <input type="text" id="numTel" placeholder="Numero telefonico..." required>
+        <span class="rojo"></span>
+
+        <label for="tipoEmprendimiento">Tipo de emprendimiento:</label>
+        <select name="tipoEmprendimiento" id="tipoEmprendimiento" required>
+            <option value="" disabled selected>Seleccione Categoria</option>
+
+            <option value="empTecnologico">Emprendimiento Tecnologico</option>
+            <option value="empIndustrial">Emprendimiento Industrial</option>
+            <option value="empAgricola">Emprendimiento Agricola</option>
+            <option value="empEducativo">Emprendimiento Educativo</option>
+            <option value="empServicios">Emprendimientos de Servicios</option>
+        </select>
+        <span class="rojo"></span>
+
+        <label for="nomEmprendimiento">Nombre de Emprendimiento:</label>
+        <input type="text" id="nomEmprendimiento" placeholder="Nombre de Emprendimiento..." required>
+        <span class="rojo"></span>
+
+        <label for="descripEmprendimiento">Descripcion del Emprendimiento...</label>
+        <input type="text" id="descripEmprendimiento" placeholder="Descripcion..." required>
+        <span class="rojo"></span>
+
+        <!--Boton de formulario-->
+        <button type="submit" class="BaseVerde" id="btnEnviarRegistro">Enviar Solicitud</button>
+        <span class="rojo"></span>
+
+        </form>
+    </section>
+
+
+    <footer>
+    <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
+    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+    <a href="tel:2222-2222" class="fa fa-phone"></a> <p>‪+(506) 2222-2222‬</p>
+    <a href="info@comunidadconectada.ac.cr" class="fa fa-envelope"></a> <p>info@comunidadconectada.ac.cr</p> <br>
+    <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+    </footer>
+
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="/trabajo_LEO/pagina_404NOTFOUND/js/formulario_emprendimiento.js"></script>
+
+    
+</body>
+</html>
