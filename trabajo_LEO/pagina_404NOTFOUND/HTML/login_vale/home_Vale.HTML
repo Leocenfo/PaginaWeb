@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/pagina_404NOTFOUND/css/estilos.css">
+    <!--Libreria de iconos-->
+    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css">
+</head>
+<body>
+
+    <header>
+        <table>
+            <tr>
+                <td><img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo"></td>
+                <td><button  id="openLoginBtn"> Identificarme</button></td>
+                <td><button  id="openRegistroBtn">Registrarme</button></td>
+            </tr>
+        </table>
+    </header>
+
+
+    <!-- Seccion con imagen debajo del header -->
+    <div id="DivImagenPaginaInicio" class="oscuro contenedor-imagen imgAnchoCompleto">
+        <img src="/pagina_404NOTFOUND/Recursos/InicioDivImagenBarrio.jpg" alt="Imagen de la Página de Inicio">
+    </div>
+
+
+    <!-- Seccion de cartas para datos de comunidad -->
+    <div id="DivTarjetasSobreComunidad" class="claro">
+        <h1 class="BaseAzul">Comunidad Conectada</h1>
+        <p>Conveniencia y beneficios de la comunidad.</p>
+        <div class="contenedor-cartas">
+            <div class="carta">
+                <h3 class="rojo">Amenidades</h3>
+                <p>La comunidad cuenta con acceso a ABCD</p>
+            </div>
+            <div class="carta">
+                <h3 class="azul">Seguridad</h3>
+                <p>Disponibilidad de camaras de video para monitoreo en tiempo real</p>
+            </div>
+            <div class="carta">
+                <h3 class="verde">Comunidad</h3>
+                <p>Eventos comunales y soporte a negocios locales atravez del portal de vecinos</p>
+            </div>
+            <div class="carta">
+                <h3 class="rojo">Ambiente</h3>
+                <p>Eventos de educacion ambiental para la comunidad</p>
+            </div>
+            <div class="carta">
+                <h3 class="azul">Accesibilidad</h3>
+                <p>Somos inclusivos, todos nuestros portales están diseñados para su fácil uso.</p>
+            </div>
+            <div class="carta">
+                <h3 class="verde">Transporte</h3>
+                <p>Encuentre aquí una relevante lista de transporte público local.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="DivHistoriaComunidad" class="oscuro ImagenConTexto">
+        <div class="DivTexto">
+            <h3>Historia de Comunidad Conectada</h2>
+            <p>Fue creado por un grupo de estudiantes como parte de un proyecto de desarrollo de software.
+                Con arduo trabajo y dedicación, lograron crear una plataforma que conecta a los vecinos de una comunidad, permitiendo la comunicación y colaboración entre ellos.
+                El uso de la plataforma ha facilitado la organización de eventos comunitarios, la resolución de problemas locales y el fortalecimiento de los lazos entre los vecinos.
+        
+            </p>
+        </div>
+        <div class="contenedor-imagen DivImagen">
+            <img src="/pagina_404NOTFOUND/Recursos/InicioDivImagenManos.jpg" alt="Personas dandose la mano">
+        </div>
+    </div>
+
+    <footer>
+        <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
+        <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+        <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+        <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+        <a href="tel:2222-2222" class="fa fa-phone"></a> <p>+(506) 2222-2222</p>
+        <a href="mailto:info@comunidadconectada.ac.cr" class="fa fa-envelope"></a> <p>info@comunidadconectada.ac.cr</p> <br>
+        <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+    </footer>
+
+
+<!-- FORMULARIO DE REGISTRO -->
+<div id="DivPopupRegistro" class = "PopupForm">
+    <div class="PopupFormContenido">
+        <span id= 'CerrarRegistroBtn' class="cerrar">&times;</span>
+        <h2 class="azul padding">Registro</h2>
+        <form id="RegistroForm">
+            <label for="email">Correo Electrónico: </label>
+            <input type="email" id="email" name="email"  placeholder="jane.doe@email.com" required oninvalid="this.setCustomValidity('Correo electrónico es obligatorio')" oninput="this.setCustomValidity('')">
+            <span class="rojo" ></span>
+            <label for="password">Contraseña:  </label>
+            <input type="password" id="password" name="password" placeholder="Contraseña"  required oninvalid="this.setCustomValidity('Contraseña es obligatoria')" oninput="this.setCustomValidity('')">
+            <span class="rojo" aria-live="polite"></span>
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre" placeholder="Jane" required oninvalid="this.setCustomValidity('Nombre es obligatorio')" oninput="this.setCustomValidity('')">
+            <span class="rojo"></span>
+            <label for="apellido">Apellido: </label>
+            <input type="text" id="apellido" name="apellido" placeholder="Doe" required oninvalid="this.setCustomValidity('Apellido es obligatorio')" oninput="this.setCustomValidity('')">
+            <span class="rojo"></span>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" placeholder="Dirección" name="direccion" required oninvalid="this.setCustomValidity('Dirección es obligatoria')" oninput="this.setCustomValidity('')">
+            <span class="rojo"></span>
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="tel" id="telefono" placeholder="2222-2222" name="telefono" required oninvalid="this.setCustomValidity('Número de teléfono es obligatorio')" oninput="this.setCustomValidity('')">
+            <span class="rojo"></span>
+            <button type="submit" class="BaseVerde" id="btnEnviarRegistro">Registrarse</button>
+        
+        </form>
+    </div>
+</div>
+
+<!-- Formulario de inicio de sesion -->
+
+<div id="DivPopupLogin" class = "PopupForm">
+    <div class="PopupFormContenido">
+        <span id= 'CerrarLoginBtn' class="cerrar">&times;</span>
+        <h2 class="azul padding">Iniciar Sesión</h2>
+        <form id="LoginForm">
+            <label for="emailLogin">Correo Electrónico: </label>
+            <input type="email" id="emailLogin" name="emailLogin" placeholder="jane.doe@email.com" required oninvalid="this.setCustomValidity('Correo electrónico inválido')" oninput="this.setCustomValidity('')">
+            <span class="rojo"></span>
+            <label for="passwordLogin">Contraseña:  </label>
+            <input type="password" id="passwordLogin" name="passwordLogin" placeholder="Contraseña"  required oninvalid="this.setCustomValidity('Contraseña inválida')" oninput="this.setCustomValidity('')">
+            <span class="rojo"></span>
+            <button type="submit" class="BaseVerde" id="btnEnviarLogin">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+<div id="DivCreacionExitosa" class="PopupForm">
+    <div class="PopupFormContenido">
+        <span id= 'CerrarCreacionExitosaBtn' class="cerrar">&times;</span>
+        <h2 class="BaseAmarillo">¡Cuenta Creada Exitosamente!</h2>
+        <p>Su cuenta ha sido creada exitosamente. Ahora puede iniciar sesión.</p>
+        <button id="btnCerrarCreacionExitosa" class="BaseVerde">Cerrar</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/trabajo_LEO/pagina_404NOTFOUND/js/home.JS"></script>
+</body>
+</html>
+
+<!-- Referencias 
+ https://www.w3schools.com/howto/howto_css_social_media_buttons.asp
+ https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-phone 
+
+
+imagenes 
+https://www.pexels.com/es-es/foto/tiro-de-alto-angulo-de-barrio-suburbano-1546168/ 
+https://www.pexels.com/es-es/foto/manos-suelo-molido-grupo-461049/
+
+-->
