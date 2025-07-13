@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios Comunitarios</title>
+    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Marco.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navegacion">
+            <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
+            <div class="divMenu">
+                <i class="fa fa-bars" id="menuCambio"></i> <ul id="menu">
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#"class="activo">Anuncios</a></li>
+                    <li><a href="#">Emprendimientos</a></li>
+                    <li><a href="#">Solicitud de Emprendimiento</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Transporte</a></li>
+                    <li><a href="#">Reportes y sugerencias</a></li>
+                    <li><a href="#">Administración</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <hr>
+    <h1>Anuncios Comunitarios</h1>
+    <hr>
+        <!--Tarjetas Anuncios-->
+    <div id="DivTarjetasSobreComunidad" class="claro">
+       
+        <!--Tarjeta 1-->
+        <div class="contenedor-cartas">
+            <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncio castracion.jpg" alt="Imagen del anuncio" width="200px" height="190px" style="border-radius: 8px;">
+                <h3 class="rojo">Castracion gratuita!</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 1111</span>
+            </div>
+
+            <!--Tarjeta 2-->
+            <div class="carta">
+                 <img src="/trabajo_LEO/imagenes/Anuncio venta de garage.jpg" alt="Imagen del anuncio" width="200px" height="190px"style="border-radius: 8px;">
+                <h3 class="rojo">Gran venta de Garage</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 2222</span>
+            </div>
+
+            <!--Tarjeta 3-->
+            <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncio concierto.jpg" alt="Imagen del anuncio" width="200px" height="190px">
+                <h3 class="rojo">Concierto gratuito</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 3333</span>
+            </div>
+
+            <!--Tarjeta 4-->
+            <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncios concurso.jpg" alt="Imagen del anuncio" width="200px" height="190px">
+                <h3 class="rojo">Concurso abierto</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 4444</span>
+            </div>
+
+            <!--Tarjeta 5-->
+            <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncios matricula.jpg" alt="Imagen del anuncio" width="200px" height="190px"style="border-radius: 8px;">
+                <h3 class="azul">Matriculate lo antes posible!</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 5555</span>
+            </div>
+
+            <!--Tarjeta 6-->
+            <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncio perroPerdido.jpg" alt="Imagen del anuncio" width="200px" height="190px">
+                <h3 class="azul">Busquemos a Aquiles!</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 6666</span>
+            </div>
+
+            <!--Tarjeta 7-->
+             <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncios corte agua.jpg" alt="Imagen del anuncio" width="200px" height="190px">
+                <h3 class="azul">Atencion comunidad!</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 7777</span>
+            </div>
+
+            <!--Tarjeta 8-->
+            <div class="carta">
+                <img src="/trabajo_LEO/imagenes/Anuncios tamales.jpg" alt="Imagen del anuncio" width="200px" height="190px"style="border-radius: 8px;">
+                <h3 class="azul">Venta de ricos tamales</h3>
+                <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 8888</span>
+            </div>
+        </div>
+
+        <!--Solicitud para agregar anuncio-->
+        <section id="solicitudAnuncio">
+    <hr>
+        <h1>Solicitud para agregar anuncio</h1>
+    <hr>
+
+        <form id="formularioSolicitud">
+        <label for="nombreCompleto">Nombre Completo:</label>
+        <input type="text" id="nombreCompleto" placeholder="Nombre Completo..." required>
+        <span class="rojo"></span>
+
+            <!--Select de tipo de anuncio-->
+        <label for="tipoAnuncio">Tipo de anuncio:</label>
+        <select name="tipoAnuncio" id="tipoAnuncio" required>
+            <option value="" disabled selected>Seleccione Categoria</option>
+            <option value="anunAviso">Anuncio de aviso comunitario</option>
+            <option value="anuncioNegocio">Anuncio de negocio</option>
+            <option value="anunEducativo">Anuncio Educativo</option>
+            <option value="anunServicios">Anuncios de Servicios</option>
+        </select>
+        <span class="rojo"></span>
+
+        <label for="descripAnun">Descripcion del anuncio...</label>
+        <input type="text" id="descripAnun" placeholder="Descripcion..." required>
+        <span class="rojo"></span>
+
+        <!--boton de formulario-->
+        <button type="submit" class="BaseVerde" id="btnEnviarRegistro">Enviar Solicitud</button>
+        <span class="rojo"></span>
+
+        </form>
+    </section>
+
+
+    <footer>
+        <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+        <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+        <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+        <a href="tel:2222-2222" class="fa fa-phone"></a> <p>‪+(506) 2222-2222‬</p>
+        <a href="info@comunidadconectada.ac.cr" class="fa fa-envelope"></a> <p>info@comunidadconectada.ac.cr</p> <br>
+        <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/trabajo_LEO/pagina_404NOTFOUND/js/anuncios.JS"></script>
+
+</body>
+</html>
