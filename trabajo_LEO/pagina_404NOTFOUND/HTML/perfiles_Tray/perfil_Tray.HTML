@@ -1,80 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil de Usuario</title>
-  <link rel="stylesheet" href="css/estilos.css">
+    <meta charset="UTF-8">
+    <title>Perfil - Comunidad Conectada</title>
+    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/Estilos_Perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-  <header>
-    <nav class="navegacion">
-      <ul>
-        <li><a href="#" class="activo">Perfil</a></li>
-        <li><a href="#">Anuncios</a></li>
-        <li><a href="#">Emprendimientos</a></li>
-        <li><a href="#">Eventos</a></li>
-        <li><a href="#">Transporte</a></li>
-        <li><a href="#">Reportes y sugerencias</a></li>
-        <li><a href="#">Administración</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Barra de Navegación -->
+<header class="navegacion">
+    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" class="logo-grande">
+    <div class="divMenu">
+        <span id="menuCambio">&#9776;</span>
+        <ul id="menu">
+            <li><a class="activo" href="#">Perfil</a></li>
+            <li><a href="#">Mis Solicitudes</a></li>
+            <li><a href="#">Comunidad</a></li>
+            <li><a href="#">Anuncios</a></li>
+            <li><a href="#">Emprendimientos</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Transporte</a></li>
+            <li><a href="#">Reportes y sugerencia</a></li>
+            <li><a href="#">Administración</a></li>
+        </ul>
+    </div>
+</header>
 
-  <main class="contenedor-perfil">
-    <section class="perfil-info">
-      <div class="foto-perfil">
-        <img src="img/trayce.jpg" alt="Foto de perfil de Trayce">
-      </div>
-
-      <div class="datos-perfil">
-        <h1>Perfil</h1>
-        <h2>Trayce González Brenes</h2>
-
-        <div class="roles">
-          <button>CIUDADANO</button>
-          <button>EMPRENDEDOR</button>
-          <button>MODERADOR</button>
-          <button>ADMINISTRADOR</button>
+<!-- CONTENEDOR DE PERFIL -->
+<div class="perfil-contenedor">
+    <!-- Encabezado con imagen + nombre -->
+    <div class="perfil-encabezado">
+        <div class="perfil-foto">
+            <img src="/trabajo_LEO/imagenes/Foto de perfil.jpeg" alt="Foto de perfil">
         </div>
-
-        <div class="configuracion">
-          <button class="config-btn">CONFIGURACIÓN DE LA CUENTA</button>
+        <div>
+            <div class="perfil-info">
+                <h3><strong>Juan Perez</strong></h3>
+                <p><strong>Cargo:</strong> Presidente de la Junta Comunal</p>
+                <p><strong>Ubicación:</strong> Hacienda Vieja, Curridabat</p>
+                <p><strong>Correo:</strong> juan.perez@comunidadconectada.ac.cr</p>
+                <p><strong>Teléfono:</strong> +506 2222-2222</p>
+                <a href="mailto:juan.perez@comunidadconectada.ac.cr" id="btnContactar" class="boton">Contactar</a>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <section class="sobre-nosotros">
-      <h3>MÁS INFORMACIÓN</h3>
-      <h2>Sobre Nosotros</h2>
-      <p>
-        Escribir de forma efectiva es un arte. Empieza usando palabras simples y cotidianas que las personas puedan entender fácilmente. Sé claro y directo al punto. Mantén tus ideas organizadas y, si es posible, sé breve.
-      </p>
-      <p>
-        Tus ideas tienen un propósito, así que elige palabras que las expresen con precisión. Asegúrate de que tu gramática sea impecable, ya que afecta tu credibilidad. Usa la voz activa cuando sea posible, ya que facilita la lectura.
-      </p>
-
-      <button class="solicitudes-btn">MANEJO DE SOLICITUDES</button>
-    </section>
-  </main>
-
-  <footer class="pie-pagina">
-    <div class="contacto-footer">
-      <span>📧 404NotFound@ucenfotec.ac.cr</span>
-      <span>📞 +506 2222-2122</span>
-      <span>© 2025 404 Not Found. Todos los derechos reservados.</span>
     </div>
 
-    <div class="iconos-footer">
-      <!-- Aquí podrías usar íconos reales con FontAwesome -->
-      <span>📷</span>
-      <span>✉️</span>
-      <span>🐦</span>
-      <span>▶️</span>
-      <span>🔗</span>
+    <!-- Sección de Roles bien posicionada -->
+   <div class="roles-contenedor">
+    <h3><i class="fa fa-user-circle"></i> Roles</h3>
+    <div class="botones-perfil">
+        <button class="boton"><i class="fa fa-user"></i> Ciudadano</button>
+        <button class="boton"><i class="fa fa-briefcase"></i> Emprendedores</button>
+        <button class="boton"><i class="fa fa-eye"></i> Moderador</button>
+        <button class="boton"><i class="fa fa-cog"></i> Administrador</button>
     </div>
-  </footer>
+</div>
+</div>
 
+<!-- Sobre mí -->
+<div style="background-color: #FFFFFF; padding: 30px; border-radius: 15px; box-shadow: 0 4px 12px #4a4a4a30; max-width: 800px; margin: 40px auto;">
+    <h2>Sobre mí</h2>
+    <p>
+        Me llamo Juan Pérez y he vivido toda mi vida en Hacienda Vieja de Curridabat. Como presidente de la Junta Comunal, me llena de alegría ver cómo la tecnología puede acercarnos aún más como vecinos. Esta plataforma de Comunidad Conectada es una excelente herramienta para mantenernos informados y participar activamente en lo que sucede en nuestro entorno.
+    </p>
+    <p>
+        Desde siempre he creído en la importancia de fortalecer los lazos entre vecinos, y esta plataforma me parece una excelente oportunidad para lograrlo. Me alegra saber que la página cuenta con secciones tan útiles como anuncios, emprendimientos, eventos, transporte público y más. Poder consultar esta información, reportar situaciones y estar conectado con mi comunidad es algo que valoro muchísimo. Además, me motiva saber que las nuevas generaciones podrán usar esta herramienta para involucrarse más y continuar construyendo una comunidad solidaria, segura y bien informada.
+    </p>
+</div>
+
+<!-- Botones -->
+<div style="text-align: center; margin-bottom: 30px;">
+    <a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/Mis_Solicitudes.html" class="boton">Mis Solicitudes</a>
+    <a href="#" class="boton-rojo boton-grande" onclick="document.getElementById('formEditar').style.display='flex'">Editar perfil</a>
+</div>
+
+<!-- FORMULARIO POPUP -->
+<div class="PopupForm" id="formEditar">
+  <div class="PopupFormContenido perfil-contenedor">
+    <span class="cerrar" onclick="document.getElementById('formEditar').style.display='none'">&times;</span>
+    <h2>Editar Perfil</h2>
+    <form>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" value="Juan Perez">
+
+      <label for="cargo">Cargo:</label>
+      <input type="text" id="cargo" value="Presidente de la Junta Comunal">
+
+      <label for="ubicacion">Ubicación:</label>
+      <input type="text" id="ubicacion" value="Hacienda Vieja, Curridabat">
+
+      <label for="correo">Correo:</label>
+      <input type="email" id="correo" value="juan.perez@comunidadconectada.ac.cr">
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" value="+506 2222-2222">
+
+      <label for="sobreMi">Sobre mí:</label>
+      <textarea id="sobreMi" rows="4">
+Me llamo Juan Pérez y he vivido toda mi vida en Hacienda Vieja de Curridabat...
+      </textarea>
+
+      <button type="submit" class="boton">Guardar Cambios</button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a>
+    <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+    <a href="tel:2222-2222" class="fa fa-phone"></a> <p>+(506) 2222-2222</p>
+    <a href="info@comunidadconectada.ac.cr" class="fa fa-envelope"></a> <p>info@comunidadconectada.ac.cr</p> <br>
+    <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+</footer>
+
+<script src="/trabajo_LEO/pagina_404NOTFOUND/js/perfil.JS"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
