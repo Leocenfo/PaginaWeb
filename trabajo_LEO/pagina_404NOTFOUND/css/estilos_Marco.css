@@ -1,5 +1,4 @@
 /*  TIPOS */
-
     * {
         margin: 0;
         padding: 0;
@@ -9,7 +8,11 @@
     }
 
     body {
-        background-color: #F5F5F5 ;
+    background-color: #F5F5F5 ;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% altura de viewport */
+    margin: 0;
     }
 
   header {
@@ -615,4 +618,29 @@ button {
     background-color: #A00015; /* Rojo más oscuro al pasar el mouse */
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
+body > section#solicitudEmprendimiento {
+  flex-grow: 1; /* Esto hace que la sección crezca y empuje el footer hacia abajo */
+  /* Opcional: para dar algo de padding si quieres */
+  padding: 20px;
+}
+
+footer {
+  /* Ya tienes estilos para footer, solo asegúrate que no tenga position: absolute o fixed */
+  color: #4A4A4A;
+  padding: 1% 1% 0 1%;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-bottom: 4px solid #e6e214;
+  text-align: center;
+}
+body > main.container {
+  flex-grow: 1;
+  padding: 20px;
+}
