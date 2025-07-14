@@ -20,6 +20,7 @@ html, body {
 main {
     flex: 1;
 }
+
 header {
     background-color: #FFFFFF;
     padding: 5px 5px 5px 5px;
@@ -56,16 +57,16 @@ button {
         padding: 10px;
     }
 
-    footer {
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/enpredimientos_Marco.HTML">Emprendimientos</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/anuncios.html" class="activo">Administración</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
-    }
+footer {
+    background-color: #f0f0f0;
+    /* o el color que uses */
+    padding: 15p 20pxx;
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    margin-top: auto;
+
+}
 
 h1{
     font-size: 40px;
@@ -557,7 +558,7 @@ flex-grow: 1;
 /* IDs */
 
 #HeaderTableTrTdALogo {
-    width: 100px;
+    width: 0px;
     height: auto;
     padding: 3px 0px 0px 10px;
 
