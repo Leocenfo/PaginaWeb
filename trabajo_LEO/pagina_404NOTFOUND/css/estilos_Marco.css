@@ -535,7 +535,7 @@
 
 #HeaderTableTrTdALogo {
     /* Se cambia el formato del logo para que sea consistente en todas las paginas */
-    width: 50px;
+    width: 100px;
     height: auto;
     padding: 3px 0px 0px 10px;
 } 
