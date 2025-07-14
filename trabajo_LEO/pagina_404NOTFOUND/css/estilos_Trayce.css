@@ -89,7 +89,12 @@
 .btn-normal:hover {
   background-color: #357ABD;
 }
+h1{
+    font-size: 40px;
+    margin: 15px 0px 15px 0px;
+    margin-left: 10%; /* o el valor que prefieras */
 
+}
 
 .btn-config-flotante:hover {
   background-color: #357ABD;
