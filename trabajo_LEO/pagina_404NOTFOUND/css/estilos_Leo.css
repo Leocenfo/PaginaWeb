@@ -1,138 +1,131 @@
 /*  TIPOS */
 
-* {
-    margin: 0;
-    padding: 8px 20px;
-    box-sizing: border-box;
-    color: #4A4A4A;
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color:#4A4A4A;
+        font-family: Arial, sans-serif;
+    }
 
-body {
-    background-color: #F5F5F5;
-}
+    body {
+        background-color: #F5F5F5 ;
+    }
 
-header {
-    background-color: #FFFFFF;
-    padding: 15px 20px;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 4px solid #f8E71C;
-    height: 50px;
-    /* ← UNIDAD AGREGADA */
-    box-sizing: border-box;
-    /* unidad agregada leo */
-}
-
-div {
-    padding: 2% 15%;
-}
-
-div div {
-    padding: 2% 0;
-}
-
-button {
-    background-color: #c2311e;
-    color: #FFFFFF;
-    border-radius: 5px;
-    border: none;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-td {
-    padding: 10px;
-}
-
-footer {
-    color: #4A4A4A;
-    padding: 1% 1% 0 1%;
-    background-color: #FFFFFF;
-    width: 100%;
-    border-bottom: 4px solid #f8E71C;
-}
-
-h1 {
-    font-size: 40px;
-    margin: 15px 0;
-    margin-left: 10%; /* o el valor que prefieras */
+    header {
+        background-color: #FFFFFF;
+        padding: 5px 5px 5px 5px;
+        padding: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 4px solid #f8E71C;
+        height: 60;
+    }
 
 
-}
 
-h2 {
-    font-size: 35px;
-    margin: 15px 0;
-    
-}
+    div{
+        padding:  2% 15% 2% 15%;
+    }
 
-h3 {
-    font-size: 30px;
-    margin: 15px 0;
-}
+    /* Elimina padding lateral en secciones anidadas */
+    div div {
+        padding: 2% 0% 2% 0%;
+    }
 
-h4 {
-    font-size: 25px;
-    margin: 15px 0;
-}
+    button {
+        background-color: #4A90E2;
+        color: #FFFFFF;
+        border-radius: 5px; 
+        border: none;
+        padding: 10px 10px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+  td {
+            padding: 10px;
+        }
 
-h5 {
-    font-size: 20px;
-    margin: 15px 0;
-}
+    footer {
+        color: #4A4A4A;
+        padding: 1% 1% 0 1%;
+        background-color: #FFFFFF;
+        width: 100%;
+        border-bottom: 4px solid #e6e214;
+        text-align: center;
+    }
 
-p {
-    color: #4A4A4A;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 5px 0;
-}
+  h1{
+        font-size: 40px;
+        margin: 15px 0px 15px 0px;
+        margin-left: 10%;
 
-footer p {
-    display: inline;
-}
+    }
+
+    h2{
+        font-size: 35px;
+        margin: 15px 0px 15px 0px;
+
+    }
+
+    h3{
+        font-size: 30px;
+        margin: 15px 0px 15px 0px;
+
+    }
+
+    h4{
+        font-size: 25px;
+        margin: 15px 0px 15px 0px;
+    }
+
+    h5{
+        font-size: 20px;
+        margin: 15px 0px 15px 0px;
+    }
+
+    p {
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 15px 0px 15px 0px;
+    }
+    footer p {
+        display: inline;
+    }
 
 /* FORMULARIOS */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px;
-}
+  form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 20px 20px 20px;
 
-label {
-    margin-top: 5px;
-    color: #4A4A4A;
-}
+        }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="tel"],
-input[type="date"],
-input[type="search"],
-textarea,
-select {
-    padding: 10px;
-    border: 1px solid #CCCCCC;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    color: #4A4A4A;
-}
+        label {
+            margin-top: 5px;
+            color:#4A4A4A
+        }   
 
-input[type="radio"]:checked {
-    accent-color: #4A90E2;
-}
+        input[type="text"],input[type="email"],input[type="password"],input[type="number"],
+        input[type="tel"],input[type="date"],input[type="search"],textarea,
+        select {
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            color: #4A4A4A;
+        }
 
-input::placeholder {
-    color: #828282;
-}
+        input[type="radio"]:checked {
+            accent-color: #4A90E2; /* Cambia el color del radio button seleccionado */
+        }
 
+        input::placeholder {
+            color: #828282;
+        }
 /* Marcar el campo seleccionado en azul */
 input:focus,
 textarea:focus,
@@ -155,15 +148,16 @@ option {
     color: inherit;
 }
 
-.boton {
-    background-color: #376bd3;
+
+.boton{
+    background-color: #4A90E2;
     color: #FFFFFF;
-    border-radius: 5px;
+    border-radius: 5px; 
     border: none;
-    padding: 10px;
+    padding: 10px 10px;
     font-weight: bold;
     font-size: 20px;
-}
+    }
 
 /* SECCIONES */
 .oscuro {
@@ -418,7 +412,7 @@ option {
 
 .activo {
     color: #FFFFFF;
-    background-color: #4A90E2;
+    background-color: #0b65c6;
     border-radius: 4px;
     padding: 10px;
 }
@@ -472,18 +466,11 @@ option {
 
 /* LOGO */
 #HeaderTableTrTdALogo {
-    height: 50px;
-    /* Altura fija que funciona bien en headers */
+     /* Se cambia el formato del logo para que sea consistente en todas las paginas */
     width: auto;
-    /* Deja que el ancho se ajuste proporcionalmente */
-    max-width: 100%;
-    /* Para que no se desborde */
-    object-fit: contain;
-    /* Mantiene proporción sin recortar */
-    padding: 5px 10px;
-    /* Espaciado más balanceado */
-    display: block;
-    /* Asegura que no haya espacio fantasma debajo */
+  height: 50px;
+  padding: 5px 10px;
+  object-fit: contain;
 }
 
 /*
@@ -517,18 +504,6 @@ main.container {
     padding: 20px;
 }
 
-/* Footer normal */
-footer {
-    background-color: #f0f0f0;
-    /* o el color que uses */
-    padding: 15p 20pxx;
-    text-align: center;
-    width: 100%;
-    font-size: 14px;
-    margin-top: auto;
-
-}
-
 button.aceptar {
     background-color: #2b77e9;
     /* verde */
@@ -538,7 +513,7 @@ button.aceptar {
 }
 
 button.eliminar {
-    background-color: #d1301b;
+    background-color: #ea240a;
     /* rojo */
     padding: 8px 12px;
     cursor: pointer;
@@ -648,80 +623,13 @@ body {
         text-align: left;
     }
 }
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown button styling (inherits link style) */
-.dropbtn {
-  background-color: transparent;
-  color: inherit;
+button.rechazar {
+  background-color: #D0021B; /* rojo fuerte */
+  color: #fff;
+  padding: 8px 12px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  text-decoration: none;
-}
-/*aqui incia la prueba de linkear las pagina */ 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  z-index: 1;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  display: block;
-  text-decoration: none;
-}
 
-/* Hover effect */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* Estilo para el contenedor del dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* El contenido del dropdown, inicialmente oculto */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Estilo de los enlaces dentro del dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Efecto hover sobre los enlaces */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Cuando el mouse pasa sobre .dropdown, se muestra el contenido */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
