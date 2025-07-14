@@ -635,7 +635,7 @@ footer {
   /* Ya tienes estilos para footer, solo asegúrate que no tenga position: absolute o fixed */
   color: #4A4A4A;
   padding: 1% 1% 0 1%;
-  background-color: #FFFFFF;
+  background-color:transparent;
   width: 100%;
   border-bottom: 4px solid #e6e214;
   text-align: center;
