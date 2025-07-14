@@ -13,16 +13,13 @@
     }
 
   header {
-    background-color: #FFFFFF;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 4px solid #f8E71C;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0 15px;
+      background-color: #FFFFFF;
+        padding: 5px 5px 5px 5px;
+        padding: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 4px solid #f8E71C;
+        height: 60;
 }
 
 
