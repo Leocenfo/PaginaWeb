@@ -80,7 +80,7 @@
     // logica de validación registro
         const validacionRegistro = {
             correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
-            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{12,}$/.test(input.value.trim()) ? true : "La contrasena debe ser de al menos 12 caracteres, y contener un caracter especial.",
+            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasena debe ser de al menos 8 caracteres, y contener un caracter especial.",
             nombre: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
             apellido:(input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El apellido solo puede contener letras.",
             direccion:(input)=> input.value ? true : "Deber ingresar una direccion.",
@@ -90,7 +90,7 @@
     // logica de validación login
         const validacionLogin = {
             correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
-            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{12,}$/.test(input.value.trim()) ? true : "La contrasena debe ser de al menos 12 caracteres, y contener un caracter especial."
+            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasena debe ser de al menos 8 caracteres, y contener un caracter especial."
         }
         
     //Funcion para mostrar u ocultar errores en el span correspondiente
@@ -197,10 +197,13 @@ btnEnviarLogin.addEventListener("click", (e) => {
         console.log("Formulario válido, mostrando mensaje de éxito"); 
         Swal.fire({
             title: "Login exitoso",
-            text: "Su usuario ha sido creado exitosamente, por favor inicie sesion en la siguiente pagina.",
+            text: "Será redirigido a la página de anuncios comunitarios.",
             icon: "success",
+            confirmButtonText: "Continuar"
+        }).then(() => {
+            // Redireccionar al usuario después de cerrar el modal
+            window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML";
         });
         formLogin.reset(); 
-        // debo meter validacion de la contrasenna y la pagina perfil 
     }
 });
