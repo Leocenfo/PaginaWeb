@@ -560,7 +560,7 @@ flex-grow: 1;
 /* IDs */
 
 #HeaderTableTrTdALogo {
-    width: 0px;
+    width: 100px;
     height: auto;
     padding: 3px 0px 0px 10px;
 
