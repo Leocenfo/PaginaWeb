@@ -1,39 +1,156 @@
 /*  TIPOS */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color:#4A4A4A;
-    font-family: Arial, sans-serif;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color:#4A4A4A;
+        font-family: Arial, sans-serif;
+    }
 
-body {
-    background-color: #F5F5F5 ;
-}
+    body {
+        background-color: #F5F5F5 ;
+    }
 
-header {
-    background-color: #FFFFFF;
-    padding: 5px 5px 5px 5px;
-    padding: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 4px solid #f8E71C;
-    height: 60;
-}
+    header {
+        background-color: #FFFFFF;
+        padding: 5px 5px 5px 5px;
+        padding: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 4px solid #f8E71C;
+        height: 60;
+    }
 
 
 
-div{
-    padding:  2% 15% 2% 15%;
-}
+    div{
+        padding:  2% 15% 2% 15%;
+    }
 
-/* Elimina padding lateral en secciones anidadas */
-div div {
-    padding: 2% 0% 2% 0%;
-}
+    /* Elimina padding lateral en secciones anidadas */
+    div div {
+        padding: 2% 0% 2% 0%;
+    }
 
-button {
+    button {
+        background-color: #4A90E2;
+        color: #FFFFFF;
+        border-radius: 5px; 
+        border: none;
+        padding: 10px 10px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    /* Tablas */
+        td {
+            padding: 10px;
+        }
+
+    footer {
+        color: #4A4A4A;
+        padding: 1% 1% 0 1%;
+        background-color: #FFFFFF;
+        width: 100%;
+        border-bottom: 4px solid #f8E71C;
+    }
+
+    h1{
+        font-size: 40px;
+        margin: 15px 0px 15px 0px;
+    }
+
+    h2{
+        font-size: 35px;
+        margin: 15px 0px 15px 0px;
+
+    }
+
+    h3{
+        font-size: 30px;
+        margin: 15px 0px 15px 0px;
+
+    }
+
+    h4{
+        font-size: 25px;
+        margin: 15px 0px 15px 0px;
+    }
+
+    h5{
+        font-size: 20px;
+        margin: 15px 0px 15px 0px;
+    }
+
+    p {
+        color: #4A4A4A;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 15px 0px 15px 0px;
+    }
+    footer p {
+        display: inline;
+    }
+    /* Estilo del formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 20px 20px 20px;
+
+        }
+
+        label {
+            margin-top: 5px;
+            color:#4A4A4A
+        }   
+
+        input[type="text"],input[type="email"],input[type="password"],input[type="number"],
+        input[type="tel"],input[type="date"],input[type="search"],textarea,
+        select {
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            color: #4A4A4A;
+        }
+
+        input[type="radio"]:checked {
+            accent-color: #4A90E2; /* Cambia el color del radio button seleccionado */
+        }
+
+        input::placeholder {
+            color: #828282;
+        }
+
+        /*  */
+        input:focus, textarea:focus, select:focus {
+            border-color: #4A90E2;
+            outline: none;
+        }
+
+        option {
+            font-size: 16px;
+        }
+
+/* CLASES */
+
+/* ESCONDER */
+    .esconder {
+        display: none;
+    }
+/* LINKS */
+    /* Se elimina el formato de link a los elementos de navegación */
+    .navegacion {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Hacer que una referencia de <a> se vea como boton */
+
+    .boton{
     background-color: #4A90E2;
     color: #FFFFFF;
     border-radius: 5px; 
@@ -41,519 +158,391 @@ button {
     padding: 10px 10px;
     font-weight: bold;
     font-size: 20px;
-}
-
-/* Tablas */
-    td {
-        padding: 10px;
     }
-
-footer {
-    color: #4A4A4A;
-    padding: 1% 1% 0 1%;
-    background-color: #FFFFFF;
-    width: 100%;
-    border-bottom: 4px solid #f8E71C;
-    text-align: center;
-}
-
-h1{
-    font-size: 40px;
-    margin: 15px 0px 15px 0px;
-    margin-left: 10%; /* o el valor que prefieras */
-
-}
-
-h2{
-    font-size: 35px;
-    margin: 15px 0px 15px 0px;
-    margin-left: 10%; /* o el valor que prefieras */
-
-
-
-}
-
-h3{
-    font-size: 30px;
-    margin: 15px 0px 15px 0px;
-    margin-left: 10%; /* o el valor que prefieras */
-
-}
-
-h4{
-    font-size: 25px;
-    margin: 15px 0px 15px 0px;
-}
-
-h5{
-    font-size: 20px;
-    margin: 15px 0px 15px 0px;
-}
-
-p {
-    color: #4A4A4A;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 15px 0px 15px 0px;
-    margin-left: 10%; /* o el valor que prefieras */
-
-}
-footer p {
-    display: inline;
-}
-/* Estilo del formulario */
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin: 20px 20px 20px 20px;
-
-    }
-
-    label {
-        margin-top: 5px;
-        color:#4A4A4A
-    }   
-
-    input[type="text"],input[type="email"],input[type="password"],input[type="number"],
-    input[type="tel"],input[type="date"],input[type="search"],textarea,
-    select {
-        padding: 10px;
-        border: 1px solid #CCCCCC;
-        border-radius: 5px;
-        font-size: 16px;
-        width: 100%;
-        color: #4A4A4A;
-    }
-
-    input[type="radio"]:checked {
-        accent-color: #4A90E2; /* Cambia el color del radio button seleccionado */
-    }
-
-    input::placeholder {
-        color: #828282;
-    }
-
-    /*  */
-    input:focus, textarea:focus, select:focus {
-        border-color: #4A90E2;
-        outline: none;
-    }
-
-    option {
-        font-size: 16px;
-    }
-
-/* CLASES */
-
-/* ESCONDER */
-.esconder {
-    display: none;
-}
-/* LINKS */
-/* Se elimina el formato de link a los elementos de navegación */
-.navegacion {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Hacer que una referencia de <a> se vea como boton */
-
-.boton{
-background-color: #4A90E2;
-color: #FFFFFF;
-border-radius: 5px; 
-border: none;
-padding: 10px 10px;
-font-weight: bold;
-font-size: 20px;
-}
 
 /* SECCIONES */
-/* Clases para dar color de fondo a secciones */
-.oscuro {
-    background-color: #F5F5F5;
-}
+    /* Clases para dar color de fondo a secciones */
+    .oscuro {
+        background-color: #F5F5F5;
+    }
 
-.claro {
-    background-color: #FFFFFF;
-}
+    .claro {
+        background-color: #FFFFFF;
+    }
 /*PADDING y MARGEN EXTRA*/
-.padding{
-    padding: 20px;
-}
-.margen{
-    margin: 20px;
-}
+    .padding{
+        padding: 20px;
+    }
+    .margen{
+        margin: 20px;
+    }
 /* COLORES */
 
-/* Clases para dar color a texto */
-.azul {
-    color: #4A90E2;
-}
+    /* Clases para dar color a texto */
+    .azul {
+        color: #4A90E2;
+    }
 
-.rojo {
-    color: #D0021B;
-}
+    .rojo {
+        color: #D0021B;
+    }
 
-.verde {
-    color: #7ED321;
-}
+    .verde {
+        color: #7ED321;
+    }
 
-.amarillo {
-    color: #f8E71C;
-}
+    .amarillo {
+        color: #f8E71C;
+    }
 
-/* Clase para dar background de color a la seccion (para titulos, botones, etc)*/
+    /* Clase para dar background de color a la seccion (para titulos, botones, etc)*/
 
-.BaseAzul {
-    background-color: #4A90E2;
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 0px 20px 0px 20px;
-    text-shadow:
-        -1px -1px 0 #4a4a4a50,
-        1px -1px 0 #4a4a4a50,
-        -1px  1px 0 #4a4a4a50,
-        1px  1px 0 #4a4a4a50;
-}
+    .BaseAzul {
+        background-color: #4A90E2;
+        color: #FFFFFF;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0px 20px 0px 20px;
+        text-shadow:
+            -1px -1px 0 #4a4a4a50,
+            1px -1px 0 #4a4a4a50,
+            -1px  1px 0 #4a4a4a50,
+            1px  1px 0 #4a4a4a50;
+    }
 
-.BaseRojo {
-    background-color: #D0021B;
-    margin: 0px 20px 0px 20px;
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 5px;
-    text-shadow:
-        -1px -1px 0 #4a4a4a50,
-        1px -1px 0 #4a4a4a50,
-        -1px  1px 0 #4a4a4a50,
-        1px  1px 0 #4a4a4a50;
-}
+    .BaseRojo {
+        background-color: #D0021B;
+        margin: 0px 20px 0px 20px;
+        color: #FFFFFF;
+        padding: 10px;
+        border-radius: 5px;
+        text-shadow:
+            -1px -1px 0 #4a4a4a50,
+            1px -1px 0 #4a4a4a50,
+            -1px  1px 0 #4a4a4a50,
+            1px  1px 0 #4a4a4a50;
+    }
 
-.BaseVerde {
-    background-color: #7ED321;
-    margin: 0px 20px 0px 20px;
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 5px;
-    text-shadow:
-        -1px -1px 0 #4a4a4a50,
-        1px -1px 0 #4a4a4a50,
-        -1px  1px 0 #4a4a4a50,
-        1px  1px 0 #4a4a4a50;
-}
+    .BaseVerde {
+        background-color: #7ED321;
+        margin: 0px 20px 0px 20px;
+        color: #FFFFFF;
+        padding: 10px;
+        border-radius: 5px;
+        text-shadow:
+            -1px -1px 0 #4a4a4a50,
+            1px -1px 0 #4a4a4a50,
+            -1px  1px 0 #4a4a4a50,
+            1px  1px 0 #4a4a4a50;
+    }
 
-.BaseAmarillo {
-    background-color: #f8E71C;
-    margin: 0px 20px 0px 20px;
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    text-shadow:
-        -1px -1px 0 #4a4a4a50,
-        1px -1px 0 #4a4a4a50,
-        -1px  1px 0 #4a4a4a50,
-        1px  1px 0 #4a4a4a50;
-}
+    .BaseAmarillo {
+        background-color: #f8E71C;
+        margin: 0px 20px 0px 20px;
+        color: #FFFFFF;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        text-shadow:
+            -1px -1px 0 #4a4a4a50,
+            1px -1px 0 #4a4a4a50,
+            -1px  1px 0 #4a4a4a50,
+            1px  1px 0 #4a4a4a50;
+    }
 
 
 /* IMAGENES */
-.imgAnchoCompleto {
-    width: 100%;
-    aspect-ratio: 3 / 4; /* Proporción vertical para retrato */
-    object-fit: cover;   /* Rellena sin deformar */
-    border-radius: 10px; /* Opcional: esquinas redondeadas */
-    object-position: center; /* Centra la imagen */
-    height: auto;
-    display: block;
-}
-
-.contenedor-imagen {
-    overflow: hidden;     /* Oculta el desbordamiento */
-    position: relative;
-}
-
-.contenedor-imagen img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;    /* Recorta y ajusta la imagen */
-    object-position: center center;  /* Centra horizontal y verticalmente */
-    display: block;
-}
-
-/* Clases para div con texto e imagen */
-    .ImagenConTexto {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; /* permite envolvimiento en pantallas pequeñas */
-}
-
-    /* Ajustar el tamaño de cada sección */
-        .DivTexto {
-        flex: 1 1 50%;
-        min-width: 280px;
-        padding:0; 
-        margin:0;
-        }
-
-        .DivImagen {
-        flex: 1 1 45%; 
+    .imgAnchoCompleto {
         width: 100%;
-        aspect-ratio: 4 / 4;
-        max-height: 400px;
-        padding:0; 
-        margin:0;
-        }
+        aspect-ratio: 16 / 4; /* O cualquier proporción que desees */
+    }
+
+    .contenedor-imagen {
+        overflow: hidden;     /* Oculta el desbordamiento */
+        position: relative;
+    }
+
+    .contenedor-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;    /* Recorta y ajusta la imagen */
+        object-position: center center;  /* Centra horizontal y verticalmente */
+        display: block;
+    }
+
+    /* Clases para div con texto e imagen */
+        .ImagenConTexto {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap; /* permite envolvimiento en pantallas pequeñas */
+    }
+
+        /* Ajustar el tamaño de cada sección */
+            .DivTexto {
+            flex: 1 1 50%;
+            min-width: 280px;
+            padding:0; 
+            margin:0;
+            }
+
+            .DivImagen {
+            flex: 1 1 45%; 
+            width: 100%;
+            aspect-ratio: 4 / 4;
+            max-height: 400px;
+            padding:0; 
+            margin:0;
+            }
 
 /* Responsivo: en pantallas pequeñas apila verticalmente */
-@media (max-width: 768px) {
-    .ImagenConTexto {
-        flex-direction: column;
-    } 
-    .DivImagen {
-        max-height: 300px;
+    @media (max-width: 768px) {
+        .ImagenConTexto {
+            flex-direction: column;
+        } 
+        .DivImagen {
+            max-height: 300px;
+        }
     }
-}
 
 
 /* FORMS */
 
-.mandatorio{ 
-    display: inline-block;
-    color: #D0021B;
-}
-/* Estilo del formulario emergente
-hace que la pantalla se oscurezca y el formulario se centre */
-
-.PopupForm { 
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; 
-    top: 0;
-    width: 100%; 
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-/* Estilo del contenido del formulario */
-.PopupFormContenido {
-    position: relative;
-    background: white;
-    border-radius: 8px;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
-}
-/* Responsive - el form toma toda la pagina*/
-@media (max-width: 600px) {
-    .PopupFormContenido {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        padding: 30px 20px;
-        box-sizing: border-box;
+    .mandatorio{ 
+        display: inline-block;
+        color: #D0021B;
     }
-}
+    /* Estilo del formulario emergente
+    hace que la pantalla se oscurezca y el formulario se centre */
+    
+    .PopupForm { 
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; 
+        top: 0;
+        width: 100%; 
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Estilo del contenido del formulario */
+    .PopupFormContenido {
+        position: relative;
+        background: white;
+        border-radius: 8px;
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+    }
+    /* Responsive - el form toma toda la pagina*/
+    @media (max-width: 600px) {
+        .PopupFormContenido {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+    }
 
 
 
 
 /* BOTONES */
 
-.cerrar {
-    position: absolute;  
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    font-size: 40px;
-    color: #D0021B;
-}
+    .cerrar {
+        position: absolute;  
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 40px;
+        color: #D0021B;
+    }
 
 
 /* CARTAS */
-/* Contenedor de las cartas */
-.contenedor-cartas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-}
+    /* Contenedor de las cartas */
+    .contenedor-cartas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px; 
+    }
 
-/* Estilo de cada carta */
-.carta {
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px #4a4a4a50;
-    border-left: 6px solid transparent;
-    border-left-color: #f8E71C;
-}
+    /* Estilo de cada carta */
+    .carta {
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px #4a4a4a50;
+        border-left: 6px solid transparent;
+        border-left-color: #f8E71C;
+    }
 
 /* Responsivo */
-@media (max-width: 900px) {
-    .contenedor-cartas {
-        grid-template-columns: repeat(2, 1fr); /* 2 por fila en pantallas medianas */
+    @media (max-width: 900px) {
+        .contenedor-cartas {
+            grid-template-columns: repeat(2, 1fr); /* 2 por fila en pantallas medianas */
+        }
     }
-}
 
-@media (max-width: 600px) {
-    .contenedor-cartas {
-        grid-template-columns: 1fr; /* 1 por fila en móviles */
+    @media (max-width: 600px) {
+        .contenedor-cartas {
+            grid-template-columns: 1fr; /* 1 por fila en móviles */
+        }
     }
-}
 
 /* REDES SOCIALES */
-/* Clase para iconos de redes sociales */
-.fa {
-font-size: 30px;
-width: 30px;
-height: 30px;
-padding-top: 7px;
-border-radius: 50%;
-text-decoration: none;
-color: #FFFFFF;
-text-align: center;
-margin: 0px 5px 5px 5px;
-}
+    /* Clase para iconos de redes sociales */
+    .fa {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    padding-top: 7px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0px 5px 5px 5px;
+    }
 
-/* Que se oscuresca cuando se pase el mouse */
-.fa:hover {
-opacity: 0.7;
-}
+    /* Que se oscuresca cuando se pase el mouse */
+    .fa:hover {
+    opacity: 0.7;
+    }
 
-/* Facebook */
-.fa-facebook {
-background: #4A90E2;
-color: white;
-}
+    /* Facebook */
+    .fa-facebook {
+    background: #4A90E2;
+    color: white;
+    }
 
-.fa-instagram {
-background: #D0021B;
-color: white;
-}
+    .fa-instagram {
+    background: #D0021B;
+    color: white;
+    }
 
-.fa-whatsapp {
-background: #7ED321;
-color: white;
-}
-.fa-phone, .fa-envelope {
-background: #4A4A4A;
-color: #FFFFFF;
-margin-left:5% 
-}
+    .fa-whatsapp {
+    background: #7ED321;
+    color: white;
+    }
+    .fa-phone, .fa-envelope {
+    background: #4A4A4A;
+    color: #FFFFFF;
+    margin-left:5% 
+    }
 
 /* BARRA DE NAVEGACION */
 .navegacion {
-display: flex;
-align-items: center;
-justify-content: space-between; /* Logo izquierda, menú derecha */
-background-color: #FFFFFF;
-padding: 0px 10px 0px 10px;
-border-bottom: 4px solid #f8E71C;
-width: 100%;
-box-sizing: border-box;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Logo izquierda, menú derecha */
+    background-color: #FFFFFF;
+    padding: 0px 10px 0px 10px;
+    border-bottom: 4px solid #f8E71C;
+    width: 100%;
+    box-sizing: border-box;
+    
 }
 
 
 
 /* Ocultar hamburger en desktop */
 #menuCambio {
-display: none;
-font-size: 28px;
-cursor: pointer;
-color: #4A90E2;
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #4A90E2;
 }
 
 #menu li a {
-display: block;
-text-align: right;
-font-weight: bold;
-text-decoration: none;
-padding: 10px;
-
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+    
 }  
 
 .activo {
-color: #FFFFFF;
-background-color: #4A90E2;
-border-radius: 4px;
-padding: 10px;
-
+    color: #FFFFFF;
+    background-color: #4A90E2;
+    border-radius: 4px;
+    padding: 10px;
+    
 }
 
 /* Menú desktop */
 #menu {
-display: flex;
-list-style: none;
-margin: 0;
-padding: 0;
-gap: 0px 25px;
-justify-content: flex-end;
-flex-grow: 1;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0px 25px;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
 
 /* Estilos responsive */
 @media (max-width: 930px) {
-.divMenu {
-    position: relative; /* contexto para posicionar menú */
-}
+    .divMenu {
+        position: relative; /* contexto para posicionar menú */
+    }
 
-/* Mostrar hamburger */
-#menuCambio {
-    display: block;
-}
+    /* Mostrar hamburger */
+    #menuCambio {
+        display: block;
+    }
 
-#menu li a {
-    padding: 8px 10px;}
+    #menu li a {
+        padding: 8px 10px;}
 
-/* Menú oculto por defecto */
-#menu {
-    display: none;
-    position: absolute;
-    top: 100%;  /* debajo del hamburger */
-    right: 0;   /* alineado a la derecha */
-    background: white;
-    flex-direction: column;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border-radius: 4px;
-    padding: 10px 15px;
-    width: 180px;
-    z-index: 100;
-}
+    /* Menú oculto por defecto */
+    #menu {
+        display: none;
+        position: absolute;
+        top: 100%;  /* debajo del hamburger */
+        right: 0;   /* alineado a la derecha */
+        background: white;
+        flex-direction: column;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        border-radius: 4px;
+        padding: 10px 15px;
+        width: 180px;
+        z-index: 100;
+    }
 
-/* Mostrar menú cuando activo */
-    #menu.active {
-    display: flex;
-}
+    /* Mostrar menú cuando activo */
+        #menu.active {
+        display: flex;
+    }
 
-/* Tus estilos para los links, alineados a la derecha y con formato */
+    /* Tus estilos para los links, alineados a la derecha y con formato */
 
 
-#menu li a:hover {
-    background-color: #f8E71C;
-    color: #000;
-}
+    #menu li a:hover {
+        background-color: #f8E71C;
+        color: #000;
+    }
 }
 
 /* IDs */
 
 #HeaderTableTrTdALogo {
-/* Se cambia el formato del logo para que sea consistente en todas las paginas */
-width: 50px;
-height: auto;
-padding: 3px 0px 0px 10px;
-margin-left: 10%; /* o el valor que prefieras */
-
+    /* Se cambia el formato del logo para que sea consistente en todas las paginas */
+    width: 50px;
+    height: auto;
+    padding: 3px 0px 0px 10px;
 } 
+
+
+
+
+
 /*
 Paleta de colores:
 #4A90E2 - Azul
@@ -565,52 +554,3 @@ Paleta de colores:
 #4A4A4A - Gris oscuro
 */
 
-
-/* === Tabla mejorada === */
-.tabla-estilizada {
-width: 90%;
-margin: 20px auto 40px auto; /* Centrada pero más hacia la derecha visualmente */
-border-collapse: separate;
-border-spacing: 0;
-background-color: #FFFFFF;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 4px 10px #4a4a4a30;
-font-size: 16px;
-}
-
-.tabla-estilizada th,
-.tabla-estilizada td {
-padding: 12px 16px;
-text-align: left;
-border-bottom: 1px solid #e0e0e0;
-}
-
-.tabla-estilizada th {
-background-color: #f8E71C;
-color: #000;
-font-weight: bold;
-text-align: center;
-}
-
-.tabla-estilizada tr:hover {
-background-color: #f2f2f2;
-}
-
-.tabla-estilizada td:last-child {
-text-align: center;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-.tabla-estilizada {
-    font-size: 14px;
-    width: 100%;
-}
-}
-
-
-.texto-grande {
-font-size: 20px;
-line-height: 1.8;
-}
