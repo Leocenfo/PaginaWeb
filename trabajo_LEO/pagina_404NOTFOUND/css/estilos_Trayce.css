@@ -21,7 +21,6 @@
         z-index: 1000;
         border-bottom: 4px solid #f8E71C;
         height: 60;
-        font-size: 20px;
     }
 
 
@@ -66,6 +65,7 @@
 }
 
 
+
 .btn-normal {
   background-color: #4A90E2;
   color: white;
@@ -99,14 +99,14 @@
     h1{
         font-size: 40px;
         margin: 15px 0px 15px 0px;
-        margin-left: 10%;
+        margin-left: 10%; /* o el valor que prefieras */
 
     }
 
     h2{
-        font-size: 35px;
-        margin: 15px 0px 15px 0px;
-
+        font-size: 40px;
+        margin: 15px 0;
+        margin-left: 10%; /* o el valor que prefieras */    
     }
 
     h3{
@@ -188,6 +188,7 @@
     .navegacion {
         text-decoration: none;
         color: inherit;
+        
     }
 
     /* Hacer que una referencia de <a> se vea como boton */
