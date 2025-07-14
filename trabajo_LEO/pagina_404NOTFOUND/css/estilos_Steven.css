@@ -549,18 +549,9 @@ flex-grow: 1;
 /* IDs */
 
 #HeaderTableTrTdALogo {
-    height: 50px;
-    /* Altura fija que funciona bien en headers */
-    width: auto;
-    /* Deja que el ancho se ajuste proporcionalmente */
-    max-width: 100%;
-    /* Para que no se desborde */
-    object-fit: contain;
-    /* Mantiene proporción sin recortar */
-    padding: 5px 10px;
-    /* Espaciado más balanceado */
-    display: block;
-    /* Asegura que no haya espacio fantasma debajo */
+    width: 100px;
+    height: auto;
+    padding: 3px 0px 0px 10px;
 
 } 
 /*
