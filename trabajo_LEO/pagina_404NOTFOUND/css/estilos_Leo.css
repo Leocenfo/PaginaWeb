@@ -430,6 +430,8 @@ option {
 @media (max-width: 930px) {
     .divMenu {
         position: relative;
+        padding-top: 15%;
+
     }
 
     #menuCambio {
