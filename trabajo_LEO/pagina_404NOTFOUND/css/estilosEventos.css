@@ -1,12 +1,11 @@
 /*  TIPOS */
 
 * {
-  margin: 0;
-    padding: 8px 20px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     color: #4A4A4A;
     font-family: Arial, sans-serif;
-    font-size: 20px;
 }
 
 body {
@@ -14,21 +13,21 @@ body {
 }
 
 header {
-    background-color: #FFFFFF;
-    padding: 5px 10px;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 4px solid #f8E71C;
-    height: 50px; /* ← UNIDAD AGREGADA */
-    position: fixed;
+  background-color: #FFFFFF;
+        padding: 5px 5px 5px 5px;
+        padding: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 4px solid #f8E71C;
+        height: 60;
 }
 
 div {
-    padding:0px
+     padding:  2% 15% 2% 15%;
 }
 
 div div {
-    padding: 3% 0;
+   padding: 2% 0% 2% 0%;
 }
 
 button {
@@ -47,11 +46,10 @@ td {
 
 footer {
     color: #4A4A4A;
-        padding: 1% 1% 0 1%;
-        background-color: #FFFFFF;
-        width: 100%;
-        border-bottom: 4px solid #f8E71C;
-        text-align: center;
+    padding: 1% 1% 0 1%;
+    background-color: #FFFFFF;
+    width: 100%;
+    border-bottom: 4px solid #f8E71C;
 }
 
 h1 {
@@ -61,7 +59,7 @@ h1 {
 
 h2 {
     font-size: 35px;
-     margin: 15px 0px 15px 0px;
+    margin: 15px 0;
 }
 
 h3 {
@@ -289,11 +287,12 @@ option {
 }
 
 .carta {
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px #4a4a4a50;
-    border-left: 6px solid #f8E71C;
+  background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px #4a4a4a50;
+        border-left: 6px solid transparent;
+        border-left-color: #f8E71C;
 }
 
 @media (max-width: 900px) {
@@ -309,7 +308,7 @@ option {
 }
 
 /* REDES SOCIALES */
-    .fa {
+.fa {
     font-size: 30px;
     width: 30px;
     height: 30px;
@@ -318,35 +317,29 @@ option {
     text-decoration: none;
     color: #FFFFFF;
     text-align: center;
-    margin: 0px 5px 5px 5px;
-    }
+    margin: 0 5px 5px 5px;
+}
 
-    /* Que se oscuresca cuando se pase el mouse */
-    .fa:hover {
+.fa:hover {
     opacity: 0.7;
-    }
+}
 
-    /* Facebook */
-    .fa-facebook {
+.fa-facebook {
     background: #4A90E2;
-    color: white;
-    }
+}
 
-    .fa-instagram {
+.fa-instagram {
     background: #D0021B;
-    color: white;
-    }
+}
 
-    .fa-whatsapp {
+.fa-whatsapp {
     background: #7ED321;
-    color: white;
-    }
-    .fa-phone, .fa-envelope {
-    background: #4A4A4A;
-    color: #FFFFFF;
-    margin-left:5% 
-    }
+}
 
+.fa-phone, .fa-envelope {
+    background: #4A4A4A;
+    margin-left: 5%;
+}
 
 /* NAVEGACION */
 .navegacion {
@@ -484,46 +477,44 @@ footer {
 /* Tarjeta de evento */
 .event-card {
     background: linear-gradient(135deg, #ffffff, #f9f9f9);
-    border-radius: 30px;              /* Bordes más redondeados */
+    border-radius: 20px;              /* Bordes más redondeados */
     box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Sombra elegante */
     border: 1px solid rgba(0,0,0,0.05);     /* Borde sutil */
     overflow: hidden;
     transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* distribuye partes de arriba y abajo */
-    height: 100%; /* asegura altura uniforme */
+     border-left: 6px solid transparent;
+    border-left-color: #f8E71C;
 }
-
 
 .event-card:hover {
     transform: translateY(-5px); /* Animación al pasar el mouse */
 }
 
 .event-card img {
-  width: 100%;
-  height: 240px;
-  object-fit: contain;
-  object-position: center center;
-  border-bottom: 1px solid #ddd; /* Opcional para separación visual */
+     width: 100%;
+    height: 180px;
+    object-fit: contain;     /* ← Muestra toda la imagen sin recortarla */
+    object-position: center; /* ← Centra la imagen dentro del espacio */
+    background-color: #ffffff;  /* Opcional: fondo para el espacio vacío */
+    display: block;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
-
 .event-card .info {
-  padding: 20px;
-  text-align: center;
+    padding: 15px;
+    text-align: center;
 }
 
 .event-card .titulo {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .event-card .fecha {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #000;
+    color: #4A4A4A;
+    font-size: 14px;
 }
 
 /* Botones de interacción */
@@ -567,7 +558,7 @@ footer {
 
 /* Estado activo */
 .acciones button.activo {
-    outline: 3px solid #ab331e;
+    outline: 2px solid #fa0505;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 main {
@@ -598,7 +589,7 @@ main {
 
 footer {
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
 }
 .titulo-eventos {
@@ -608,4 +599,5 @@ footer {
     color: #4A4A4A;
     margin-bottom: 30px;
 }
+
 
