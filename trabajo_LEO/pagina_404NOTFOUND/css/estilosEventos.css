@@ -10,6 +10,7 @@
 
 body {
     background-color: #F5F5F5;
+    
 }
 
 header {
@@ -281,16 +282,16 @@ option {
 
 /* CARTAS */
 .contenedor-cartas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+         display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 20px; 
 }
 
 .carta {
   background-color: #FFFFFF;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 10px #4a4a4a50;
+        box-shadow: 0 4px 10px #e4dfdf50;
         border-left: 6px solid transparent;
         border-left-color: #f8E71C;
 }
@@ -559,9 +560,7 @@ footer {
     outline: 2px solid #fa0505;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
-main {
-    padding-top: 80px; /* Ajusta según la altura real del header */
-}
+
 .btn-interesa.activo {
   background-color: gold;
   color: #000;
