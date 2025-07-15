@@ -51,9 +51,10 @@
     footer {
         color: #4A4A4A;
         padding: 1% 1% 0 1%;
-        background-color: #FFFFFF;
+        background-color:transparent;
         width: 100%;
         border-bottom: 4px solid #f8E71C;
+        text-align: center;
     }
 
     h1{
