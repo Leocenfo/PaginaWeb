@@ -202,7 +202,7 @@ btnEnviarLogin.addEventListener("click", (e) => {
             confirmButtonText: "Continuar"
         }).then(() => {
             // Redireccionar al usuario después de cerrar el modal
-            window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML";
+            window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML";
         });
         formLogin.reset(); 
     }
