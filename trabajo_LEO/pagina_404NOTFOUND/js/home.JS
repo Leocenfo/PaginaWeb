@@ -80,7 +80,7 @@
     // logica de validación registro
         const validacionRegistro = {
             correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
-            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasena debe ser de al menos 8 caracteres, y contener un caracter especial.",
+            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasenna debe contener mayusculas, minusculas, un caracter especial y ser de al menos 8 caracteres",
             nombre: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
             apellido:(input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El apellido solo puede contener letras.",
             direccion:(input)=> input.value ? true : "Deber ingresar una direccion.",
@@ -90,8 +90,7 @@
     // logica de validación login
         const validacionLogin = {
             correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
-            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasena debe ser de al menos 8 caracteres, y contener un caracter especial."
-        }
+            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasenna debe contener mayusculas, minusculas, un caracter especial y ser de al menos 8 caracteres",}
         
     //Funcion para mostrar u ocultar errores en el span correspondiente
     const mostrarError = (input,mensaje)=>{
