@@ -644,3 +644,7 @@ body > main.container {
   flex-grow: 1;
   padding: 20px;
 }
+button.inactivar:hover {
+  background-color: #c89f00;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
