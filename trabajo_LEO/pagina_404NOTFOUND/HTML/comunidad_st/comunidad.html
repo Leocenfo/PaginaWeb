@@ -34,13 +34,13 @@
   <hr>
   <h1>Nuestra comunidad</h1>
   <hr>
-  
+  <div>
   <main>
     <!-- Historia -->
     <section id="historia" class="seccion-comuna claro">
       <div class="ImagenConTexto">
         <div class="DivTexto">
-          <p class="texto-grande">La comunidad de Hacienda Vieja, ubicada en el distrito de Curridabat, San José, tiene una historia que se remonta a la época colonial. Su nombre proviene de la antigua Hacienda Santo Domingo, una hacienda colonial española que marcó los inicios del desarrollo en la zona. Posteriormente, el área fue conocida como “La Florida” antes de adoptar el nombre actual, en honor a esa hacienda original.
+          <p class="texto-grande" style = "padding: 1%;">La comunidad de Hacienda Vieja, ubicada en el distrito de Curridabat, San José, tiene una historia que se remonta a la época colonial. Su nombre proviene de la antigua Hacienda Santo Domingo, una hacienda colonial española que marcó los inicios del desarrollo en la zona. Posteriormente, el área fue conocida como “La Florida” antes de adoptar el nombre actual, en honor a esa hacienda original.
             Durante el siglo XIX, Hacienda Vieja formó parte del cantón de San José, y en 1929, al convertirse Curridabat en cantón propio, fue incorporada como una de sus comunidades. Con el paso del tiempo, Hacienda Vieja se ha subdividido en sectores como Hacienda Vieja Norte.
             La comunidad destaca por su fuerte organización y participación ciudadana. Un ejemplo de esto es la implementación del sistema de alarmas comunitarias, desarrollado con el apoyo de la Municipalidad de Curridabat. 
             Hoy en día, Hacienda Vieja refleja un compromiso colectivo con el bienestar común, la sostenibilidad y la mejora continua de la calidad de vida, en sintonía con los valores promovidos por el gobierno local.</p>
@@ -76,8 +76,9 @@
 
     <!-- Áreas Comunes -->
     <section id="areas-comunes" class="seccion-comuna claro">
+      
       <h2>Zonas en movimiento</h2>
-      <p>En esta sección puedes registrar ubicaciones en tiempo real, y contarnos que esta pasando.</p>
+      <p style="padding: 1%;">En esta sección puedes registrar ubicaciones en tiempo real, y contarnos que esta pasando.</p>
 
       <form id="form-lugar" class="padding">
         <input type="text" id="nombre" placeholder="Nombre del área común" required />
@@ -88,8 +89,10 @@
 
       <div id="mapa" style="height: 300px; border-radius: 10px; margin: 20px 0;"></div>
 
+      
+      <div>
       <h3>Áreas Registradas</h3>
-      <table class="tabla-estilizada">
+      <table class="tabla-estilizada" style = "padding: 1%;">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -100,9 +103,10 @@
         </thead>
         <tbody id="tabla-lugares"></tbody>
       </table>
+      </div>
     </section>
   </main>
-
+</div>
   <footer>
     <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
     <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
