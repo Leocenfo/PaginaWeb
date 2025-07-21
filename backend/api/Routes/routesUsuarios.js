@@ -55,7 +55,7 @@ const router = express.Router()
 
 
 
-// POST - Crear
+// POST - Crear registros
     // http://localhost:3000/postUsuarios
 
     router.post('/postUsuarios', async (req, res) => {
@@ -81,6 +81,7 @@ const router = express.Router()
         }
 
     })
+
 
 // PUT - Actualizar (por ID) 
 
