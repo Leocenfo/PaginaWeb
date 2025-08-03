@@ -2,9 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll(".event-card");
 
   cards.forEach(card => {
+    const eventoId = card.getAttribute('data-id');
     const interesaBtn = card.querySelector(".btn-interesa");
     const asistireBtn = card.querySelector(".btn-asistire");
     const noAsistireBtn = card.querySelector(".btn-no-asistire");
+
+    const enviarAsistencia = (respuesta) => {
+      fetch('http://localhost:3000/api/eventos/asistencia', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          eventoId,
+          usuario: "usuario_demo",
+          respuesta
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.error('Error al enviar asistencia:', err));
+    };
 
     if (interesaBtn) {
       interesaBtn.addEventListener("click", () => {
@@ -13,10 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.classList.toggle('fa-star-o');
         interesaBtn.classList.toggle('activo');
 
-        // Si activamos "Me interesa", desactivamos los otros dos
         if (interesaBtn.classList.contains('activo')) {
           asistireBtn.classList.remove('activo');
           noAsistireBtn.classList.remove('activo');
+          enviarAsistencia("me_interesa");
+        } else {
+          enviarAsistencia("sin_respuesta");
         }
       });
     }
@@ -27,10 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
         noAsistireBtn.classList.remove("activo");
         interesaBtn.classList.remove("activo");
 
-        // Asegurar que el ícono de estrella vuelva a "no marcado"
         const icon = interesaBtn.querySelector('i');
         icon.classList.remove('fa-star');
         icon.classList.add('fa-star-o');
+
+        enviarAsistencia("asistire");
       });
 
       noAsistireBtn.addEventListener("click", () => {
@@ -38,17 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
         asistireBtn.classList.remove("activo");
         interesaBtn.classList.remove("activo");
 
-        // Asegurar que el ícono de estrella vuelva a "no marcado"
         const icon = interesaBtn.querySelector('i');
         icon.classList.remove('fa-star');
         icon.classList.add('fa-star-o');
+
+        enviarAsistencia("no_asistire");
       });
     }
   });
-});
-/* Menu de hamburguesa para header*/
-
-document.getElementById('menuCambio').addEventListener('click', function() {
-  const menu = document.getElementById('menu');
-  menu.classList.toggle('active');
 });
