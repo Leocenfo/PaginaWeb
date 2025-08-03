@@ -53,6 +53,44 @@ const router = express.Router()
         }
     })
 
+// GET para login
+router.get('/login', async (req, res) => {
+    const correo = req.query.correo;
+    const contrasenna = req.query.contrasenna;
+
+    try {
+        const usuario = await modelUsuarios.findOne({ email: correo });
+        // validar si el correo ha sido registrado
+        if (!usuario) {
+            return res.status(404).json({
+                mensaje: "El correo no está registrado",
+                resultado: false
+            });
+        }
+
+        // validar si la contrasenna es correcta
+        if (usuario.password !== contrasenna) {
+            return res.status(401).json({
+                mensaje: "La contraseña es incorrecta",
+                resultado: false
+            });
+        }
+
+        res.status(200).json({
+            mensaje: "Login exitoso",
+            resultado: true,
+            usuario
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            mensaje: "Error al intentar iniciar sesión",
+            resultado: false,
+            error
+        });
+    }
+});
+
 
 
 // POST - Crear registros
