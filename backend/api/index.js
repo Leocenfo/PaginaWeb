@@ -9,8 +9,8 @@ const cors = require('cors')
 require('dotenv').config()
 
 // requerir rutas de usurarios 
-const routesUsuarios = require('./Routes/RoutesUsuarios.js')
-const routesEventos = require('./Routes/eventos.js');
+const routesUsuarios = require('./Routes/routesUsuarios.js');
+const routesEventos = require('./Routes/eventos');
 
 // Conectarse a mongoose 
 
