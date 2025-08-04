@@ -29,7 +29,7 @@
     // logica de validación registro
         const validacionRegistro = {
             correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
-            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasenna debe contener mayusculas, minusculas, un caracter especial y ser de al menos 8 caracteres",
+            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contraseña debe contener mayúsculas, minúsculas, un número, un carácter especial y ser de al menos 8 caracteres",
             nombre: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
             apellido:(input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El apellido solo puede contener letras.",
             direccion:(input)=> input.value ? true : "Deber ingresar una direccion.",
@@ -104,6 +104,17 @@
         return primerError;
     };
 
+
+//Funcion para hacer a la primera letra mayuscula
+
+function capitalizarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .split(" ")
+        .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
+        .join(" ");
+}
+
 //Listener para el boton de "Registrar"
 
 btnEnviarRegistro.addEventListener("click", (e) => {
@@ -122,14 +133,15 @@ btnEnviarRegistro.addEventListener("click", (e) => {
         // funcion para enviar los datos al servidor 
             
         // obtener datos del formulario 
-            const email = inputsRegistro.email.value.trim();
+            const email = inputsRegistro.email.value.trim().toLowerCase();
             const password = inputsRegistro.contrasenna.value.trim();
-            const nombre = inputsRegistro.nombre.value.trim();
-            const apellido = inputsRegistro.apellido.value.trim();
-            const direccion = inputsRegistro.direccion.value.trim();
+            const nombre = capitalizarTexto(inputsRegistro.nombre.value.trim());
+            const apellido = capitalizarTexto(inputsRegistro.apellido.value.trim());
+            const direccion = inputsRegistro.direccion.value.trim().toLowerCase();
             const telefono = inputsRegistro.telefono.value.trim();
             const preguntaSeguridad = inputsRegistro.preguntaSeguridad.value.trim();
-            const respuestaSeguridad = inputsRegistro.respuestaSeguridad.value.trim();
+            const respuestaSeguridad = inputsRegistro.respuestaSeguridad.value.trim().toLowerCase();
+
         // llamar a la funcion de servicio usuario para registrar el usuario 
 
         registrarUsuario(email, password, nombre, apellido, direccion, telefono, preguntaSeguridad, respuestaSeguridad)
@@ -155,7 +167,7 @@ btnEnviarLogin.addEventListener("click", async (e) => {
         return;
     }
 
-    const correo = inputsLogin.correo.value.trim();
+    const correo = inputsLogin.correo.value.trim().toLowerCase();
     const contrasenna = inputsLogin.contrasenna.value.trim();
 
     try {
@@ -190,14 +202,8 @@ btnEnviarLogin.addEventListener("click", async (e) => {
                 estado: usuario.estado
             });
 
-            Swal.fire({
-                title: "Login exitoso",
-                text: "Será redirigido a la página de anuncios comunitarios.",
-                icon: "success",
-                confirmButtonText: "Continuar"
-            }).then(() => {
-                window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML";
-            });
+
+            window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML";
 
             formLogin.reset(); 
         }
@@ -235,7 +241,8 @@ function obtenerTextoPregunta(valor) {
 // funcion para recuperar contrasenna 
 document.getElementById("formRecuperar").addEventListener("submit", async function (e) {
     e.preventDefault();
-    const email = document.getElementById("emailRecuperar").value.trim();
+    const email = document.getElementById("emailRecuperar").value.trim().toLowerCase();
+
 
     try {
         const respuesta = await axios.get("http://localhost:3000/getPreguntaSeguridad", {
@@ -257,14 +264,20 @@ document.getElementById("formRecuperar").addEventListener("submit", async functi
 
         // Ocultar paso 1 y mostrar paso 2
         contenedorCorreo.style.display = "none";
-        contenedorPregunta.style.display = "block";
+
+        contenedorPregunta.style.display = "inline-block";
+
 
         const preguntaTexto = obtenerTextoPregunta(respuesta.data.usuario.preguntaSeguridad);
 
         contenedorPregunta.innerHTML = `
-            <p><strong>${preguntaTexto}</strong></p>
-            <input type="text" class="margen" id="respuestaIngresada" placeholder="Respuesta" required>
-            <button type="button" class="BaseVerde" id="btnVerificarRespuesta">Verificar</button>
+
+            <form>
+                <label for="respuestaIngresada">${preguntaTexto}</label>
+                <input type="text" class="margen" id="respuestaIngresada" placeholder="Respuesta" required>
+                <button type="button" class="BaseVerde" id="btnVerificarRespuesta">Verificar</button>
+            </form>
+
         `;
 
         document.getElementById("btnVerificarRespuesta").addEventListener("click", function () {
@@ -295,10 +308,11 @@ document.getElementById("formRecuperar").addEventListener("submit", async functi
 
 function mostrarPasoResultado(contrasenna) {
     const contenedorResultado = document.getElementById("pasoResultado");
-    contenedorResultado.style.display = "block";
+    contenedorResultado.style.display = "inline-block";
     contenedorResultado.innerHTML = `
-        <p >Tu contraseña es: <strong>${contrasenna}</strong></p>
-        <button class="BaseAzul" id="btnVolverLogin">Volver a Login</button>
+        <h3>Tu contraseña es: ${contrasenna}</h3>
+        <button class="BaseVerde" id="btnVolverLogin" style="margin-top:10px;">Volver a Login</button>
+
     `;
 
     document.getElementById("btnVolverLogin").addEventListener("click", function () {
@@ -314,3 +328,4 @@ function resetRecuperacion() {
     document.getElementById("pasoPregunta").style.display = "none";
     document.getElementById("pasoResultado").style.display = "none";
 }
+
