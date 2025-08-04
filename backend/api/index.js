@@ -11,7 +11,7 @@ require('dotenv').config()
 // requerir rutas de usurarios 
 const routesUsuarios = require('./Routes/routesUsuarios.js');
 const routesEventos = require('./Routes/eventos');
-
+const rutaAnuncios = require('./Routes/routesAnuncios');
 // Conectarse a mongoose 
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -40,6 +40,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 // cuando entre peticion por ruta personas, entonces usa la ruta de routesUsuarios
 app.use('/',routesUsuarios);
 app.use('/api/eventos',routesEventos);
+app.use('/api', rutaAnuncios);
 
 
 app.listen(port, () => {
