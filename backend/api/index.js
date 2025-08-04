@@ -46,3 +46,5 @@ app.listen(port, () => {
   console.log(`La aplicación esta corriendo el el puerto ${port}`)
 });
 
+const rutasZonas = require('./Routes/comunidadRuta');
+app.use('/api/comunidad', rutasZonas); // Esto da acceso a /api/comunidad/lugares
