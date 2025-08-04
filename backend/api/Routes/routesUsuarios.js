@@ -52,6 +52,27 @@ const router = express.Router()
             })
         }
     })
+// get para recuperar contraseña 
+router.get('/getPreguntaSeguridad', async (req, res) => {
+    const email = req.query.email;
+    try {
+        const usuario = await modelUsuarios.findOne({ email });
+        if (!usuario) {
+            return res.json({ mensaje: "Usuario no encontrado", usuario: null });
+        }
+
+        res.json({
+            mensaje: "Usuario encontrado",
+            usuario: {
+                preguntaSeguridad: usuario.preguntaSeguridad,
+                respuestaSeguridad: usuario.respuestaSeguridad,
+                password: usuario.password
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ mensaje: "Error al buscar usuario", error });
+    }
+});
 
 // GET para login
 router.get('/login', async (req, res) => {

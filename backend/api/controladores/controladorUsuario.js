@@ -18,6 +18,8 @@
             apellido: document.getElementById("apellido"),
             direccion: document.getElementById("direccion"),
             telefono: document.getElementById("telefono"),
+            preguntaSeguridad: document.getElementById("preguntaSeguridad"),
+            respuestaSeguridad: document.getElementById("respuestaSeguridad")
         };
 
         const inputsLogin = {
@@ -32,6 +34,8 @@
             apellido:(input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El apellido solo puede contener letras.",
             direccion:(input)=> input.value ? true : "Deber ingresar una direccion.",
             telefono:(input)=> /^\d{8}$/.test(input.value.trim()) ? true : "El telefono debe contener 8 digitos.",
+            preguntaSeguridad: (input) => input.value ? true : "Debe seleccionar una pregunta de seguridad.",
+            respuestaSeguridad: (input) => input.value.trim().length > 3 ? true : "La respuesta debe contener al menos 4 caracteres."   
         }
 
     // logica de validación login
@@ -135,15 +139,12 @@ btnEnviarRegistro.addEventListener("click", (e) => {
             const apellido = capitalizarTexto(inputsRegistro.apellido.value.trim());
             const direccion = inputsRegistro.direccion.value.trim().toLowerCase();
             const telefono = inputsRegistro.telefono.value.trim();
-<<<<<<< Updated upstream
-
-=======
             const preguntaSeguridad = inputsRegistro.preguntaSeguridad.value.trim();
             const respuestaSeguridad = inputsRegistro.respuestaSeguridad.value.trim().toLowerCase();
->>>>>>> Stashed changes
+
         // llamar a la funcion de servicio usuario para registrar el usuario 
 
-        registrarUsuario(email, password, nombre, apellido, direccion, telefono)
+        registrarUsuario(email, password, nombre, apellido, direccion, telefono, preguntaSeguridad, respuestaSeguridad)
 
         formRegistro.reset(); 
     }
@@ -222,16 +223,6 @@ btnEnviarLogin.addEventListener("click", async (e) => {
 
 // const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
-<<<<<<< Updated upstream
-// if (usuario) {
-//     console.log("ID del usuario logueado:", usuario.id);
-//     console.log("Nombre:", usuario.nombre);
-//     // Puedes usar el ID para cargar datos personalizados
-// } else {
-//     // Redirigir si no está logueado
-//     window.location.href = "/ruta-de-login.html";
-// }
-=======
 // Función de utilidad para traducir claves a preguntas legibles
 function obtenerTextoPregunta(valor) {
     switch (valor) {
@@ -251,6 +242,7 @@ function obtenerTextoPregunta(valor) {
 document.getElementById("formRecuperar").addEventListener("submit", async function (e) {
     e.preventDefault();
     const email = document.getElementById("emailRecuperar").value.trim().toLowerCase();
+
 
     try {
         const respuesta = await axios.get("http://localhost:3000/getPreguntaSeguridad", {
@@ -272,7 +264,9 @@ document.getElementById("formRecuperar").addEventListener("submit", async functi
 
         // Ocultar paso 1 y mostrar paso 2
         contenedorCorreo.style.display = "none";
+
         contenedorPregunta.style.display = "inline-block";
+
 
         const preguntaTexto = obtenerTextoPregunta(respuesta.data.usuario.preguntaSeguridad);
 
@@ -283,6 +277,7 @@ document.getElementById("formRecuperar").addEventListener("submit", async functi
                 <input type="text" class="margen" id="respuestaIngresada" placeholder="Respuesta" required>
                 <button type="button" class="BaseVerde" id="btnVerificarRespuesta">Verificar</button>
             </form>
+
         `;
 
         document.getElementById("btnVerificarRespuesta").addEventListener("click", function () {
@@ -317,6 +312,7 @@ function mostrarPasoResultado(contrasenna) {
     contenedorResultado.innerHTML = `
         <h3>Tu contraseña es: ${contrasenna}</h3>
         <button class="BaseVerde" id="btnVolverLogin" style="margin-top:10px;">Volver a Login</button>
+
     `;
 
     document.getElementById("btnVolverLogin").addEventListener("click", function () {
@@ -332,4 +328,4 @@ function resetRecuperacion() {
     document.getElementById("pasoPregunta").style.display = "none";
     document.getElementById("pasoResultado").style.display = "none";
 }
->>>>>>> Stashed changes
+
