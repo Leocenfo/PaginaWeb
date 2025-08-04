@@ -140,35 +140,82 @@ btnEnviarRegistro.addEventListener("click", (e) => {
 
 // Listener para el boton de "Iniciar Sesion"
 
-btnEnviarLogin.addEventListener("click", (e) => {
+btnEnviarLogin.addEventListener("click", async (e) => {
     e.preventDefault();
     console.log("Botón de inicio clickeado"); 
+
     const error = validarFormularioLogin(); 
+
     if (error) {
-        console.warn("Hay errores:", error); 
         Swal.fire({
             title: "Error en campos obligatorios.",
             text: error.mensaje,
             icon: "error"
         });
-    } else {
-        
-        
-        
-        console.log("Formulario válido, mostrando mensaje de éxito"); 
+        return;
+    }
+
+    const correo = inputsLogin.correo.value.trim();
+    const contrasenna = inputsLogin.contrasenna.value.trim();
+
+    try {
+        const respuesta = await loginUsuario(correo, contrasenna);
+
+        if (!respuesta.resultado) {
+            Swal.fire({
+                title: "Error de inicio de sesión",
+                text: respuesta.mensaje,
+                icon: "error"
+            });
+        } else {
+            const usuario = respuesta.usuario;
+
+            // Guardar los datos del usuario en localStorage
+            localStorage.setItem("usuarioLogueado", JSON.stringify({
+                id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                email: usuario.email,
+                rol: usuario.rol,
+                estado: usuario.estado
+            }));
+
+            // Mostrar en consola el usuario logueado
+            console.log("Usuario logueado:", {
+                id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                email: usuario.email,
+                rol: usuario.rol,
+                estado: usuario.estado
+            });
+
+            Swal.fire({
+                title: "Login exitoso",
+                text: "Será redirigido a la página de anuncios comunitarios.",
+                icon: "success",
+                confirmButtonText: "Continuar"
+            }).then(() => {
+                window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML";
+            });
+
+            formLogin.reset(); 
+        }
+
+    } catch (error) {
+        console.error("Error en login:", error);
         Swal.fire({
-            title: "Login exitoso",
-            text: "Será redirigido a la página de anuncios comunitarios.",
-            icon: "success",
-            confirmButtonText: "Continuar"
-        }).then(() => {
-            // Redireccionar al usuario después de cerrar el modal
-            window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML";
+            title: "Error",
+            text: "Ocurrió un problema al iniciar sesión.",
+            icon: "error"
         });
-        formLogin.reset(); 
     }
 });
 
+// Funcion para recuperar usuario actual en el local storage: 
+
+
+// const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
 // Función de utilidad para traducir claves a preguntas legibles
 function obtenerTextoPregunta(valor) {

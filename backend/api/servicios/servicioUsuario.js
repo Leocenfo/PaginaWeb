@@ -54,3 +54,26 @@ const registrarUsuario = async(pemail, ppassword, pnombre, papellido, pdireccion
     }
 }
 
+// Servicio para login 
+
+const loginUsuario = async (correo, contrasenna) => {
+    try {
+        const res = await axios.get("http://localhost:3000/login", {
+            params: {
+                correo: correo,
+                contrasenna: contrasenna
+            }
+        });
+
+        return res.data;
+    } catch (error) {
+        if (error.response) {
+            return error.response.data;
+        } else {
+            return {
+                resultado: false,
+                mensaje: "Error de red o del servidor."
+            };
+        }
+    }
+};
