@@ -1,7 +1,7 @@
 // Funcion para registrar a usuarios usando axios 
 
 // se llaman los campos que se llenan dentro del formulario en el modelo de datos
-const registrarUsuario = async(pemail, ppassword, pnombre, papellido, pdireccion, ptelefono) =>{
+const registrarUsuario = async(pemail, ppassword, pnombre, papellido, pdireccion, ptelefono, ppregunta, prespuesta) =>{
     try {
         // configuracion de axios 
         const res = await axios({
@@ -15,6 +15,8 @@ const registrarUsuario = async(pemail, ppassword, pnombre, papellido, pdireccion
                 , apellido: papellido
                 , direccion: pdireccion
                 , telefono: ptelefono
+                , preguntaSeguridad: ppregunta
+                , respuestaSeguridad: prespuesta
             }
         })
 
