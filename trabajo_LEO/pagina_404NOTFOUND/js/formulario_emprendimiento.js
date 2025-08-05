@@ -22,9 +22,7 @@ const validations = {
     tipoEmprendimiento: (input) => input.value !== "" ? true : "Debe seleccionar una categoría de emprendimiento.",
     nomEmprendimiento:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese un nombre valido.",
     descripEmprendimiento:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese una descripcion valida.",
-     // NUEVAS VALIDACIONES:
     linkImagen: (input) => /^https?:\/\/.*\.(jpg|jpeg|png)$/i.test(input.value.trim()) ? true : "Ingrese un enlace válido de imagen (.jpg, .jpeg o .png).",
-
     redesSociales: (input) => {
         if (input.value.trim() === "") return true; // Si está vacío, lo aceptamos (opcional)
         return /^https?:\/\/[^\s]+$/i.test(input.value.trim()) ? true : "Ingrese una URL válida para redes sociales."}
