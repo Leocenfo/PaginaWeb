@@ -11,6 +11,8 @@ const usuarioSchema = new mongoose.Schema({
     apellido:{type:String, required:true},
     direccion:{type:String, required:true},
     telefono:{type:String, required:true},
+    preguntaSeguridad: { type: String, required: true },
+    respuestaSeguridad: { type: String, required: true },   
     fechaRegistro:{type:Date, default:Date.now},
     rol:{type:String, default:'ciudadano', emun:['ciudadano','empresario','moderador','admin']},
     estado:{type:String, default:'activo', emun:['inactivo','activo'] }

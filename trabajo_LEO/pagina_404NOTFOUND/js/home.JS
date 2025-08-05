@@ -51,3 +51,25 @@
             });
         }
     });
+
+
+// Abrir popup de recuperar contraseña
+document.addEventListener('DOMContentLoaded', function () {
+    const linkRecuperar = document.getElementById("linkRecuperarContrasena");
+    const cerrarRecuperarBtn = document.getElementById("CerrarRecuperarBtn");
+
+    if (linkRecuperar) {
+        linkRecuperar.addEventListener("click", function (e) {
+            e.preventDefault();
+            closePopup('DivPopupLogin')
+            openPopup("DivPopupRecuperar");
+        });
+    }
+
+    if (cerrarRecuperarBtn) {
+        cerrarRecuperarBtn.addEventListener("click", function () {
+            closePopup("DivPopupRecuperar")
+            openPopup('DivPopupLogin');
+        });
+    }
+});

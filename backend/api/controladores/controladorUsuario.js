@@ -18,6 +18,8 @@
             apellido: document.getElementById("apellido"),
             direccion: document.getElementById("direccion"),
             telefono: document.getElementById("telefono"),
+            preguntaSeguridad: document.getElementById("preguntaSeguridad"),
+            respuestaSeguridad: document.getElementById("respuestaSeguridad")
         };
 
         const inputsLogin = {
@@ -27,11 +29,13 @@
     // logica de validación registro
         const validacionRegistro = {
             correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
-            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contrasenna debe contener mayusculas, minusculas, un caracter especial y ser de al menos 8 caracteres",
+            contrasenna:(input)=>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=?]).{8,}$/.test(input.value.trim()) ? true : "La contraseña debe contener mayúsculas, minúsculas, un número, un carácter especial y ser de al menos 8 caracteres",
             nombre: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
             apellido:(input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El apellido solo puede contener letras.",
             direccion:(input)=> input.value ? true : "Deber ingresar una direccion.",
             telefono:(input)=> /^\d{8}$/.test(input.value.trim()) ? true : "El telefono debe contener 8 digitos.",
+            preguntaSeguridad: (input) => input.value ? true : "Debe seleccionar una pregunta de seguridad.",
+            respuestaSeguridad: (input) => input.value.trim().length > 3 ? true : "La respuesta debe contener al menos 4 caracteres."   
         }
 
     // logica de validación login
@@ -100,6 +104,17 @@
         return primerError;
     };
 
+
+//Funcion para hacer a la primera letra mayuscula
+
+function capitalizarTexto(texto) {
+    return texto
+        .toLowerCase()
+        .split(" ")
+        .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
+        .join(" ");
+}
+
 //Listener para el boton de "Registrar"
 
 btnEnviarRegistro.addEventListener("click", (e) => {
@@ -118,16 +133,18 @@ btnEnviarRegistro.addEventListener("click", (e) => {
         // funcion para enviar los datos al servidor 
             
         // obtener datos del formulario 
-            const email = inputsRegistro.email.value.trim();
+            const email = inputsRegistro.email.value.trim().toLowerCase();
             const password = inputsRegistro.contrasenna.value.trim();
-            const nombre = inputsRegistro.nombre.value.trim();
-            const apellido = inputsRegistro.apellido.value.trim();
-            const direccion = inputsRegistro.direccion.value.trim();
+            const nombre = capitalizarTexto(inputsRegistro.nombre.value.trim());
+            const apellido = capitalizarTexto(inputsRegistro.apellido.value.trim());
+            const direccion = inputsRegistro.direccion.value.trim().toLowerCase();
             const telefono = inputsRegistro.telefono.value.trim();
+            const preguntaSeguridad = inputsRegistro.preguntaSeguridad.value.trim();
+            const respuestaSeguridad = inputsRegistro.respuestaSeguridad.value.trim().toLowerCase();
 
         // llamar a la funcion de servicio usuario para registrar el usuario 
 
-        registrarUsuario(email, password, nombre, apellido, direccion, telefono)
+        registrarUsuario(email, password, nombre, apellido, direccion, telefono, preguntaSeguridad, respuestaSeguridad)
 
         formRegistro.reset(); 
     }
@@ -135,33 +152,180 @@ btnEnviarRegistro.addEventListener("click", (e) => {
 
 // Listener para el boton de "Iniciar Sesion"
 
-btnEnviarLogin.addEventListener("click", (e) => {
+btnEnviarLogin.addEventListener("click", async (e) => {
     e.preventDefault();
     console.log("Botón de inicio clickeado"); 
+
     const error = validarFormularioLogin(); 
+
     if (error) {
-        console.warn("Hay errores:", error); 
         Swal.fire({
             title: "Error en campos obligatorios.",
             text: error.mensaje,
             icon: "error"
         });
-    } else {
-        
-        
-        
-        console.log("Formulario válido, mostrando mensaje de éxito"); 
-        Swal.fire({
-            title: "Login exitoso",
-            text: "Será redirigido a la página de anuncios comunitarios.",
-            icon: "success",
-            confirmButtonText: "Continuar"
-        }).then(() => {
-            // Redireccionar al usuario después de cerrar el modal
+        return;
+    }
+
+    const correo = inputsLogin.correo.value.trim().toLowerCase();
+    const contrasenna = inputsLogin.contrasenna.value.trim();
+
+    try {
+        const respuesta = await loginUsuario(correo, contrasenna);
+
+        if (!respuesta.resultado) {
+            Swal.fire({
+                title: "Error de inicio de sesión",
+                text: respuesta.mensaje,
+                icon: "error"
+            });
+        } else {
+            const usuario = respuesta.usuario;
+
+            // Guardar los datos del usuario en localStorage
+            localStorage.setItem("usuarioLogueado", JSON.stringify({
+                id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                email: usuario.email,
+                rol: usuario.rol,
+                estado: usuario.estado
+            }));
+
+            // Mostrar en consola el usuario logueado
+            console.log("Usuario logueado:", {
+                id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                email: usuario.email,
+                rol: usuario.rol,
+                estado: usuario.estado
+            });
+
+
             window.location.href = "http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML";
+
+            formLogin.reset(); 
+        }
+
+    } catch (error) {
+        console.error("Error en login:", error);
+        Swal.fire({
+            title: "Error",
+            text: "Ocurrió un problema al iniciar sesión.",
+            icon: "error"
         });
-        formLogin.reset(); 
     }
 });
 
+// Funcion para recuperar usuario actual en el local storage: 
+
+
+// const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+// Función de utilidad para traducir claves a preguntas legibles
+function obtenerTextoPregunta(valor) {
+    switch (valor) {
+        case "escuela":
+            return "¿En qué escuela cursaste el primer grado?";
+        case "mascota":
+            return "¿Cómo se llama/llamaba tu primera mascota?";
+        case "amigo":
+            return "¿Cuál es el nombre completo de tu mejor amigo de la infancia?";
+        default:
+            return "Pregunta desconocida";
+    }
+}
+
+
+// funcion para recuperar contrasenna 
+document.getElementById("formRecuperar").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const email = document.getElementById("emailRecuperar").value.trim().toLowerCase();
+
+
+    try {
+        const respuesta = await axios.get("http://localhost:3000/getPreguntaSeguridad", {
+            params: { email }
+        });
+
+        const contenedorPregunta = document.getElementById("pasoPregunta");
+        const contenedorCorreo = document.getElementById("pasoCorreo");
+
+        if (!respuesta.data.usuario) {
+            // Usar Swal para error
+            Swal.fire({
+                icon: 'error',
+                title: 'Correo no encontrado',
+                text: 'El correo ingresado no está registrado en el sistema.'
+            });
+            return;
+        }
+
+        // Ocultar paso 1 y mostrar paso 2
+        contenedorCorreo.style.display = "none";
+
+        contenedorPregunta.style.display = "inline-block";
+
+
+        const preguntaTexto = obtenerTextoPregunta(respuesta.data.usuario.preguntaSeguridad);
+
+        contenedorPregunta.innerHTML = `
+
+            <form>
+                <label for="respuestaIngresada">${preguntaTexto}</label>
+                <input type="text" class="margen" id="respuestaIngresada" placeholder="Respuesta" required>
+                <button type="button" class="BaseVerde" id="btnVerificarRespuesta">Verificar</button>
+            </form>
+
+        `;
+
+        document.getElementById("btnVerificarRespuesta").addEventListener("click", function () {
+            const respuestaUsuario = document.getElementById("respuestaIngresada").value.trim().toLowerCase();
+            const respuestaCorrecta = respuesta.data.usuario.respuestaSeguridad.trim().toLowerCase();
+
+            if (respuestaUsuario === respuestaCorrecta) {
+                mostrarPasoResultado(respuesta.data.usuario.password);
+                contenedorPregunta.style.display = "none";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Respuesta incorrecta',
+                    text: 'La respuesta a la pregunta de seguridad no coincide.'
+                });
+            }
+        });
+
+    } catch (err) {
+        console.error(err);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error de conexión',
+            text: 'Ocurrió un problema al consultar el servicio. Inténtalo más tarde.'
+        });
+    }
+});
+
+function mostrarPasoResultado(contrasenna) {
+    const contenedorResultado = document.getElementById("pasoResultado");
+    contenedorResultado.style.display = "inline-block";
+    contenedorResultado.innerHTML = `
+        <h3>Tu contraseña es: ${contrasenna}</h3>
+        <button class="BaseVerde" id="btnVolverLogin" style="margin-top:10px;">Volver a Login</button>
+
+    `;
+
+    document.getElementById("btnVolverLogin").addEventListener("click", function () {
+        closePopup("DivPopupRecuperar");
+        openPopup("DivPopupLogin");
+        resetRecuperacion();
+    });
+}
+
+function resetRecuperacion() {
+    document.getElementById("formRecuperar").reset();
+    document.getElementById("pasoCorreo").style.display = "block";
+    document.getElementById("pasoPregunta").style.display = "none";
+    document.getElementById("pasoResultado").style.display = "none";
+}
 
