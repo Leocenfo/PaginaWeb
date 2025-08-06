@@ -12,6 +12,7 @@ require('dotenv').config()
 const routesUsuarios = require('./Routes/routesUsuarios.js');
 const routesEventos = require('./Routes/eventos');
 const rutaAnuncios = require('./Routes/routesAnuncios');
+const eventosRouter = require('./Routes/eventosLeo');
 // Conectarse a mongoose 
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -41,7 +42,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/',routesUsuarios);
 app.use('/api/eventos',routesEventos);
 app.use('/api', rutaAnuncios);
-
+app.use('/api/eventosLeo', eventosRouter);
 
 app.listen(port, () => {
   console.log(`La aplicación esta corriendo el el puerto ${port}`)
