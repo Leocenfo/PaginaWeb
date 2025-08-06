@@ -44,6 +44,11 @@
         padding: 10px 10px;
         font-weight: bold;
         font-size: 20px;
+        cursor:pointer;
+    }
+
+    button:hover{
+        background-color: #357ABD;
     }
 
     /* Tablas */
@@ -113,7 +118,7 @@
             color:#4A4A4A
         }   
 
-        input[type="text"],input[type="email"],input[type="password"],input[type="number"],
+        input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="number"],
         input[type="tel"],input[type="date"],input[type="search"],textarea,
         select {
             padding: 10px;
