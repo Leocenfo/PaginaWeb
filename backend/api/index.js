@@ -1,5 +1,3 @@
-// Código de iniciar express de https://expressjs.com/
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -11,16 +9,13 @@ const routesUsuarios = require('./Routes/routesUsuarios.js');
 const routesEventos = require('./Routes/eventos');
 const rutaAnuncios = require('./Routes/routesAnuncios');
 const rutasZonas = require('./Routes/comunidadRuta');
-const rutasPublicaciones = require('./Routes/publicaciones.js');
 const eventosRouter = require('./Routes/eventosLeo');
 
-// Conectarse a mongoose 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB conectado'))
-.catch(err => console.error('Error al conectar a MongoDB:', err));
+
+// Conectar a MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ MongoDB conectado'))
+  .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
 // Configuración de Express
 const app = express();
@@ -30,15 +25,17 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Rutas
+// Registrar rutas
 app.use('/', routesUsuarios);
 app.use('/api/eventos', routesEventos);
 app.use('/api', rutaAnuncios);
-app.use('/api/zonas', rutasZonas);
-app.use('/api/publicaciones', rutasPublicaciones);
+app.use('/api/comunidad', rutasZonas); // << aquí se manejan las zonas
 app.use('/api/eventosLeo', eventosRouter);
+app.use('/api/zonas', require('./Routes/comunidadRuta')); // ← esta línea es la clave
 
-// Iniciar el servidor
+
+
+// Iniciar servidor
 app.listen(port, () => {
-  console.log(`La aplicación está corriendo en el puerto ${port}`);
+  console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
 });
