@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/publicaciones", {
+      const res = await fetch("http://localhost:3000/api/reporteSugerencias", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ categoria, tema, contenido, usuarioId: usuario.id })
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Cargar TODAS las publicaciones
   async function cargarPublicaciones() {
     try {
-      const res = await fetch("http://localhost:3000/api/publicaciones");
+      const res = await fetch("http://localhost:3000/api/reporteSugerencias");
       const publicaciones = await res.json();
 
       publicacionesContainer.innerHTML = "";
@@ -83,10 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Cargar solo MIS publicaciones
   async function cargarMisPublicaciones() {
     try {
-      const res = await fetch("http://localhost:3000/api/publicaciones");
+      const res = await fetch("http://localhost:3000/api/reporteSugerencias");
       const publicaciones = await res.json();
 
-      // Convertir IDs a string para evitar comparación entre ObjectId y string
       const mias = publicaciones.filter(pub => pub.usuarioId && pub.usuarioId.toString() === usuario.id);
 
       misPublicacionesContainer.innerHTML = "";

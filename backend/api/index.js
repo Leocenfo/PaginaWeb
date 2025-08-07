@@ -10,6 +10,8 @@ const routesEventos = require('./Routes/eventos');
 const rutaAnuncios = require('./Routes/routesAnuncios');
 const rutasZonas = require('./Routes/comunidadRuta');
 const eventosRouter = require('./Routes/eventosLeo');
+const rutasReporteSugerencias = require('./Routes/reporteSugerencias');
+
 
 
 // Conectar a MongoDB
@@ -32,6 +34,8 @@ app.use('/api', rutaAnuncios);
 app.use('/api/comunidad', rutasZonas); // << aquí se manejan las zonas
 app.use('/api/eventosLeo', eventosRouter);
 app.use('/api/zonas', require('./Routes/comunidadRuta')); // ← esta línea es la clave
+app.use('/api/reporteSugerencias', rutasReporteSugerencias);
+
 
 
 
