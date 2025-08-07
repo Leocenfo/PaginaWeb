@@ -1,52 +1,44 @@
+// Código de iniciar express de https://expressjs.com/
 
-// Codigo de iniciar express de https://expressjs.com/
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+require('dotenv').config();
 
-// Requerir dependencias
-const express = require('express')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-require('dotenv').config()
-
-// requerir rutas de usurarios 
+// Requerir rutas
 const routesUsuarios = require('./Routes/routesUsuarios.js');
 const routesEventos = require('./Routes/eventos');
 const rutaAnuncios = require('./Routes/routesAnuncios');
+const rutasZonas = require('./Routes/comunidadRuta');
+const rutasPublicaciones = require('./Routes/publicaciones.js');
 const eventosRouter = require('./Routes/eventosLeo');
-// Conectarse a mongoose 
 
+// Conectarse a mongoose 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-
 .then(() => console.log('MongoDB conectado'))
 .catch(err => console.error('Error al conectar a MongoDB:', err));
 
+// Configuración de Express
+const app = express();
+const port = 3000;
 
-// habilitar express
-const app = express()
-
-// definir puerto
-const port = 3000
-
-// habilitar cors 
-app.use(cors())
-
-// habilitar body parser 
+app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
-// cuando entre peticion por ruta personas, entonces usa la ruta de routesUsuarios
-app.use('/',routesUsuarios);
-app.use('/api/eventos',routesEventos);
+// Rutas
+app.use('/', routesUsuarios);
+app.use('/api/eventos', routesEventos);
 app.use('/api', rutaAnuncios);
+app.use('/api/zonas', rutasZonas);
+app.use('/api/publicaciones', rutasPublicaciones);
 app.use('/api/eventosLeo', eventosRouter);
 
+// Iniciar el servidor
 app.listen(port, () => {
-  console.log(`La aplicación esta corriendo el el puerto ${port}`)
+  console.log(`La aplicación está corriendo en el puerto ${port}`);
 });
-
-const rutasZonas = require('./Routes/comunidadRuta');
-app.use('/api/comunidad', rutasZonas); // Esto da acceso a /api/comunidad/lugares
