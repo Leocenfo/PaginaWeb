@@ -4,17 +4,6 @@ const eventosControllerLeo = require('../controladores/eventosControllerLeo');
 const Evento = require('../models/EventosLeo'); // ✅ Importar el modelo correctamente
 console.log('Esquema cargado:', Evento.schema.obj);
 
-// Obtener todos los eventos
-router.get('/', eventosControllerLeo.obtenerEventos);
-
-// Crear nuevo evento
-router.post('/', eventosControllerLeo.crearEvento);
-
-// Actualizar estado del evento
-router.put('/:id/estado', eventosControllerLeo.actualizarEstadoEvento);
-
-// Borrar el evento 
-router.delete('/:id', eventosControllerLeo.borrarEvento);  
 
 // ✅ Ruta para corregir eventos sin estado
 router.put('/corregir-estados', async (req, res) => {
@@ -29,5 +18,17 @@ router.put('/corregir-estados', async (req, res) => {
     res.status(500).json({ error: 'No se pudieron corregir los eventos' });
   }
 });
+
+// Obtener todos los eventos
+router.get('/', eventosControllerLeo.obtenerEventos);
+
+// Crear nuevo evento
+router.post('/', eventosControllerLeo.crearEvento);
+
+// Actualizar estado del evento
+router.put('/:id/estado', eventosControllerLeo.actualizarEstadoEvento);
+
+// Borrar el evento 
+router.delete('/:id', eventosControllerLeo.borrarEvento);  
 
 module.exports = router;

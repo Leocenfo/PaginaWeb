@@ -1,26 +1,20 @@
+// controllers/eventosControllerLeo.js
 const Evento = require('../models/EventosLeo');
 
-// ✅ CREAR un nuevo evento
+// ✅ Crear un nuevo evento
 exports.crearEvento = async (req, res) => {
   try {
-    console.log('Campos del esquema Evento:', Evento.schema.obj);
-
     const { titulo, fecha } = req.body;
 
-    // Validar campos obligatorios
     if (!titulo || !fecha) {
       return res.status(400).json({ error: 'Faltan campos requeridos (titulo o fecha)' });
     }
 
-    // Validar formato de fecha
     if (isNaN(Date.parse(fecha))) {
       return res.status(400).json({ error: 'Fecha inválida' });
     }
 
-    // Crear nuevo evento (Mongoose aplicará el estado: 'Pendiente' por defecto)
     const nuevoEvento = new Evento({ titulo, fecha });
-
-    // Guardar en la base de datos
     await nuevoEvento.save();
 
     res.status(201).json(nuevoEvento);
@@ -30,7 +24,7 @@ exports.crearEvento = async (req, res) => {
   }
 };
 
-// ✅ OBTENER todos los eventos
+// ✅ Obtener todos los eventos
 exports.obtenerEventos = async (req, res) => {
   try {
     const eventos = await Evento.find();
@@ -41,50 +35,58 @@ exports.obtenerEventos = async (req, res) => {
   }
 };
 
-// ✅ ACTUALIZAR estado del evento (Aprobado / Rechazado)
+// ✅ Actualizar estado del evento
 exports.actualizarEstadoEvento = async (req, res) => {
-  console.log('Body recibido:', req.body);
-  const { id } = req.params;
-  const { nuevoEstado } = req.body;
-
-  if (!['Pendiente','Aprobado', 'Rechazado'].includes(nuevoEstado)) {
-    return res.status(400).json({ error: 'Estado no válido' });
-  }
-
   try {
-    const eventoActualizado = await Evento.findByIdAndUpdate(
+    const { id } = req.params;
+    const { nuevoEstado } = req.body;
+
+    console.log('ID recibido:', id);
+    console.log('nuevoEstado recibido:', nuevoEstado);
+
+    if (!['Pendiente', 'Aprobado', 'Rechazado'].includes(nuevoEstado)) {
+      return res.status(400).json({ error: 'Estado no válido' });
+    }
+
+    const evento = await Evento.findByIdAndUpdate(
       id,
       { estado: nuevoEstado },
-      { new: true, runValidators: true }
+      { new: true }
     );
-console.log('Evento actualizado:', eventoActualizado);
-    if (!eventoActualizado) {
+
+    if (!evento) {
       return res.status(404).json({ error: 'Evento no encontrado' });
     }
 
-    res.json(eventoActualizado);
+    console.log('Evento actualizado:', evento);
+    res.json(evento.toObject());
   } catch (error) {
     console.error('Error al actualizar estado del evento:', error);
-    res.status(500).json({ error: 'Error al actualizar el estado del evento' });
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Error al actualizar el estado del evento' });
+    }
   }
 };
-// BORRAR evento por ID
+
+
+// ✅ Borrar evento
 exports.borrarEvento = async (req, res) => {
-  const { id } = req.params;
-
   try {
-    const eventoBorrado = await Evento.findByIdAndDelete(id);
+    const { id } = req.params;
+    const evento = await Evento.findByIdAndDelete(id);
 
-    if (!eventoBorrado) {
+    if (!evento) {
       return res.status(404).json({ error: 'Evento no encontrado' });
     }
 
-    res.json({ message: 'Evento eliminado correctamente', evento: eventoBorrado });
+    res.json({ message: 'Evento eliminado correctamente', evento });
   } catch (error) {
     console.error('Error al borrar evento:', error);
     res.status(500).json({ error: 'Error al borrar el evento' });
   }
 };
+
+// ✅ Corregir estados faltantes
 exports.corregirEstados = async (req, res) => {
   try {
     const result = await Evento.updateMany(

@@ -14,6 +14,10 @@ const EventoSchema = new mongoose.Schema({
     enum: ['Pendiente', 'Aprobado', 'Rechazado'],
     default: 'Pendiente'
   }
-},{ timestamps: true });
+}, { timestamps: true });
+
+console.log('🧠 Esquema actual de Evento:', EventoSchema.obj);
+
 module.exports = mongoose.models.Evento || mongoose.model('Evento', EventoSchema);
+
 
