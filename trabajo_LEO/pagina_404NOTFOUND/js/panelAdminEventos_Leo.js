@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const tbody = document.querySelector('#eventoTable tbody');
+  const tbody = document.querySelector('#tabla-eventos tbody');
 
   function cargarEventos() {
     fetch('http://localhost:3000/api/eventosLeo')
@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = tr.querySelector('td[data-label="ID"]').textContent.trim();
       const nuevoEstado = e.target.classList.contains('aceptar') ? 'Aprobado' : 'Rechazado';
 
+       console.log(`Botón presionado para cambiar estado a: ${nuevoEstado}, id: ${id}`);
+
       fetch(`http://localhost:3000/api/eventosLeo/${id}/estado`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -70,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Aquí el manejo para eliminar el evento
     if (e.target.classList.contains('eliminar')) {
       const id = tr.querySelector('td[data-label="ID"]').textContent.trim();
       if (confirm('¿Estás seguro que deseas eliminar este evento?')) {
@@ -99,4 +100,5 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.classList.toggle('active');
   });
 });
+
 
