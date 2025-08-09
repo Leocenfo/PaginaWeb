@@ -42,7 +42,7 @@
         border: none;
         padding: 10px 10px;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 25px;
     }
 
     /* Tablas */
@@ -91,7 +91,7 @@
   background-color: #357ABD;
 }
 h1{
-    font-size: 40px;
+    font-size: 45px;
     margin: 15px 0px 15px 0px;
     margin-left: 10%; /* o el valor que prefieras */
 
@@ -102,38 +102,37 @@ h1{
 }
 
 
-    h1{
-        font-size: 40px;
-        margin: 15px 0px 15px 0px;
-        margin-left: 10%; /* o el valor que prefieras */
 
+    h1{
+        font-size: 45px;
+        margin: 15px 0px 15px 0px;
     }
 
     h2{
         font-size: 40px;
-        margin: 15px 0;
-        margin-left: 10%; /* o el valor que prefieras */    
+        margin: 15px 0px 15px 0px;
+
     }
 
     h3{
-        font-size: 30px;
+        font-size: 35px;
         margin: 15px 0px 15px 0px;
 
     }
 
     h4{
-        font-size: 25px;
+        font-size: 30px;
         margin: 15px 0px 15px 0px;
     }
 
     h5{
-        font-size: 20px;
+        font-size: 25px;
         margin: 15px 0px 15px 0px;
     }
 
     p {
         color: #4A4A4A;
-        font-size: 16px;
+        font-size: 21px;
         line-height: 1.5;
         margin: 15px 0px 15px 0px;
     }
@@ -160,7 +159,7 @@ h1{
             padding: 10px;
             border: 1px solid #CCCCCC;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 21px;
             width: 100%;
             color: #4A4A4A;
         }
@@ -180,7 +179,7 @@ h1{
         }
 
         option {
-            font-size: 16px;
+            font-size: 21px;
         }
 
 /* CLASES */
@@ -206,7 +205,7 @@ h1{
     border: none;
     padding: 10px 10px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     }
 
 /* SECCIONES */
@@ -407,7 +406,7 @@ h1{
         top: 10px;
         right: 20px;
         cursor: pointer;
-        font-size: 40px;
+        font-size: 45px;
         color: #D0021B;
     }
 
@@ -422,7 +421,7 @@ h1{
 
 .boton-grande {
   padding: 12px 24px;
-  font-size: 18px;
+  font-size: 23px;
   border-radius: 8px;
   display: inline-block;
   margin: 10px 0;
@@ -465,7 +464,7 @@ h1{
 /* REDES SOCIALES */
     /* Clase para iconos de redes sociales */
     .fa {
-    font-size: 30px;
+    font-size: 35px;
     width: 30px;
     height: 30px;
     padding-top: 7px;
@@ -522,7 +521,7 @@ h1{
 /* Ocultar hamburger en desktop */
 #menuCambio {
     display: none;
-    font-size: 28px;
+    font-size: 33px;
     cursor: pointer;
     color: #4A90E2;
 }

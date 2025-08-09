@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Perfil - Comunidad Conectada</title>
-    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/Estilos_Perfil.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <!-- Barra de Navegación -->
 <header class="navegacion">
-    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" class="logo-grande">
+    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" class="logo-grande">
     <div class="divMenu">
         <span id="menuCambio">&#9776;</span>
         <ul id="menu">
-
             <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML" class="activo" >Perfil</a></li>
             <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
             <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
@@ -28,45 +27,38 @@
     </div>
 </header>
 
-<hr>
-<h1 style="font-size: 40px; margin: 15px 0px 15px 0px; margin-left: 10%">
-    Perfil de Usuario
-</h1><hr>
-
 <!-- CONTENEDOR DE PERFIL -->
-<div class="perfil-contenedor">
-    <!-- Encabezado con imagen + nombre -->
-    <div class="perfil-encabezado">
-        <div class="perfil-foto">
+
+    <div class="claro ImagenConTexto">
+        <div class="contenedor-imagen DivImagen">
             <img src="/trabajo_LEO/imagenes/Foto de perfil.jpeg" alt="Foto de perfil">
         </div>
+        <div class="DivTexto">
+            <h3><strong>Juan Perez</strong></h3>
+            <p><strong>Cargo:</strong> Presidente de la Junta Comunal</p>
+            <p><strong>Ubicación:</strong> Hacienda Vieja, Curridabat</p>
+            <p><strong>Correo:</strong> juan.perez@comunidadconectada.ac.cr</p>
+            <p><strong>Teléfono:</strong> +506 2222-2222</p>
+            <a href="mailto:juan.perez@comunidadconectada.ac.cr" id="btnContactar" class="boton">Contactar</a>
+        </div>
+         <!-- Sección de Roles bien posicionada -->
         <div>
-            <div class="perfil-info">
-                <h3><strong>Juan Perez</strong></h3>
-                <p><strong>Cargo:</strong> Presidente de la Junta Comunal</p>
-                <p><strong>Ubicación:</strong> Hacienda Vieja, Curridabat</p>
-                <p><strong>Correo:</strong> juan.perez@comunidadconectada.ac.cr</p>
-                <p><strong>Teléfono:</strong> +506 2222-2222</p>
-                <a href="mailto:juan.perez@comunidadconectada.ac.cr" id="btnContactar" class="boton">Contactar</a>
+            <h3 class="azul"><i class="fa fa-user-circle" style="color:#4A90E2" id="simboloTituloRoles"></i> Roles</h3>
+            <div>
+                <button class="boton"><i class="fa fa-user"></i> Ciudadano</button>
+                <button class="boton"><i class="fa fa-briefcase"></i> Emprendedores</button>
+                <button class="boton"><i class="fa fa-eye"></i> Moderador</button>
+                <button class="boton"><i class="fa fa-cog"></i> Administrador</button>
             </div>
         </div>
     </div>
 
-    <!-- Sección de Roles bien posicionada -->
-   <div class="roles-contenedor">
-    <h3><i class="fa fa-user-circle"></i> Roles</h3>
-    <div class="botones-perfil">
-        <button class="boton"><i class="fa fa-user"></i> Ciudadano</button>
-        <button class="boton"><i class="fa fa-briefcase"></i> Emprendedores</button>
-        <button class="boton"><i class="fa fa-eye"></i> Moderador</button>
-        <button class="boton"><i class="fa fa-cog"></i> Administrador</button>
-    </div>
-</div>
-</div>
+
+
 
 <!-- Sobre mí -->
-<div style="background-color: #FFFFFF; padding: 30px; border-radius: 15px; box-shadow: 0 4px 12px #4a4a4a30; max-width: 800px; margin: 40px auto;">
-    <h2>Sobre mí</h2>
+<div class="oscuro">
+    <h2 class="azul">Sobre mí</h2>
     <p>
         Me llamo Juan Pérez y he vivido toda mi vida en Hacienda Vieja de Curridabat. Como presidente de la Junta Comunal, me llena de alegría ver cómo la tecnología puede acercarnos aún más como vecinos. Esta plataforma de Comunidad Conectada es una excelente herramienta para mantenernos informados y participar activamente en lo que sucede en nuestro entorno.
     </p>
@@ -76,16 +68,17 @@
 </div>
 
 <!-- Botones -->
-<div style="text-align: center; margin-bottom: 30px;">
-    <a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/Mis_Solicitudes.html" class="boton">Mis Solicitudes</a>
-    <a href="#" class="boton-rojo boton-grande" onclick="document.getElementById('formEditar').style.display='flex'">Editar perfil</a>
+
+<div class="claro centro">
+    <a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/Mis_Solicitudes.html" class="boton NoLink">Mis Solicitudes</a>
+    <a href="#" class="BaseRojo boton NoLink" onclick="document.getElementById('formEditar').style.display='flex'">Editar perfil</a>
 </div>
 
 <!-- FORMULARIO POPUP -->
 <div class="PopupForm" id="formEditar">
   <div class="PopupFormContenido perfil-contenedor">
     <span class="cerrar" onclick="document.getElementById('formEditar').style.display='none'">&times;</span>
-    <h2>Editar Perfil</h2>
+    <h2 class="azul">Editar Perfil</h2>
     <form>
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" value="Juan Perez">
