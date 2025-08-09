@@ -95,6 +95,50 @@
     footer p {
         display: inline;
     }
+
+    /*tablas*/
+
+    table {
+        width: 100%;
+        border-collapse: collapse; /* Remove gaps between cells */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden; /* round corners effect */
+    }
+
+    thead {
+        background-color: #4A90E2; /* modern blue */
+        color: #fff;
+        text-align: left;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    thead tr {
+        border-bottom: 2px solid #357ABD;
+    }
+
+    th {
+        padding: 12px 16px;
+        user-select: none; /* Prevent text selection */
+        cursor: default;
+    }
+
+    tr {
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #e6f0ff;
+    }
+
+
     /* Estilo del formulario */
         form {
             display: flex;
