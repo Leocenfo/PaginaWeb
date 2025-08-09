@@ -14,6 +14,12 @@ exports.obtenerEventos = async (req, res) => {
 // Crear un nuevo evento
 exports.crearEvento = async (req, res) => {
   try {
+    // Verificamos rol del usuario que crea el evento
+    const usuario = req.user; // Suponiendo que middleware autenticó y puso el usuario en req.user
+    if (!usuario || (usuario.rol !== 'empresario' && usuario.rol !== 'admin')) {
+      return res.status(403).json({ error: 'No tienes permiso para crear eventos' });
+    }
+
     const nuevoEvento = new Evento(req.body);
     await nuevoEvento.save();
     res.status(201).json(nuevoEvento);
@@ -53,13 +59,4 @@ exports.obtenerAsistenciasPorEvento = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener asistencias por evento' });
   }
-};
-exports.registrarAsistencia = (req, res) => {
-  const { eventoId, usuario, respuesta } = req.body;
-
-  console.log('Datos de asistencia recibidos:', { eventoId, usuario, respuesta });
-
-  // Aquí podrías guardar en MongoDB si tienes un modelo
-
-  res.status(200).json({ message: 'Asistencia registrada correctamente' });
 };
