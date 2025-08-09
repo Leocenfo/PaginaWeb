@@ -6,14 +6,29 @@ if (!usuario || !usuario.id) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Menú hamburguesa
-  const menuBtn = document.getElementById('menuCambio');
-  const menu = document.getElementById('menu');
-  if (menuBtn && menu) {
-    menuBtn.addEventListener('click', function () {
-      menu.classList.toggle('active');
-    });
-  }
+  // Menú responsive
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuCambio");
+    const menu = document.getElementById("menu");
+
+    if (menuToggle && menu) {
+        // Abrir/cerrar menú al hacer clic en el icono
+        menuToggle.addEventListener("click", function (e) {
+            e.stopPropagation(); // Evita que el clic se propague y lo cierre inmediatamente
+            menu.classList.toggle("active");
+        });
+
+        // Evitar que clics dentro del menú lo cierren
+        menu.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+
+        // Cerrar si se hace clic fuera
+        document.addEventListener("click", function () {
+            menu.classList.remove("active");
+        });
+    }
+  });
 
   // Referencias DOM
   const form = document.getElementById("form-publicacion");
