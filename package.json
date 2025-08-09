@@ -1,10 +1,31 @@
 {
   "dependencies": {
+    "axios": "^1.11.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "mongoose": "^8.16.5",
+    "mongoose": "^8.17.1"
+  },
+  "name": "paginaweb",
+  "version": "1.0.0",
+  "description": "nuevo repositorio del trabajo de grupo 404 NOT FOUND",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leocenfo/PaginaWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leocenfo/PaginaWeb/issues"
+  },
+  "homepage": "https://github.com/Leocenfo/PaginaWeb#readme",
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }

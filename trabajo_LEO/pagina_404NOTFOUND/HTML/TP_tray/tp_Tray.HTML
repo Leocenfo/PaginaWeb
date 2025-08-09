@@ -14,61 +14,42 @@
   <div class="divMenu">
     <span id="menuCambio">&#9776;</span>
     <ul id="menu">
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML">Eventos</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML" class="activo" >Transporte</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html" >Reportes y sugerencias</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
-      <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML">Eventos</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML" class="activo">Transporte</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
+      <li><a href="/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
     </ul>
   </div>
 </header>
 
-<hr>
 <h1>Transporte en Hacienda Vieja, Curridabat</h1>
-<hr>
 
 <!-- Sección de búsqueda -->
 <div class="claro">
   <p>Consulta rutas, horarios, consejos y ubicación de paradas cercanas a tu comunidad.</p>
-  <div style="display:flex; gap:10px; margin: 20px 0;">
-    <input type="text" placeholder="Buscar ruta, parada o destino..." style="flex:1;">
+  <div class="busqueda">
+    <input type="text" id="buscadorRuta" placeholder="Buscar ruta, parada o destino...">
     <button class="boton">Buscar</button>
   </div>
 </div>
 
-<!-- Tarjetas de rutas disponibles -->
-<div class="contenedor-cartas">
-  <div class="carta">
-    <h4>Ruta 50 - Curridabat ⇄ San José</h4>
-    <p>Frecuencia: cada 15 minutos</p>
-    <p>Horario: 5:00 am - 10:00 pm</p>
-    <p>Paradas: Plaza del Sol, Fuente de la Hispanidad, San Pedro, San José Centro</p>
-  </div>
-  <div class="carta">
-    <h4>Ruta 28 - Hacienda Vieja ⇄ Zapote</h4>
-    <p>Frecuencia: cada 30 minutos</p>
-    <p>Horario: 6:00 am - 8:00 pm</p>
-    <p>Paradas: Hacienda Vieja, Freses, Zapote, Catedral Metropolitana</p>
-  </div>
-  <div class="carta">
-    <h4>Ruta Local - Curridabat ⇄ Terramall</h4>
-    <p>Frecuencia: cada hora</p>
-    <p>Horario: 7:00 am - 7:00 pm</p>
-    <p>Paradas: Curridabat Centro, Walmart, Terramall</p>
-  </div>
+<!-- Contenedor dinámico de rutas -->
+<div class="contenedor-cartas" id="contenedorRutas">
+  <!-- Aquí se insertan las rutas desde el backend -->
 </div>
 
 <!-- Mapa Interactivo -->
-<div class="claro" style="margin-top: 40px;">
+<div class="claro">
   <h2>Mapa de Paradas y Rutas</h2>
   <p>Visualiza en el siguiente mapa las paradas principales y rutas más utilizadas en Hacienda Vieja.</p>
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.08950106349!2d-84.03100398500974!3d9.917647876191204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2bbf279e5df%3A0x6a1d7cfad788490b!2sHacienda%20Vieja%2C%20Curridabat!5e0!3m2!1ses-419!2scr!4v1710012345678"
-    width="100%" height="400" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy">
+    width="100%" height="400" allowfullscreen="" loading="lazy">
   </iframe>
 </div>
 
@@ -76,8 +57,8 @@
 <div class="oscuro">
   <h2>Tips de Usuarios</h2>
   <ul>
-      <li>Evita horas pico: 6:00 - 8:00 am y 4:30 - 6:30 pm.</li>
-      <li>Lleva siempre cambio de baja denominación para el pasaje.</li>
+    <li>Evita horas pico: 6:00 - 8:00 am y 4:30 - 6:30 pm.</li>
+    <li>Lleva siempre cambio de baja denominación para el pasaje.</li>
     <li>Verifica el clima antes de salir, algunas paradas no tienen techo.</li>
     <li>Si tienes dudas, consulta con los choferes o vecinos.</li>
   </ul>
@@ -93,7 +74,7 @@
 
 <!-- Botón flotante de ayuda -->
 <a href="#" onclick="alert('¿Necesitás ayuda? Escribinos a transporte@comunidadconectada.ac.cr')"
-   style="position: fixed; bottom: 20px; right: 20px; background-color: #4A90E2; color: white; padding: 15px; border-radius: 50%; font-size: 24px; text-align: center; text-decoration: none;">
+   class="btn-ayuda">
   ?
 </a>
 
@@ -109,6 +90,31 @@
   <p>&copy; Comunidad Conectada 2025. Todos los derechos reservados.</p>
 </footer>
 
+<!-- Script para cargar rutas desde el backend -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('http://localhost:3000/api/rutas') // Ajusta si tu backend está en otro puerto
+      .then(res => res.json())
+      .then(rutas => {
+        const contenedor = document.getElementById('contenedorRutas');
+        contenedor.innerHTML = '';
+        rutas.forEach(ruta => {
+          const div = document.createElement('div');
+          div.classList.add('carta');
+          div.innerHTML = `
+            <h4>${ruta.nombre}</h4>
+            <p>Frecuencia: ${ruta.frecuencia}</p>
+            <p>Horario: ${ruta.horario}</p>
+            <p>Paradas: ${ruta.paradas.join(', ')}</p>
+          `;
+          contenedor.appendChild(div);
+        });
+      })
+      .catch(err => console.error('Error al cargar rutas:', err));
+  });
+</script>
+
+<!-- Tu JS de funcionalidades adicionales -->
 <script src="/trabajo_LEO/pagina_404NOTFOUND/js/tp.JS"></script>
 </body>
 </html>
