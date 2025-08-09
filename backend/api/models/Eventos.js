@@ -5,7 +5,7 @@ const eventoSchema = new mongoose.Schema({
   fecha: { type: Date, required: true },
   imagen: String,
 }, {
-  timestamps: true // añade createdAt y updatedAt automáticamente
+  timestamps: true 
 });
 
 module.exports = mongoose.model('Evento', eventoSchema);

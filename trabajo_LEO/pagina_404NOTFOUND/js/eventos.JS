@@ -1,51 +1,52 @@
-// Menú responsive
-document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.getElementById("menuCambio");
-    const menu = document.getElementById("menu");
+document.addEventListener("DOMContentLoaded", () => {
 
-    if (menuToggle && menu) {
-        // Abrir/cerrar menú al hacer clic en el icono
-        menuToggle.addEventListener("click", function (e) {
-            e.stopPropagation(); // Evita que el clic se propague y lo cierre inmediatamente
-            menu.classList.toggle("active");
-        });
-
-        // Evitar que clics dentro del menú lo cierren
-        menu.addEventListener("click", function (e) {
-            e.stopPropagation();
-        });
-
-        // Cerrar si se hace clic fuera
-        document.addEventListener("click", function () {
-            menu.classList.remove("active");
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
+  // Elementos del DOM
+  const menuToggle = document.getElementById("menuCambio");
+  const menu = document.getElementById("menu");
   const formCrear = document.getElementById('formCrearEvento');
+  const tituloCrearEvento = document.getElementById('tituloCrearEvento');
   const mensaje = document.getElementById('mensajeEvento');
   const container = document.getElementById('eventos-container');
 
   // Obtener el usuario logueado
   const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
-  if (usuario) {
-    console.log("ID del usuario logueado:", usuario._id || usuario.id);
-    console.log("Nombre:", usuario.nombre);
-  } else {
-    // redirigir si usario no esat logueado 
+  if (!usuario) {
     window.location.href = "/ruta-de-login.html";
     return;
   }
 
-  // Mostrar formulario solo si es admin o empresario
+  console.log("ID del usuario logueado:", usuario._id || usuario.id);
+  console.log("Nombre:", usuario.nombre);
+
+
+  // Mostrar u ocultar formulario y título según el rol
   if (usuario.rol === 'admin' || usuario.rol === 'empresario') {
     formCrear.style.display = 'block';
+    tituloCrearEvento.style.display = 'block';
   } else {
     formCrear.style.display = 'none';
-     console.warn('Formulario ocultado porque el rol no es autorizado:', usuario.rol);
+    tituloCrearEvento.style.display = 'none';
+    console.warn('Formulario y título ocultados por rol no autorizado:', usuario.rol);
   }
+
+
+  // Menú responsive
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menu.classList.toggle("active");
+    });
+
+    menu.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+      menu.classList.remove("active");
+    });
+  }
+
 
   // Cargar eventos del backend
   async function cargarEventos() {
@@ -82,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error al obtener eventos:', err);
     }
   }
+
 
   // Inicializar botones de asistencia
   function inicializarBotonesAsistencia() {
@@ -148,7 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Listener del formulario para crear evento
+  
+  // Envío del formulario para crear evento
   formCrear.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -173,8 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Cargar eventos al inicio
+  // Inicializa eventos
   cargarEventos();
 });
+
 
 

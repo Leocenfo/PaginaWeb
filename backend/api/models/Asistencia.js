@@ -15,5 +15,6 @@ const asistenciaSchema = new mongoose.Schema({
 }, {
   timestamps: true  // para createdAt y updatedAt automáticos
 });
+asistenciaSchema.index({ eventoId: 1, usuario: 1 }, { unique: true });
 
 module.exports = mongoose.model('Asistencia', asistenciaSchema);
