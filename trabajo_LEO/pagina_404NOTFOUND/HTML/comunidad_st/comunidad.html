@@ -4,80 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Comuna - Nuestra Comunidad</title>
-  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Steven.css" />
+  <link rel="stylesheet" href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-  <header>
-    <nav class="navegacion">
-        <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
-        <div class="divMenu">
-            <i class="fa fa-bars" id="menuCambio"></i>
-            <ul id="menu">
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML">Eventos</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html" class="activo">Comunidad</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
-            </ul>
-        </div>
-    </nav>
-  </header>
-
-  <hr>
-  <h1>Nuestra comunidad</h1>
-  <hr>
-  <div>
-  <main>
-    <!-- Historia -->
-    <section id="historia" class="seccion-comuna claro">
-      <div class="ImagenConTexto">
-        <div class="DivTexto">
-          <p class="texto-grande" style = "padding: 1%;">La comunidad de Hacienda Vieja, ubicada en el distrito de Curridabat, San José, tiene una historia que se remonta a la época colonial. Su nombre proviene de la antigua Hacienda Santo Domingo, una hacienda colonial española que marcó los inicios del desarrollo en la zona. Posteriormente, el área fue conocida como “La Florida” antes de adoptar el nombre actual, en honor a esa hacienda original.
-            Durante el siglo XIX, Hacienda Vieja formó parte del cantón de San José, y en 1929, al convertirse Curridabat en cantón propio, fue incorporada como una de sus comunidades. Con el paso del tiempo, Hacienda Vieja se ha subdividido en sectores como Hacienda Vieja Norte.
-            La comunidad destaca por su fuerte organización y participación ciudadana. Un ejemplo de esto es la implementación del sistema de alarmas comunitarias, desarrollado con el apoyo de la Municipalidad de Curridabat. 
-            Hoy en día, Hacienda Vieja refleja un compromiso colectivo con el bienestar común, la sostenibilidad y la mejora continua de la calidad de vida, en sintonía con los valores promovidos por el gobierno local.</p>
-        </div>
-        <div class="DivImagen contenedor-imagen">
-          <img src="/trabajo_LEO/imagenes/haciendavieja.jpg" alt="Historia de la comunidad">
-        </div>
-      </div>
-    </section>
-
-    <!-- Comunidad -->
-    <section id="comunidad" class="seccion-comuna claro">
-      <h2>Nuestra Comunidad</h2>
+<header class="navegacion">
+    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" class="logo-grande">
+    <div class="divMenu">
+        <span id="menuCambio">&#9776;</span>
+        <ul id="menu">
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML" class="activo" >Perfil</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
+        </ul>
+    </div>
+</header>
+<!-- Historia -->
+<div id="historia" class="oscuro ImagenConTexto">
+  <div class="DivTexto">
+    <h3 class="azul">Nuestra comunidad</h2>
+      <p>
+        Durante el siglo XIX, Hacienda Vieja formó parte del cantón de San José, y en 1929, al convertirse Curridabat en cantón propio, fue incorporada como una de sus comunidades. Con el paso del tiempo, Hacienda Vieja se ha subdividido en sectores como Hacienda Vieja Norte.
+      La comunidad destaca por su fuerte organización y participación ciudadana. Un ejemplo de esto es la implementación del sistema de alarmas comunitarias, desarrollado con el apoyo de la Municipalidad de Curridabat. 
+      Hoy en día, Hacienda Vieja refleja un compromiso colectivo con el bienestar común, la sostenibilidad y la mejora continua de la calidad de vida, en sintonía con los valores promovidos por el gobierno local.
+      </p>
+  </div>
+  <div class="contenedor-imagen DivImagen">
+    <img src="/trabajo_LEO/imagenes/haciendavieja.jpg" alt="Historia de la comunidad">
+  </div>
+</div>
+<!-- Comunidad -->
+    <!-- Seccion de cartas para datos de comunidad -->
+    <div id="comunidad" class="claro">
+      <h1 class="BaseAzul">Nuestra Comunidad</h1>
       <div class="contenedor-cartas">
         <div class="carta">
-          <img src="/trabajo_LEO/imagenes/Copilot_20250708_200314.png" alt="Miembro de la comunidad" class="imgAnchoCompleto">
+
+          <div class="contenedor-imagen DivImagen">
+            <img src="/trabajo_LEO/imagenes/Copilot_20250708_200314.png" alt="Miembro de la comunidad" class="imgAnchoCompleto">
+          </div>
           <h3>Juan Perez</h3>
           <p>Presidente de la Junta Comunal</p>
         </div>
         <div class="carta">
-          <img src="/trabajo_LEO/imagenes/Copilot_20250708_201910.png" alt="Miembro de la comunidad" class="imgAnchoCompleto">
+          <div class="contenedor-imagen DivImagen">
+            <img src="/trabajo_LEO/imagenes/Copilot_20250708_201910.png" alt="Miembro de la comunidad" class="imgAnchoCompleto">
+          </div>
           <h3>Marta Rodriguez</h3>
           <p>Vice Presidenta de la Junta Comunal</p>
         </div>
         <div class="carta">
+          <div class="contenedor-imagen DivImagen">
           <img src="/trabajo_LEO/imagenes/Copilot_20250708_201912.png" alt="Miembro de la comunidad" class="imgAnchoCompleto">
+          </div>
           <h3>Juana Salas</h3>
           <p>Representante Comunal</p>
         </div>
-        <!-- Se puede duplicar este bloque para más miembros -->
       </div>
-    </section>
-
+    </div>
     <!-- Áreas Comunes -->
-    <section id="areas-comunes" class="seccion-comuna claro">
-      
-      <h2>Zonas en movimiento</h2>
+    <div id="areas-comunes" class="seccion-comuna oscuro">
+      <h2 class="azul">Zonas en movimiento</h2>
       <p style="padding: 1%;">En esta sección puedes registrar ubicaciones en tiempo real, y contarnos que esta pasando.</p>
 
       <form id="form-lugar" class="padding">
@@ -88,25 +84,25 @@
       </form>
 
       <div id="mapa" style="height: 300px; border-radius: 10px; margin: 20px 0;"></div>
-
+    </div>
+    <div id="divTablaLugares" class="claro">
       
-      <div>
-      <h3>Áreas Registradas</h3>
-      <table class="tabla-estilizada" style = "padding: 1%;">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Fecha</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-lugares"></tbody>
-      </table>
-      </div>
-    </section>
-  </main>
-</div>
+        <div>
+        <h3 class="azul">Áreas Registradas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-lugares"></tbody>
+        </table>
+        </div>
+    </div>
+  </div>
   <footer>
     <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
     <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
