@@ -1,11 +1,11 @@
 // variables globales
+let areasComunes = [];
 let marcadores = [];
 let mapa;
 let datosTemporales = null;
 let indiceEditando = null;
-let areasComunes = [];
 
-const API_URL = "http://localhost:3000/api/comunidad/lugares";
+const API_URL = "http://localhost:3000/api/zonas/lugares";
 
 // Acceso al DOM
 const inputNombre = document.getElementById("nombre");
@@ -24,48 +24,29 @@ function inicializarMapa() {
 
   mapa.on("click", onMapaClick);
 
-  cargarAreasComunes(); // cargar desde MongoDB al iniciar
+  cargarDesdeLocalStorage(); // ← cargar zonas guardadas
 }
 
-// Cargar datos desde MongoDB
-async function cargarAreasComunes() {
-  try {
-    const res = await fetch(API_URL);
-    const data = await res.json();
-    areasComunes = data;
-
-    data.forEach((area, index) => {
-      agregarMarcador(area);
-    });
-
-    mostrarAreasComunes();
-  } catch (err) {
-    console.error("Error al cargar áreas comunes:", err);
-  }
-}
-
-// Registrar datos y esperar el click en el mapa
+// Registrar datos y esperar click en el mapa
 function registrarAreaComun() {
-  const nombre = inputNombre.value;
-  const fecha = inputFecha.value;
-  const comentario = inputComentario.value;
+  const nombre = inputNombre.value.trim();
+  const fecha = inputFecha.value.trim();
+  const comentario = inputComentario.value.trim();
 
   if (nombre && fecha && comentario) {
     datosTemporales = { nombre, fecha, comentario };
-
-    if (indiceEditando !== null) {
-      alert("Haz clic en el mapa para actualizar la ubicación.");
-    } else {
-      alert("Haz clic en el mapa para ubicar el área.");
-    }
+    alert("Haz clic en el mapa para ubicar el área.");
   } else {
     alert("Por favor, completa todos los campos.");
   }
 }
 
-// Click en el mapa
-async function onMapaClick(event) {
-  if (!datosTemporales) return;
+// Clic en el mapa → guardar datos
+function onMapaClick(event) {
+  if (!datosTemporales) {
+    alert("Primero llena el formulario y presiona 'Registrar Área'");
+    return;
+  }
 
   const nuevaZona = {
     ...datosTemporales,
@@ -73,29 +54,45 @@ async function onMapaClick(event) {
     lng: event.latlng.lng
   };
 
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(nuevaZona)
+  areasComunes.push(nuevaZona);
+  guardarEnLocalStorage();
+
+  agregarMarcador(nuevaZona);
+  mostrarAreasComunes();
+  limpiarFormulario();
+  datosTemporales = null;
+
+  // NUEVO: Enviar al backend
+  fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(nuevaZona)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return res.text().then(texto => {
+          console.error("Error del servidor:", texto);
+        });
+      }
+      return res.json();
+    })
+    .then(data => {
+      console.log("Zona también guardada en el backend:", data);
+    })
+    .catch(err => {
+      console.error("Fallo al contactar el backend:", err);
     });
-    const data = await res.json();
-    areasComunes.push(data);
-    agregarMarcador(data);
-    mostrarAreasComunes();
-    limpiarFormulario();
-    datosTemporales = null;
-  } catch (err) {
-    console.error("Error al guardar en el backend:", err);
-  }
 }
 
-// Mostrar áreas en la tabla
+// Mostrar en tabla
 function mostrarAreasComunes() {
   tabla.innerHTML = "";
 
   areasComunes.forEach((area, index) => {
     const fila = document.createElement("tr");
+
     fila.innerHTML = `
       <td>${area.nombre}</td>
       <td>${area.fecha}</td>
@@ -105,54 +102,65 @@ function mostrarAreasComunes() {
         <button data-accion="eliminar" data-index="${index}">Eliminar</button>
       </td>
     `;
+
     tabla.appendChild(fila);
   });
 }
 
-// Crear marcador
+// Agregar marcador al mapa
 function agregarMarcador(area) {
   const marcador = L.marker([area.lat, area.lng])
     .addTo(mapa)
     .bindPopup(`<b>${area.nombre}</b><br>${area.comentario}<br>${area.fecha}`);
+
   marcadores.push(marcador);
 }
 
-// Ver área
+// Ver ubicación
 function verArea(index) {
   const area = areasComunes[index];
   mapa.setView([area.lat, area.lng], 18);
   marcadores[index].openPopup();
 }
 
-// Eliminar
-async function eliminarArea(index) {
-  const area = areasComunes[index];
-  const confirmar = confirm("¿Seguro que quieres eliminar esta área?");
-
-  if (!confirmar) return;
-
-  try {
-    await fetch(`${API_URL}/${area._id}`, {
-      method: "DELETE"
-    });
+// Eliminar zona
+function eliminarArea(index) {
+  if (confirm("¿Seguro que deseas eliminar esta zona?")) {
     areasComunes.splice(index, 1);
     mapa.removeLayer(marcadores[index]);
     marcadores.splice(index, 1);
+    guardarEnLocalStorage();
     mostrarAreasComunes();
-  } catch (err) {
-    console.error("Error al eliminar área:", err);
   }
 }
 
-// Limpiar
+// Guardar en localStorage
+function guardarEnLocalStorage() {
+  localStorage.setItem("zonasComunidad", JSON.stringify(areasComunes));
+}
+
+// Cargar desde localStorage
+function cargarDesdeLocalStorage() {
+  const zonasGuardadas = localStorage.getItem("zonasComunidad");
+  if (zonasGuardadas) {
+    areasComunes = JSON.parse(zonasGuardadas);
+    areasComunes.forEach(zona => {
+      agregarMarcador(zona);
+    });
+    mostrarAreasComunes();
+  }
+}
+
+// Limpiar formulario
 function limpiarFormulario() {
   inputNombre.value = "";
   inputFecha.value = "";
   inputComentario.value = "";
 }
 
-// Eventos
+// Listeners
 btnAgregar.addEventListener("click", registrarAreaComun);
+
 tabla.addEventListener("click", (event) => {
   const btn = event.target;
   const accion = btn.dataset.accion;
