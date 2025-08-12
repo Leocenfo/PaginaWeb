@@ -14,3 +14,4 @@ router.put('/:id/rol', cambiarRol);
 router.delete('/:id', eliminarUsuario);
 
 module.exports = router;
+
