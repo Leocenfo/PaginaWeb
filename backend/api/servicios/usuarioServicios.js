@@ -1,5 +1,7 @@
 
-const API_URL = 'http://localhost:3000/api/usuarios'; // Asegúrate que coincide con tu backend
+const API_URL = 'http://localhost:3000/api/usuarios';
+
+
 
 // Registrar nuevo usuario
 const registrarUsuario = async (usuarioData) => {

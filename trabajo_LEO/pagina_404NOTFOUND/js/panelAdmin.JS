@@ -2,9 +2,7 @@ let userId = 1;
 const form = document.getElementById("userForm");
 const tableBody = document.querySelector("#userTable tbody");
 
-// Función simulada para cambiar rol (reemplaza por llamada real a backend)
 async function cambiarRolUsuario(id, nuevoRol) {
-  // Simula una respuesta de backend con retraso
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ _id: id, rol: nuevoRol });
@@ -21,7 +19,7 @@ form.addEventListener("submit", function (event) {
   const estado = document.getElementById("estado").value;
 
   const row = document.createElement("tr");
-  row.dataset.id = userId; // Asigna id local simulando id real
+  row.dataset.id = userId; 
   row.innerHTML = `
     <td>${userId++}</td>
     <td>${nombre}</td>
@@ -59,7 +57,7 @@ form.addEventListener("submit", function (event) {
 
     try {
       const usuarioActualizado = await cambiarRolUsuario(idUsuario, nuevoRol);
-      celdaRol.textContent = usuarioActualizado.rol; // Actualiza UI
+      celdaRol.textContent = usuarioActualizado.rol;
       selectRol.style.display = "none";
       alert("Rol actualizado a " + nuevoRol);
     } catch (error) {
