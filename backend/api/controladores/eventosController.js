@@ -14,6 +14,11 @@ exports.obtenerEventos = async (req, res) => {
 // Crear un nuevo evento
 exports.crearEvento = async (req, res) => {
   try {
+    const usuario = req.user;
+    if (!usuario || (usuario.rol !== 'empresario' && usuario.rol !== 'admin')) {
+      return res.status(403).json({ error: 'No tienes permiso para crear eventos' });
+    }
+
     const nuevoEvento = new Evento(req.body);
     await nuevoEvento.save();
     res.status(201).json(nuevoEvento);
@@ -22,14 +27,20 @@ exports.crearEvento = async (req, res) => {
   }
 };
 
-// Registrar asistencia a un evento
+// Registrar asistencia a un evento (solo una vez)
 exports.registrarAsistencia = async (req, res) => {
+   console.log('Llamada a registrarAsistencia con body:', req.body);
   try {
     const { eventoId, usuario, respuesta } = req.body;
-    const asistencia = new Asistencia({ eventoId, usuario, respuesta });
-    await asistencia.save();
+    const asistencia = await Asistencia.findOneAndUpdate(
+      { eventoId, usuario },
+      { respuesta },
+      { new: true, upsert: true }
+    );
+    console.log('Asistencia guardada o actualizada:', asistencia); 
     res.status(201).json({ mensaje: 'Respuesta registrada', asistencia });
   } catch (error) {
+     console.error('Error en registrarAsistencia:', error);
     res.status(500).json({ error: 'Error al registrar asistencia' });
   }
 };
@@ -44,7 +55,7 @@ exports.obtenerAsistencias = async (req, res) => {
   }
 };
 
-// Obtener asistencias filtrando por eventoId (query param)
+// Obtener asistencias filtrando por eventoId
 exports.obtenerAsistenciasPorEvento = async (req, res) => {
   try {
     const { eventoId } = req.params;
@@ -53,13 +64,4 @@ exports.obtenerAsistenciasPorEvento = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener asistencias por evento' });
   }
-};
-exports.registrarAsistencia = (req, res) => {
-  const { eventoId, usuario, respuesta } = req.body;
-
-  console.log('Datos de asistencia recibidos:', { eventoId, usuario, respuesta });
-
-  // Aquí podrías guardar en MongoDB si tienes un modelo
-
-  res.status(200).json({ message: 'Asistencia registrada correctamente' });
 };

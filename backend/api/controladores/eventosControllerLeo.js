@@ -1,7 +1,7 @@
 // controllers/eventosControllerLeo.js
 const Evento = require('../models/EventosLeo');
 
-// ✅ Crear un nuevo evento
+//Crear un nuevo evento
 exports.crearEvento = async (req, res) => {
   try {
     const { titulo, fecha } = req.body;
@@ -24,7 +24,7 @@ exports.crearEvento = async (req, res) => {
   }
 };
 
-// ✅ Obtener todos los eventos
+//Obtener todos los eventos
 exports.obtenerEventos = async (req, res) => {
   try {
     const eventos = await Evento.find();
@@ -35,7 +35,7 @@ exports.obtenerEventos = async (req, res) => {
   }
 };
 
-// ✅ Actualizar estado del evento
+// Actualizar estado del evento
 exports.actualizarEstadoEvento = async (req, res) => {
   try {
     const { id } = req.params;
@@ -69,7 +69,7 @@ exports.actualizarEstadoEvento = async (req, res) => {
 };
 
 
-// ✅ Borrar evento
+//Borrar evento
 exports.borrarEvento = async (req, res) => {
   try {
     const { id } = req.params;
@@ -86,7 +86,7 @@ exports.borrarEvento = async (req, res) => {
   }
 };
 
-// ✅ Corregir estados faltantes
+//Corregir estados faltantes
 exports.corregirEstados = async (req, res) => {
   try {
     const result = await Evento.updateMany(

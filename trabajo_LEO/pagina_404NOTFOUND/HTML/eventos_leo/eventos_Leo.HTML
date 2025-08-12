@@ -102,6 +102,33 @@
             </div>
         </div>
         
+    
+    <hr>
+    <h1 style="font-size: 40px; margin: 15px 0px 15px 0px; margin-left: 10%">
+        Proximos eventos
+    </h1>
+    <section style="margin: 20px 10%;">
+  <h2 id="tituloCrearEvento">Crear nuevo evento</h2>
+  <form id="formCrearEvento">
+    <label for="titulo">Título:</label><br>
+    <input type="text" id="titulo" name="titulo" required><br><br>
+
+    <label for="fecha">Fecha:</label><br>
+    <input type="date" id="fecha" name="fecha" required><br><br>
+
+    <label for="imagen">URL de imagen (opcional):</label><br>
+    <input type="text" id="imagen" name="imagen"><br><br>
+
+    <button type="submit">Crear evento</button>
+  </form>
+  <p id="mensajeEvento" style="color: green;"></p>
+</section>
+<hr>    <hr>
+    <div>
+    <main>
+        <section class="container" id="eventos-container">
+        </section>
+
     </main>
     <footer>
         <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
@@ -114,6 +141,8 @@
         <p>info@comunidadconectada.ac.cr</p> <br>
         <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
     </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 <script src="/trabajo_LEO/pagina_404NOTFOUND/js/eventos.JS"></script>
 </html>
