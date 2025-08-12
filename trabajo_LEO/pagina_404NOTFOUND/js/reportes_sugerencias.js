@@ -6,8 +6,7 @@ if (!usuario || !usuario.id) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Menú responsive
-document.addEventListener("DOMContentLoaded", function () {
+// Menú responsive
     const menuToggle = document.getElementById("menuCambio");
     const menu = document.getElementById("menu");
 
@@ -28,8 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             menu.classList.remove("active");
         });
     }
-  });
-
+    
   // Referencias DOM
   const form = document.getElementById("form-publicacion");
   const publicacionesContainer = document.getElementById("contenedor-publicaciones");
@@ -70,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Hubo un problema al enviar la publicación.");
     }
   });
+
+  
 
   // Cargar TODAS las publicaciones
   async function cargarPublicaciones() {

@@ -4,54 +4,50 @@
   <meta charset="UTF-8" /> <!--para definir el conjunto de caracteres UTF-8 esto permite usar casi cualquier tipo de caracter-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--se necesita para hacer la pagina respinsive-->
   <title>Gestión de Anuncios</title> <!--este es el titulo de la pagina-->
-  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Marco.css" /> <!--aqui linkeamos el css con la pagina-->
+  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css" /> <!--aqui linkeamos el css con la pagina-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> <!--para los iconos vectorilaes como face,whast, etc-->
 
 </head>
 
 <body> <!--contenido visible en la pagina web-->
-  
-  <header> <!--encabezado de la pagina-->
-    <div class="navegacion"> <!-- nav es la etiqueta que define el menu principal es el menu se le asigna clase para editarlo en css-->
-      <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" /> <!--aqui linkemaos las imagenes en la pagina-->
-      <div class="divMenu"> <!-- contenedor para agrupar listas menu y se puedne likear los enlaces a las demas paginas con la etiqueta <a> -->
-        <i class="fa fa-bars" id="menuCambio"></i> <!--menu responsivo-->
-        <ul id="menu"> <!--lista desordenada en este caso necesaria para estructurar el menu-->
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
-          <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html" class="activo">Administración</a></li>
-
+<header class="navegacion">
+    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" class="logo-grande">
+    <div class="divMenu">
+        <span id="menuCambio">&#9776;</span>
+        <ul id="menu">
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML" class="activo">Emprendimientos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
         </ul>
-      </div>
     </div>
-  </header>
-  
-  <hr>
-  <h1 style="font-size: 40px; margin: 15px 0px 15px 0px; margin-left: 10%">
-      Administración
-  </h1><hr>
-  <div>
-  <main class="container"> <!--el main esta con clase container para dar estilo fijo y centrado en css-->
-    <aside class="divMenu"> <!--esto para contenido complementario (fondo , posicion etc.)-->
-      <ul id="menu"> <!--lista desordenada-->
-        <li><a href="usuarios.html">Gestión de Usuarios</a></li>
-        <li><a href="anuncios.html" class="activo">Gestión de Anuncios</a></li>
-        <li><a href="eventos.html">Gestión de Eventos</a></li>                       <!--diferentes secciones de la lista -->
-        <li><a href="transporte.html">Gestión de Transporte</a></li>
-        <li><a href="reportes.html">Reportes y Sugerencias</a></li>
-      </ul>
-    </aside>
+</header>
 
-    <section class="main-content"> <!--contenido de bloque que se relaciona entre si -->
-      <h1>Gestión de Anuncios</h1> <!-- para el encabezado tipo de letras para titulos-->
+<main class="container">
+<!-- Sidebar -->
+<aside class="menu_admin_sidebar">
+    <div class="menu_admin_logo">
+        <h2 class="azul">Panel de gestión</h2>
+    </div>
+    <nav class="menu_admin_nav">
+        <ul>
+            <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+            <li><a href="anuncios.html" class="activo">Gestión de Anuncios</a></li>
+            <li><a href="eventos.html">Gestión de Eventos</a></li>
+            <li><a href="transporte.html" >Gestión de Transporte</a></li>
+            <li><a href="reportes.html"  >Reportes y Sugerencias</a></li>
+        </ul>
+    </nav>
+</aside>
 
-      <table id="anunciosTable"> <!--etiqueta para crear la tabla con clase definida para editar en js y darle mas funcionalidad-->
+<div class="admin_margen">
+  <h1 class="BaseAzul">Gestión de Anuncios</h1><br>
+  <table id="anunciosTable"> <!--etiqueta para crear la tabla con clase definida para editar en js y darle mas funcionalidad-->
         <thead> <!--aqui comienza el encabezado-->
           <tr>  <!--el table row para cada una de las filas-->
             <th>ID</th>
@@ -66,11 +62,8 @@
          
         </tbody>
       </table>
-    </section>
-  </main>
-  <p><br><br><br><br><br><br><br><br><br><br><br></p>
-  </div>
-  <footer>
+    </main>
+    <footer>
     <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
     <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a> <!--footer de la pagina seccion que se muestra al final de la pagina web-->
     <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
@@ -80,7 +73,7 @@
     <p>info@comunidadconectada.ac.cr</p><br>
     <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
   </footer>
-
+</div>
   <script src="/trabajo_LEO/pagina_404NOTFOUND/js/paneldeAdmin_Anuncios.js"></script> <!--aqui linkeamos el java scritp con el html para que sea funcional-->
 </body>
 </html>
