@@ -4,39 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reportes y Sugerencias</title>
-  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Steven.css" />
+  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
   <!-- NAV -->
-  <header>
-    <nav class="navegacion">
-        <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo">
-        <div class="divMenu">
-            <i class="fa fa-bars" id="menuCambio"></i>
-            <ul id="menu">
-    
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML">Eventos</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html"  class="activo" >Reportes y sugerencias</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
-              <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
-            </ul>
-        </div>
-    </nav>
-  </header>
+<header class="navegacion">
+    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" class="logo-grande">
+    <div class="divMenu">
+        <span id="menuCambio">&#9776;</span>
+        <ul id="menu">
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML" class="activo">Emprendimientos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
+        </ul>
+    </div>
+</header>
 
   <!-- FORM PUBLICACIÓN -->
   <main>
-    <section class="claro" style="text-align: center;">
-      <h2>Mantén la comunidad actualizada </h2>
+
+    <div class="claro centro">
+      <h2 class = "azul">Mantén la comunidad actualizada </h2>
       <p>Comparte reportes, noticias, sugerencias...</p>
-      <form id="form-publicacion" style="max-width: 600px; margin: 0 auto;">
+      <form id="form-publicacion" >
         <select id="categoria" name="categoria" required>
           <option value="">Selecciona una categoría</option>
           <option value="Reporte">Reporte</option>
@@ -52,25 +50,30 @@
             <option value="Otros">Otros</option>
           </select>        <textarea id="contenido" name="contenido" rows="4" placeholder="¿Qué deseas compartir?" required></textarea>
 
-        <div style="display: flex; gap: 15px; justify-content: center;">
-          <button type="reset" class="boton" style="background-color: #FFFFFF; color:#4A4A4A; border:1px solid #4A4A4A;">Cancelar </button>
-          <button type="submit" class="boton">Postear</button>
+        <div>
+          <button type="reset" class="boton BaseRojo" >Cancelar </button>
+          <button type="submit" class="boton BaseVerde">Postear</button>
         </div>
       </form>
-    </section>
+    </div>
+
 
     <!-- TODAS LAS PUBLICACIONES -->
-    <section class="oscuro">
-      <h2 style="text-align: center;">Todas las publicaciones</h2>
+
+    <div class="oscuro">
+      <h2 class="azul centro">Todas las publicaciones</h2>
       <div class="contenedor-cartas" id="contenedor-publicaciones"></div>
-    </section>
+    </div>
+
+
+
 
     <!-- MIS PUBLICACIONES -->
-    <section class="claro">
-      <h2 style="text-align: center;">Mis publicaciones</h2>
-      <p style="text-align: center;">Opciones para editar o eliminar mis publicaciones</p>
+    <div class="claro">
+      <h2 class="azul centro">Mis publicaciones</h2>
+      <p class="centro">Opciones para editar o eliminar mis publicaciones</p>
       <div class="contenedor-cartas" id="mis-publicaciones"></div>
-    </section>
+    </div>
   </main>
 
   <!-- FOOTER -->

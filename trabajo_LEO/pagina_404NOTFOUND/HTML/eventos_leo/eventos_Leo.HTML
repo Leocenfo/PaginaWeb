@@ -5,48 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos Comunitarios</title>
-    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilosEventos.css">
+    <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <header>
-        <nav class="navegacion">
-            <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo"
-                id="HeaderTableTrTdALogo">
-            <div class="divMenu">
-                <i class="fa fa-bars" id="menuCambio"></i> <!-- hamburger icon -->
-                <ul id="menu">
-                  
-
-                    </li>
-                    <li><a
-                            href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a>
-                    </li>
-                    <li><a
-                            href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a>
-                    </li>
-                    <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a>
-                    </li>
-                    <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML"
-                            class="activo">Eventos</a></li>
-
-                    <li><a
-                            href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a>
-                    </li>
-                    <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes
-                            y sugerencias</a></li>
-
-                    <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
-                        
-                    <li> <a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
-
-    
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <header class="navegacion">
+        <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" class="logo-grande">
+        <div class="divMenu">
+            <span id="menuCambio">&#9776;</span>
+            <ul id="menu">
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML" class="activo" >Perfil</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML">Emprendimientos</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
+                <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
+            </ul>
+        </div>
     </header>
+
+    <main>
+            <!-- Seccion de cartas para datos de comunidad -->
+        <div id="DivTarjetasEventos" class="claro">
+            <h1 class="BaseAzul">Proximos eventos</h1>
+            <div class="contenedor-cartas4 ">
+                <div class="carta centro" data-id = "evento1">
+                <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/bingo_comuna_nota_b.jpg" alt="Evento 1" class="imgAnchoCompleto"></div>
+                    <h3 class="azul">Gran bingo</h3>
+                    <p>Fecha: 04/05/2025</p>
+                    <div class="acciones">
+                            <button class="btn-interesa">
+                                <i class="fa fa-star-o" aria-hidden="true"> </i>Me interesa</button>
+                            <button class="btn-asistire BaseAzulTabla">Asistiré</button>
+                            <button class="btn-no-asistire BaseAzulTabla">No asistiré</button>
+                        </div>
+                </div>
+                <div class="carta centro" data-id = "evento2">
+                    <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/fewt-30-1024x576.jpg" alt="Evento 2" class="imgAnchoCompleto"></div>
+                        <h3 class="azul">Festival Comunitario</h3>
+                        <p>Fecha: 05/05/2025</p>
+                        <div class="acciones">
+                            <button class="btn-interesa">
+                                <i class="fa fa-star-o" aria-hidden="true"> </i>Me interesa</button>
+                            <button class="btn-asistire BaseAzulTabla">Asistiré</button>
+                            <button class="btn-no-asistire BaseAzulTabla">No asistiré</button>
+                        </div>
+                </div>
+                <div class="carta centro" data-id = "evento2">
+                    <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/fewt-30-1024x576.jpg" alt="Evento 2" class="imgAnchoCompleto"></div>
+                        <h3 class="azul">Festival Comunitario</h3>
+                        <p>Fecha: 05/05/2025</p>
+                        <div class="acciones">
+                            <button class="btn-interesa">
+                                <i class="fa fa-star-o" aria-hidden="true"> </i>Me interesa</button>
+                            <button class="btn-asistire BaseAzulTabla">Asistiré</button>
+                            <button class="btn-no-asistire BaseAzulTabla">No asistiré</button>
+                        </div>
+                </div>
+                <div class="carta centro" data-id = "evento2">
+                    <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/fewt-30-1024x576.jpg" alt="Evento 2" class="imgAnchoCompleto"></div>
+                        <h3 class="azul">Festival Comunitario</h3>
+                        <p>Fecha: 05/05/2025</p>
+                        <div class="acciones">
+                            <button class="btn-interesa">
+                                <i class="fa fa-star-o" aria-hidden="true"> </i>Me interesa</button>
+                            <button class="btn-asistire BaseAzulTabla">Asistiré</button>
+                            <button class="btn-no-asistire BaseAzulTabla">No asistiré</button>
+                        </div>
+                </div>
+                <div class="carta centro" data-id = "evento2">
+                    <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/fewt-30-1024x576.jpg" alt="Evento 2" class="imgAnchoCompleto"></div>
+                        <h3 class="azul">Festival Comunitario</h3>
+                        <p>Fecha: 05/05/2025</p>
+                        <div class="acciones">
+                            <button class="btn-interesa">
+                                <i class="fa fa-star-o" aria-hidden="true"> </i>Me interesa</button>
+                            <button class="btn-asistire BaseAzulTabla">Asistiré</button>
+                            <button class="btn-no-asistire BaseAzulTabla">No asistiré</button>
+                        </div>
+                </div>
+                <div class="carta centro" data-id = "evento2">
+                    <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/fewt-30-1024x576.jpg" alt="Evento 2" class="imgAnchoCompleto"></div>
+                        <h3 class="azul">Festival Comunitario</h3>
+                        <p>Fecha: 05/05/2025</p>
+                        <div class="acciones">
+                            <button class="btn-interesa">
+                                <i class="fa fa-star-o" aria-hidden="true"> </i>Me interesa</button>
+                            <button class="btn-asistire BaseAzulTabla">Asistiré</button>
+                            <button class="btn-no-asistire BaseAzulTabla">No asistiré</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
     
     <hr>
     <h1 style="font-size: 40px; margin: 15px 0px 15px 0px; margin-left: 10%">
@@ -75,7 +130,6 @@
         </section>
 
     </main>
-</div>
     <footer>
         <!-- Nota - clases de footer no siguen el estandar ya que son pre-determinadas del recurso -->
         <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
@@ -86,10 +140,9 @@
         <a href="info@comunidadconectada.ac.cr" class="fa fa-envelope"></a>
         <p>info@comunidadconectada.ac.cr</p> <br>
         <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
-          
     </footer>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/trabajo_LEO/pagina_404NOTFOUND/js/eventos.JS"></script>
-</body>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+<script src="/trabajo_LEO/pagina_404NOTFOUND/js/eventos.JS"></script>
 </html>
