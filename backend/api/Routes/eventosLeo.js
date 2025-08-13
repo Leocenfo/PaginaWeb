@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const eventosControllerLeo = require('../controladores/eventosControllerLeo');
-const Evento = require('../models/EventosLeo'); 
+const Evento = require('../models/EventosLeo');
 console.log('Esquema cargado:', Evento.schema.obj);
 
 
-// ✅ Ruta para corregir eventos sin estado
+// Ruta para corregir eventos sin estado
 router.put('/corregir-estados', async (req, res) => {
   try {
     const result = await Evento.updateMany(
@@ -27,18 +27,16 @@ router.post('/asistencia', async (req, res) => {
   }
 
   try {
-    // Aquí la lógica para guardar la asistencia
-    // Por ejemplo, buscar el evento y actualizar un array de asistencias
+
     const evento = await Evento.findById(eventoId);
     if (!evento) {
       return res.status(404).json({ error: 'Evento no encontrado' });
     }
 
-    // Supongamos que en tu esquema Evento tienes un campo asistencias:
-    // asistencias: [{ usuario: String, respuesta: String, fecha: Date }]
+
     evento.asistencias = evento.asistencias || [];
 
-    // Buscar si ya hay asistencia del mismo usuario y actualizar o agregar
+
     const idx = evento.asistencias.findIndex(a => a.usuario === usuario);
     if (idx >= 0) {
       evento.asistencias[idx].respuesta = respuesta;
@@ -67,7 +65,7 @@ router.post('/', eventosControllerLeo.crearEvento);
 router.put('/:id/estado', eventosControllerLeo.actualizarEstadoEvento);
 
 // Borrar el evento 
-router.delete('/:id', eventosControllerLeo.borrarEvento);  
+router.delete('/:id', eventosControllerLeo.borrarEvento);
 
 router.post('/asistencia', eventosControllerLeo.registrarAsistencia);
 

@@ -19,8 +19,6 @@ async function enviarAsistencia(eventoId, usuario, respuesta) {
     return null;
   }
 }
-
-// MAIN CODE
 document.addEventListener("DOMContentLoaded", () => {
   // Elementos del DOM
   const menuToggle = document.getElementById("menuCambio");
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Función para actualizar UI según rol
   const actualizarUIsegunRol = () => {
     const tienePermisos = ['admin', 'empresario'].includes(usuario.rol);
     formCrear.style.display = tienePermisos ? 'block' : 'none';
@@ -72,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Inicializar UI
   actualizarUIsegunRol();
 
   // Menú responsive
@@ -127,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cards.forEach(card => {
       const eventoId = card.dataset.id;
-      const usuarioEmail = usuario.email; // Usamos el usuario ya obtenido
+      const usuarioEmail = usuario.email;
 
       if (!usuarioEmail) {
         mostrarError("Debes iniciar sesión para confirmar asistencia");
@@ -141,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const manejarClick = async (respuesta, boton) => {
         const success = await enviarAsistencia(eventoId, usuarioEmail, respuesta);
         if (success) {
+          
           // Resetear todos los botones
           [btnInteresa, btnAsistire, btnNoAsistire].forEach(b => b?.classList.remove('activo'));
           
