@@ -760,3 +760,72 @@ Paleta de colores:
 #4A4A4A - Gris oscuro
 */
 
+/* Estilos para los botones de asistencia agregado para la pagina de eventos si jode algo de lo suyo los borras vale */  
+.btn-interesa, .btn-asistire, .btn-no-asistire {
+  padding: 8px 12px;
+  margin: 5px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-interesa {
+  background-color: #1f79d3;
+  color: #e6ecf1;
+}
+
+.btn-interesa:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn-interesa.activo {
+  background-color: #ffc107;
+  color: #212529;
+  border-color: #ffc107;
+}
+
+.btn-asistire {
+  background-color: #f8f9fa;
+  color: #28a745;
+}
+
+.btn-asistire:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-asistire.activo {
+  background-color: #28a745;
+  color: white;
+  border-color: #dc3545;
+}
+
+.btn-no-asistire {
+  background-color: #f8f9fa;
+  color: #dc3545;
+}
+
+.btn-no-asistire:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-no-asistire.activo {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+/* Efecto hover para todos los botones */
+.btn-interesa:hover, .btn-asistire:hover, .btn-no-asistire:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cursor pointer para elementos clickeables */
+[data-id], button {
+  cursor: pointer;
+}

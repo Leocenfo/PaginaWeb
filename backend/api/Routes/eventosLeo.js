@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const eventosControllerLeo = require('../controladores/eventosControllerLeo');
-const Evento = require('../models/EventosLeo'); // ✅ Importar el modelo correctamente
+const Evento = require('../models/EventosLeo'); 
 console.log('Esquema cargado:', Evento.schema.obj);
 
 
@@ -18,6 +18,44 @@ router.put('/corregir-estados', async (req, res) => {
     res.status(500).json({ error: 'No se pudieron corregir los eventos' });
   }
 });
+// Ruta para registrar la asistencia a un evento
+router.post('/asistencia', async (req, res) => {
+  const { eventoId, usuario, respuesta } = req.body;
+
+  if (!eventoId || !usuario || !respuesta) {
+    return res.status(400).json({ error: 'Datos incompletos para registrar asistencia' });
+  }
+
+  try {
+    // Aquí la lógica para guardar la asistencia
+    // Por ejemplo, buscar el evento y actualizar un array de asistencias
+    const evento = await Evento.findById(eventoId);
+    if (!evento) {
+      return res.status(404).json({ error: 'Evento no encontrado' });
+    }
+
+    // Supongamos que en tu esquema Evento tienes un campo asistencias:
+    // asistencias: [{ usuario: String, respuesta: String, fecha: Date }]
+    evento.asistencias = evento.asistencias || [];
+
+    // Buscar si ya hay asistencia del mismo usuario y actualizar o agregar
+    const idx = evento.asistencias.findIndex(a => a.usuario === usuario);
+    if (idx >= 0) {
+      evento.asistencias[idx].respuesta = respuesta;
+      evento.asistencias[idx].fecha = new Date();
+    } else {
+      evento.asistencias.push({ usuario, respuesta, fecha: new Date() });
+    }
+
+    await evento.save();
+
+    res.json({ message: 'Asistencia registrada correctamente' });
+  } catch (error) {
+    console.error('Error al registrar asistencia:', error);
+    res.status(500).json({ error: 'Error interno al registrar asistencia' });
+  }
+});
+
 
 // Obtener todos los eventos
 router.get('/', eventosControllerLeo.obtenerEventos);
@@ -30,5 +68,7 @@ router.put('/:id/estado', eventosControllerLeo.actualizarEstadoEvento);
 
 // Borrar el evento 
 router.delete('/:id', eventosControllerLeo.borrarEvento);  
+
+router.post('/asistencia', eventosControllerLeo.registrarAsistencia);
 
 module.exports = router;
