@@ -818,6 +818,7 @@ Paleta de colores:
   color: white;
   border-color: #dc3545;
 }
+/*desde aqui agregue esto para corregir los botones del panel de admin si no afecta a ningun boton se mantiene si no lo borramos */
 
 /* Efecto hover para todos los botones */
 .btn-interesa:hover, .btn-asistire:hover, .btn-no-asistire:hover {
@@ -828,4 +829,58 @@ Paleta de colores:
 /* Cursor pointer para elementos clickeables */
 [data-id], button {
   cursor: pointer;
+}
+
+/* Estilos para los botones */
+.btn {
+  padding: 5px 10px;
+  margin: 0 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.aceptar { 
+  background-color: #2ecc71; 
+  color: white; 
+}
+
+.rechazar { 
+  background-color: #1879e9; 
+  color: white; 
+}
+
+.eliminar { 
+  background-color: #df3b26; 
+  color: white; 
+}
+
+/* Notificaciones */
+.notificacion {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 1000;
+}
+
+.notificacion.mostrar {
+  opacity: 1;
+}
+
+.notificacion.exito {
+  background-color: #27ae60;
+}
+
+.notificacion.error {
+  background-color: #c0392b;
 }
