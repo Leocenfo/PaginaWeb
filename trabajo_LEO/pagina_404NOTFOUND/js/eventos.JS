@@ -12,23 +12,7 @@ async function enviarAsistencia(eventoId, usuario, respuesta) {
     if (!eventoId || !usuario || !respuesta) {
       throw new Error("Faltan datos requeridos");
     }
-
-    if (!eventoId.match(/^[0-9a-fA-F]{24}$/)) {
-      throw new Error("ID de evento no válido");
-    }
-
-    const respuestasValidas = ['me_interesa', 'asistire', 'no_asistire'];
-    if (!respuestasValidas.includes(respuesta)) {
-      throw new Error("Respuesta no válida");
-    }
-
-    const response = await axios.post('http://localhost:3000/api/eventosLeo/asistencia', {
-      eventoId: eventoId,
-      usuario: usuario,
-      respuesta: respuesta
-    });
-
-    return response.data;
+    // ... resto de la función ...
   } catch (error) {
     console.error("Error al registrar asistencia:", error);
     mostrarError(error.response?.data?.error || error.message);
@@ -38,6 +22,7 @@ async function enviarAsistencia(eventoId, usuario, respuesta) {
 
 // MAIN CODE
 document.addEventListener("DOMContentLoaded", () => {
+  // Elementos del DOM
   const menuToggle = document.getElementById("menuCambio");
   const menu = document.getElementById("menu");
   const formCrear = document.getElementById('formCrearEvento');
@@ -46,15 +31,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById('eventos-container'); 
 
   // Verificar usuario
-  const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
   if (!usuario) {
     window.location.href = "/ruta-de-login.html";
     return;
   }
 
-  // Mostrar/ocultar formulario según rol
-  formCrear.style.display = (usuario.rol === 'admin' || usuario.rol === 'empresario') ? 'block' : 'none';
-  tituloCrearEvento.style.display = formCrear.style.display;
+  // Función para actualizar UI según rol
+  const actualizarUIsegunRol = () => {
+    const tienePermisos = ['admin', 'empresario'].includes(usuario.rol);
+    formCrear.style.display = tienePermisos ? 'block' : 'none';
+    tituloCrearEvento.style.display = tienePermisos ? 'block' : 'none';
+  };
+
+  // Verificación periódica del rol (cada 30 segundos)
+  const verificarRol = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/usuarios/${usuario._id}`);
+      if (response.data.rol !== usuario.rol) {
+        usuario.rol = response.data.rol;
+        localStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
+        actualizarUIsegunRol();
+      }
+    } catch (error) {
+      console.error("Error al verificar rol:", error);
+    }
+  };
+
+  // Configurar intervalo
+  let intervaloRol = setInterval(verificarRol, 30000);
+
+  // Escuchar cambios en localStorage (para cuando se cambia rol en otra pestaña)
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'usuarioLogueado') {
+      const nuevoUsuario = JSON.parse(event.newValue);
+      if (nuevoUsuario && nuevoUsuario._id === usuario._id) {
+        usuario = nuevoUsuario;
+        actualizarUIsegunRol();
+      }
+    }
+  });
+
+  // Inicializar UI
+  actualizarUIsegunRol();
 
   // Menú responsive
   if (menuToggle && menu) {

@@ -132,6 +132,22 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       tableBody.appendChild(row);
     });
+    // Verificar rol cada 30 segundos
+setInterval(() => {
+  const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+  if (usuario) {
+    axios.get(`http://localhost:3000/api/usuarios/${usuario._id}`)
+      .then(response => {
+        const nuevoRol = response.data.rol;
+        if (nuevoRol !== usuario.rol) {
+          usuario.rol = nuevoRol;
+          localStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
+          actualizarUIsegunRol();
+        }
+      })
+      .catch(error => console.error("Error al verificar rol:", error));
+  }
+}, 30000);
 
     // si los usuarios no se cargan o hay algun error se muestara el mensaje de error 
   } catch (error) {
