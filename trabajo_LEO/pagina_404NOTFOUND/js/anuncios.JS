@@ -27,59 +27,71 @@ const form = document.getElementById("formularioSolicitud");
 const btnEnviar = document.getElementById("btnEnviarRegistro");
 
 //referencias a los inputs del formulario
-const inputs ={
-    nombreCompleto:document.getElementById("nombreCompleto"),
-    tipoAnuncio:document.getElementById("tipoAnuncio"),
-    descripAnun:document.getElementById("descripAnun"),
-    numTelAnun:document.getElementById("numTelAnun"),
-    linkImagenAnun:document.getElementById("linkImagenAnun"),
+const input = {
+    nombreCompleto: document.getElementById("nombreCompleto"),
+    tipoAnuncio: document.getElementById("tipoAnuncio"),
+    descripAnun: document.getElementById("descripAnun"),
+    numTelAnun: document.getElementById("numTelAnun"),
+    linkImagenAnun: document.getElementById("linkImagenAnun"),
 };
 
 //logica de validacion
 const validations = {
-    nombreCompleto: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
-    tipoAnuncio: (input) => input.value !== "" ? true : "Debe seleccionar una categoría de emprendimiento.",
-    descripAnun: (input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese una descripcion valida.",
-    numTelAnun: (input) => /^\d{8}$/.test(input.value.replace(/[\s-]/g, '')) ? true : "El número telefónico debe ser de 8 dígitos y solo contener números.",
-    linkImagenAnun: (input) => /^https?:\/\/.*\.(jpg|jpeg|png)$/i.test(input.value.trim()) ? true : "Ingrese un enlace válido de imagen (.jpg, .jpeg o .png).",
+    nombreCompleto: (input) =>
+        /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim())
+            ? true
+            : "El nombre solo puede contener letras.",
+    tipoAnuncio: (input) =>
+        input.value !== ""
+            ? true
+            : "Debe seleccionar una categoría de emprendimiento.",
+    descripAnun: (input) =>
+        /^[a-zA-Z0-9\s]+$/.test(input.value.trim())
+            ? true
+            : "Ingrese una descripcion valida.",
+    numTelAnun: (input) =>
+        /^\d{8}$/.test(input.value.replace(/[\s-]/g, ""))
+            ? true
+            : "El número telefónico debe ser de 8 dígitos y solo contener números.",
+    linkImagenAnun: (input) =>
+        /^https?:\/\/.*\.(jpg|jpeg|png)$/i.test(input.value.trim())
+            ? true
+            : "Ingrese un enlace válido de imagen (.jpg, .jpeg o .png).",
 };
 
 //Funcion para mostrar u ocultar errores en el span correspondiente
-const mostrarError = (input,mensaje)=>{
+const mostrarError = (input, mensaje) => {
     const errorSpan = input.nextElementSibling;
-    if(mensaje){
+    if (mensaje) {
         input.classList.add("error");
-        
+
         errorSpan.textContent = mensaje;
-       
-    }else{
-        input.classList.remove('error');
-        
-        errorSpan.textContent ="";
-        
+    } else {
+        input.classList.remove("error");
+
+        errorSpan.textContent = "";
     }
 };
 
 //Funcion principal para validar el formulario
-const ValidarFormulario =()=>{
+const ValidarFormulario = () => {
     let primerError = null;
 
-    for (const clave in validations){
-        const referenciaHTML = inputs[clave];
+    for (const clave in validations) {
+        const referenciaHTML = input[clave];
         console.log(referenciaHTML);
 
-        if(referenciaHTML){
+        if (referenciaHTML) {
             const resultado = validations[clave](referenciaHTML);
             console.log(resultado);
-            if(resultado != true){
-                mostrarError(referenciaHTML,resultado);
-                if(!primerError){
-                    primerError = {referenciaHTML,mensaje:resultado};
+            if (resultado != true) {
+                mostrarError(referenciaHTML, resultado);
+                if (!primerError) {
+                    primerError = { referenciaHTML, mensaje: resultado };
                 }
-            }else{
-                mostrarError(referenciaHTML,null);
+            } else {
+                mostrarError(referenciaHTML, null);
             }
-            
         }
     }
     return primerError;
@@ -87,24 +99,58 @@ const ValidarFormulario =()=>{
 
 // Listener para el boton de "Enviar"
 
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Botón de inicio clickeado"); 
-    const error = ValidarFormulario(); 
+
+    const error = ValidarFormulario();
+
     if (error) {
-        console.warn("Hay errores:", error); 
+        console.warn("Hay errores:", error);
         Swal.fire({
             title: "Error en campos obligatorios.",
             text: error.mensaje,
-            icon: "error"
+            icon: "error",
         });
     } else {
-        console.log("Formulario válido, mostrando mensaje de éxito"); 
-        Swal.fire({
-            title: "Solicitud exitosa",
-            text: "Su solicitud ha sido enviada exitosamente",
-            icon: "success",
-        });
-        form.reset();
+        const data = {
+            nombreCompleto: input.nombreCompleto.value.trim(),
+            tipoAnuncio: input.tipoAnuncio.value.trim(),
+            descripAnun: input.descripAnun.value.trim(),
+            numTelAnun: input.numTelAnun.value.trim(),
+            linkImagenAnun: input.linkImagenAnun.value.trim(),
+        };
+
+        fetch("http://localhost:3000/api/anuncios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                if (result.resultado === "true") {
+                    Swal.fire({
+                        title: "Solicitud exitosa",
+                        text: "Su solicitud ha sido enviada exitosamente",
+                        icon: "success",
+                    });
+                    form.reset();
+                } else {
+                    Swal.fire({
+                        title: "Error",
+                        text: result.mensaje || "No se pudo enviar la solicitud",
+                        icon: "error",
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "Error",
+                    text: "No se pudo conectar con el servidor. Intente más tarde.",
+                    icon: "error",
+                });
+            });
     }
 });
