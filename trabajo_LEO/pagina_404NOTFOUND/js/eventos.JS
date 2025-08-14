@@ -159,15 +159,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Aquí puedes llamar al backend para quitar la asistencia
-        await enviarAsistencia(eventoId, usuarioEmail, null); // null o un valor que indique "sin respuesta"
+        await enviarAsistencia(eventoId, usuarioEmail, null);
         return;
     }
 
     // Si no estaba activo, seleccionamos y desactivamos los otros
     [btnInteresa, btnAsistire, btnNoAsistire].forEach(b => b?.classList.remove('activo'));
     boton.classList.add('activo');
-
-    // Manejar icono de estrella
+    
+          // icono de estrella
     if (boton === btnInteresa) {
         const icon = boton.querySelector('i');
         if (icon) {
