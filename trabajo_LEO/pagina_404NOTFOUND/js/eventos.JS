@@ -142,28 +142,46 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnAsistire = card.querySelector('.btn-asistire');
       const btnNoAsistire = card.querySelector('.btn-no-asistire');
 
-      const manejarClick = async (respuesta, boton) => {
-        const success = await enviarAsistencia(eventoId, usuarioEmail, respuesta);
-        if (success) {
-          
-          // Resetear todos los botones
-          [btnInteresa, btnAsistire, btnNoAsistire].forEach(b => b?.classList.remove('activo'));
-          
-          // Activar solo el botón clickeado
-          boton.classList.add('activo');
-          
-          // Manejar icono de estrella
-          const icon = btnInteresa?.querySelector('i');
-          if (icon) {
-            icon.classList.toggle('fa-star', respuesta === 'me_interesa');
-            icon.classList.toggle('fa-star-o', respuesta !== 'me_interesa');
-          }
-        }
-      };
+    const manejarClick = async (respuesta, boton) => {
+    const yaActivo = boton.classList.contains('activo');
 
-      btnInteresa?.addEventListener('click', () => manejarClick('me_interesa', btnInteresa));
-      btnAsistire?.addEventListener('click', () => manejarClick('asistire', btnAsistire));
-      btnNoAsistire?.addEventListener('click', () => manejarClick('no_asistire', btnNoAsistire));
+    if (yaActivo) {
+        // Si ya estaba activo, lo deseleccionamos
+        boton.classList.remove('activo');
+
+        // Manejar icono de estrella solo para "me interesa"
+        if (boton === btnInteresa) {
+            const icon = boton.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-star');
+                icon.classList.add('fa-star-o');
+            }
+        }
+
+        // Aquí puedes llamar al backend para quitar la asistencia
+        await enviarAsistencia(eventoId, usuarioEmail, null); // null o un valor que indique "sin respuesta"
+        return;
+    }
+
+    // Si no estaba activo, seleccionamos y desactivamos los otros
+    [btnInteresa, btnAsistire, btnNoAsistire].forEach(b => b?.classList.remove('activo'));
+    boton.classList.add('activo');
+
+    // Manejar icono de estrella
+    if (boton === btnInteresa) {
+        const icon = boton.querySelector('i');
+        if (icon) {
+            icon.classList.add('fa-star');
+            icon.classList.remove('fa-star-o');
+        }
+    }
+
+    await enviarAsistencia(eventoId, usuarioEmail, respuesta);
+};
+
+btnInteresa?.addEventListener('click', () => manejarClick('me_interesa', btnInteresa));
+btnAsistire?.addEventListener('click', () => manejarClick('asistire', btnAsistire));
+btnNoAsistire?.addEventListener('click', () => manejarClick('no_asistire', btnNoAsistire));
     });
   }
 
