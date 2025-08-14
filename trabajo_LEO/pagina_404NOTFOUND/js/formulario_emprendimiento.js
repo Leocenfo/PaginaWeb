@@ -93,12 +93,12 @@ const ValidarFormulario =()=>{
     return primerError;
 };
 
-// Listener para el boton de "Enviar"
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Botón de inicio clickeado"); 
+    
     const error = ValidarFormulario(); 
+    
     if (error) {
         console.warn("Hay errores:", error); 
         Swal.fire({
@@ -107,12 +107,49 @@ form.addEventListener("submit", (e) => {
             icon: "error"
         });
     } else {
-        console.log("Formulario válido, mostrando mensaje de éxito"); 
-        Swal.fire({
-            title: "Solicitud exitosa",
-            text: "Su solicitud ha sido enviada exitosamente",
-            icon: "success",
+        const data = {
+            nombreCompleto: inputs.nombreCompleto.value.trim(),
+            correo: inputs.correo.value.trim(),
+            numTel: inputs.numTel.value.trim(),
+            tipoEmprendimiento: inputs.tipoEmprendimiento.value,
+            nomEmprendimiento: inputs.nomEmprendimiento.value.trim(),
+            descripEmprendimiento: inputs.descripEmprendimiento.value.trim(),
+            linkImagen: inputs.linkImagen.value.trim(),
+            redesSociales: inputs.redesSociales.value.trim()
+        };
+
+
+        fetch('http://localhost:3000/solicitud', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+
+            if (result.resultado === "true") {
+                Swal.fire({
+                    title: "Solicitud exitosa",
+                    text: "Su solicitud ha sido enviada exitosamente",
+                    icon: "success"
+                });
+                form.reset();
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: result.mensaje || "No se pudo enviar la solicitud",
+                    icon: "error"
+                });
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                title: "Error",
+                text: "No se pudo conectar con el servidor. Intente más tarde.",
+                icon: "error"
+            });
         });
-        form.reset();
     }
 });
