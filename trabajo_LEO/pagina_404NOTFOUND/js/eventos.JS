@@ -6,19 +6,26 @@ function mostrarError(mensaje) {
   document.body.appendChild(errorDiv);
   setTimeout(() => errorDiv.remove(), 3000);
 }
-
-async function enviarAsistencia(eventoId, usuario, respuesta) {
+async function enviarAsistencia(eventoId, usuarioId, respuesta) {
   try {
-    if (!eventoId || !usuario || !respuesta) {
+    if (!eventoId || !usuarioId || !respuesta) {
       throw new Error("Faltan datos requeridos");
     }
-    // ... resto de la función ...
+
+    const res = await axios.post('http://localhost:3000/api/eventosLeo/asistencia', {
+      eventoId,
+      usuario: usuarioId,  // ID del usuario, no email
+      respuesta
+    });
+
+    return res.status === 200;
   } catch (error) {
     console.error("Error al registrar asistencia:", error);
     mostrarError(error.response?.data?.error || error.message);
     return null;
   }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   // Elementos del DOM
   const menuToggle = document.getElementById("menuCambio");
@@ -124,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.forEach(card => {
       const eventoId = card.dataset.id;
       const usuarioEmail = usuario.email;
+      const usuarioId = usuario._id;
 
       if (!usuarioEmail) {
         mostrarError("Debes iniciar sesión para confirmar asistencia");
