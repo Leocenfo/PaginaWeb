@@ -26,8 +26,6 @@ const anuncioSchema = new mongoose.Schema({
     enum: ['Pendiente', 'Aprobado', 'Rechazado'],
     default: 'Pendiente'
   }
-}, {
-  timestamps: true
 });
 
 module.exports = mongoose.model('Anuncio', anuncioSchema);
