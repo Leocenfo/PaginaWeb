@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const actualizarUIsegunRol = () => {
-    const tienePermisos = ['admin', 'empresario'].includes(usuario.rol);
+    const tienePermisos = ['admin', 'emprendedor'].includes(usuario.rol);
     formCrear.style.display = tienePermisos ? 'block' : 'none';
     tituloCrearEvento.style.display = tienePermisos ? 'block' : 'none';
   };

@@ -884,3 +884,7 @@ Paleta de colores:
 .notificacion.error {
   background-color: #c0392b;
 }
+#formCrearEvento,
+#tituloCrearEvento {
+  display: none;
+}
