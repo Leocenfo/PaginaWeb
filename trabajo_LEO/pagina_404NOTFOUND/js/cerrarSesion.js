@@ -1,3 +1,9 @@
+    
+    if (!localStorage.getItem("usuarioLogueado")) {
+        console.log("No hay usuarios loggeados, devolviendo a home");
+        window.location.href = "../login_vale/home_Vale.HTML";
+    }
+    
     document.addEventListener("DOMContentLoaded", function () {
         const btnCerrar = document.getElementById("BtnCerrarSesion");
                 console.log("cerrarSesion.js cargado");
