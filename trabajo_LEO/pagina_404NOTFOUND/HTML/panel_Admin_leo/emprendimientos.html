@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /> <!--para definir el conjunto de caracteres UTF-8 esto permite usar casi cualquier tipo de caracter-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--se necesita para hacer la pagina respinsive-->
+  <title>Gestión de Anuncios</title> <!--este es el titulo de la pagina-->
+  <link rel="stylesheet" href="/trabajo_LEO/pagina_404NOTFOUND/css/estilos_Valeria.css" /> <!--aqui linkeamos el css con la pagina-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> <!--para los iconos vectorilaes como face,whast, etc-->
+
+</head>
+
+<body> <!--contenido visible en la pagina web-->
+<header class="navegacion">
+    <img src="/trabajo_LEO/imagenes/friendship-icon-logo-design_586739-5470.jpg" alt="Logo" id="HeaderTableTrTdALogo" class="logo-grande">
+    <div class="divMenu">
+        <span id="menuCambio">&#9776;</span>
+        <ul id="menu">
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/perfiles_Tray/perfil_Tray.HTML">Perfil</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/anuncios_comunitarios_st/anuncios_ST.HTML">Anuncios</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/empredimientos_Marco.HTML" class="activo">Emprendimientos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/emprendimientos_Marco/formulario_emprendimiento.html">Solicitud emprendimiento</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/eventos_leo/eventos_Leo.HTML" >Eventos</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/TP_tray/tp_Tray.HTML">Transporte</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/Reportes_sugerencias_st/reportes.html">Reportes y sugerencias</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/comunidad_st/comunidad.html">Comunidad</a></li>
+            <li><a href="http://127.0.0.1:5501/trabajo_LEO/pagina_404NOTFOUND/HTML/panel_Admin_leo/usuarios.html">Administración</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="container">
+<!-- Sidebar -->
+<aside class="menu_admin_sidebar">
+    <div class="menu_admin_logo">
+        <h2 class="azul">Panel de gestión</h2>
+    </div>
+    <nav class="menu_admin_nav">
+        <ul>
+            <li><a href="usuarios.html">Gestión de Usuarios</a></li>
+            <li><a href="anuncios.html">Gestión de Anuncios</a></li>
+            <li><a href="emprendimientos.html" class="activo">Gestión de Emprendimientos</a></li>
+            <li><a href="eventos.html">Gestión de Eventos</a></li>
+            <li><a href="transporte.html" >Gestión de Transporte</a></li>
+            <li><a href="reportes.html"  >Reportes y Sugerencias</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<div class="admin_margen-m">
+  <h1 class="BaseAzul">Gestión de Emprendimientos</h1><br>
+
+<div style="overflow-x: auto; width: 100%;">
+
+  <table id="emprendimientosTable"> 
+        <thead> 
+          <tr>  
+            <th>Nombre Completo</th>
+            <th>Correo</th>
+            <th>Telefono</th>      
+            <th>Nombre Emprendimiento</th>     
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+            <th>Red Social</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+        </tbody>
+      </table>
+      </div>
+    </main>
+    <footer>
+    <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
+    <a href="https://www.instagram.com/" class="fa fa-instagram" target="_blank"></a> <!--footer de la pagina seccion que se muestra al final de la pagina web-->
+    <a href="https://www.whatsapp.com/" class="fa fa-whatsapp" target="_blank"></a>
+    <a href="tel:2222-2222" class="fa fa-phone"></a>
+    <p>‪+(506) 2222-2222‬</p>
+    <a href="mailto:info@comunidadconectada.ac.cr" class="fa fa-envelope"></a>
+    <p>info@comunidadconectada.ac.cr</p><br>
+    <p>&copy; 404 Not Found. Todos los derechos reservados.</p>
+  </footer>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/trabajo_LEO/pagina_404NOTFOUND/js/panelAdmin_Emprendimientos.js"></script> <!--aqui linkeamos el java scritp con el html para que sea funcional-->
+</body>
+</html>

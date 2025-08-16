@@ -1,23 +1,29 @@
+// models/EventosLeo.js
 const mongoose = require('mongoose');
 
-const EventoSchema = new mongoose.Schema({
-  titulo: {
-    type: String,
-    required: true
+// En models/EventosLeo.js
+const eventoSchema = new mongoose.Schema({
+  titulo: { type: String, required: true },
+  fecha: { type: Date, required: true },
+  imagen: { type: String, default: '' },
+  estado: { 
+    type: String, 
+    default: 'Pendiente',
+    enum: ['Pendiente', 'Aprobado', 'Rechazado'] 
   },
-  fecha: {
-    type: Date,
-    required: true
-  },
-  estado: {
-    type: String,
-    enum: ['Pendiente', 'Aprobado', 'Rechazado'],
-    default: 'Pendiente'
-  }
+  asistencias: [{
+      usuario: { type: String, required: true },
+      respuesta: { 
+        type: String, 
+        required: true,
+        enum: ['me_interesa', 'asistire', 'no_asistire', 'sin_respuesta']
+      },
+      fecha: { type: Date, default: Date.now }
+    }
+  ],
+  creador: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
 }, { timestamps: true });
 
-console.log('🧠 Esquema actual de Evento:', EventoSchema.obj);
-
-module.exports = mongoose.models.Evento || mongoose.model('Evento', EventoSchema);
+module.exports = mongoose.models.Evento || mongoose.model('Evento', eventoSchema);
 
 

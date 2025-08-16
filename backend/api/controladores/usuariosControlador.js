@@ -1,5 +1,7 @@
 const Usuario = require('../models/adminUsuarios');
 
+//aqui es donde se nos permite obtener los usuarios y hacer los cambios de rol , estado e elimninar usuarios 
+
 // Obtener todos los usuarios
 exports.obtenerUsuarios = async (req, res) => {
   try {

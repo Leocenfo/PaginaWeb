@@ -1,65 +1,106 @@
-document.addEventListener("DOMContentLoaded", () => {
+// FUNCIONES GLOBALES
+function mostrarError(mensaje) {
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'error-mensaje';
+  errorDiv.textContent = mensaje;
+  document.body.appendChild(errorDiv);
+  setTimeout(() => errorDiv.remove(), 3000);
+}
+async function enviarAsistencia(eventoId, usuarioId, respuesta) {
+  try {
+    if (!eventoId || !usuarioId || !respuesta) {
+      throw new Error("Faltan datos requeridos");
+    }
 
+    const res = await axios.post('http://localhost:3000/api/eventosLeo/asistencia', {
+      eventoId,
+      usuario: usuarioId,  // ID del usuario, no email
+      respuesta
+    });
+
+    return res.status === 200;
+  } catch (error) {
+    console.error("Error al registrar asistencia:", error);
+    mostrarError(error.response?.data?.error || error.message);
+    return null;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   // Elementos del DOM
   const menuToggle = document.getElementById("menuCambio");
   const menu = document.getElementById("menu");
   const formCrear = document.getElementById('formCrearEvento');
   const tituloCrearEvento = document.getElementById('tituloCrearEvento');
   const mensaje = document.getElementById('mensajeEvento');
-  const container = document.getElementById('eventos-container');
+  const container = document.getElementById('eventos-container'); 
 
-  // Obtener el usuario logueado
-  const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-
+  // Verificar usuario
+  let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
   if (!usuario) {
     window.location.href = "/ruta-de-login.html";
     return;
   }
 
-  console.log("ID del usuario logueado:", usuario._id || usuario.id);
-  console.log("Nombre:", usuario.nombre);
+  const actualizarUIsegunRol = () => {
+    const tienePermisos = ['admin', 'emprendedor'].includes(usuario.rol);
+    formCrear.style.display = tienePermisos ? 'block' : 'none';
+    tituloCrearEvento.style.display = tienePermisos ? 'block' : 'none';
+  };
 
+  // Verificación periódica del rol (cada 30 segundos)
+  const verificarRol = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/usuarios/${usuario._id}`);
+      if (response.data.rol !== usuario.rol) {
+        usuario.rol = response.data.rol;
+        localStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
+        actualizarUIsegunRol();
+      }
+    } catch (error) {
+      console.error("Error al verificar rol:", error);
+    }
+  };
 
-  // Mostrar u ocultar formulario y título según el rol
-  if (usuario.rol === 'admin' || usuario.rol === 'empresario') {
-    formCrear.style.display = 'block';
-    tituloCrearEvento.style.display = 'block';
-  } else {
-    formCrear.style.display = 'none';
-    tituloCrearEvento.style.display = 'none';
-    console.warn('Formulario y título ocultados por rol no autorizado:', usuario.rol);
-  }
+  // Configurar intervalo
+  let intervaloRol = setInterval(verificarRol, 30000);
 
+  // Escuchar cambios en localStorage (para cuando se cambia rol en otra pestaña)
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'usuarioLogueado') {
+      const nuevoUsuario = JSON.parse(event.newValue);
+      if (nuevoUsuario && nuevoUsuario._id === usuario._id) {
+        usuario = nuevoUsuario;
+        actualizarUIsegunRol();
+      }
+    }
+  });
+
+  actualizarUIsegunRol();
 
   // Menú responsive
   if (menuToggle && menu) {
-    menuToggle.addEventListener("click", function (e) {
+    menuToggle.addEventListener("click", e => {
       e.stopPropagation();
       menu.classList.toggle("active");
     });
-
-    menu.addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
-
-    document.addEventListener("click", function () {
-      menu.classList.remove("active");
-    });
+    menu.addEventListener("click", e => e.stopPropagation());
+    document.addEventListener("click", () => menu.classList.remove("active"));
   }
 
-
-  // Cargar eventos del backend
+  // Cargar eventos
   async function cargarEventos() {
-    container.innerHTML = '';
+    if (!container) return;
 
+    container.innerHTML = '';
     try {
-      const response = await axios.get('http://localhost:3000/api/eventos');
+      const response = await axios.get('http://localhost:3000/api/eventosLeo');
       const eventos = response.data;
 
       eventos.forEach(evento => {
         const card = document.createElement('div');
         card.className = 'event-card';
-        card.setAttribute('data-id', evento._id);
+        card.dataset.id = evento._id;
 
         card.innerHTML = `
           <img src="${evento.imagen || '/ruta/imagen_default.jpg'}" alt="${evento.titulo}">
@@ -73,85 +114,78 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `;
-
         container.appendChild(card);
       });
 
       inicializarBotonesAsistencia();
-
     } catch (err) {
       console.error('Error al obtener eventos:', err);
+      mostrarError('Error al cargar eventos');
     }
   }
 
-
-  // Inicializar botones de asistencia
+  // Inicializar botones
   function inicializarBotonesAsistencia() {
     const cards = document.querySelectorAll(".event-card");
 
     cards.forEach(card => {
-      const eventoId = card.getAttribute('data-id');
-      const interesaBtn = card.querySelector(".btn-interesa");
-      const asistireBtn = card.querySelector(".btn-asistire");
-      const noAsistireBtn = card.querySelector(".btn-no-asistire");
+      const eventoId = card.dataset.id;
+      const usuarioEmail = usuario.email;
+      const usuarioId = usuario._id;
 
-      const enviarAsistencia = (respuesta) => {
-        axios.post('http://localhost:3000/api/eventos/asistencia', {
-          eventoId,
-          usuario: usuario.email || "usuario_demo",
-          respuesta
-        })
-        .then(res => console.log(res.data))
-        .catch(err => console.error('Error al enviar asistencia:', err));
-      };
-
-      if (interesaBtn) {
-        interesaBtn.addEventListener("click", () => {
-          const icon = interesaBtn.querySelector('i');
-          icon.classList.toggle('fa-star');
-          icon.classList.toggle('fa-star-o');
-          interesaBtn.classList.toggle('activo');
-
-          if (interesaBtn.classList.contains('activo')) {
-            asistireBtn.classList.remove('activo');
-            noAsistireBtn.classList.remove('activo');
-            enviarAsistencia("me_interesa");
-          } else {
-            enviarAsistencia("sin_respuesta");
-          }
-        });
+      if (!usuarioEmail) {
+        mostrarError("Debes iniciar sesión para confirmar asistencia");
+        return;
       }
 
-      if (asistireBtn && noAsistireBtn) {
-        asistireBtn.addEventListener("click", () => {
-          asistireBtn.classList.add("activo");
-          noAsistireBtn.classList.remove("activo");
-          interesaBtn.classList.remove("activo");
+      const btnInteresa = card.querySelector('.btn-interesa');
+      const btnAsistire = card.querySelector('.btn-asistire');
+      const btnNoAsistire = card.querySelector('.btn-no-asistire');
 
-          const icon = interesaBtn.querySelector('i');
-          icon.classList.remove('fa-star');
-          icon.classList.add('fa-star-o');
+    const manejarClick = async (respuesta, boton) => {
+    const yaActivo = boton.classList.contains('activo');
 
-          enviarAsistencia("asistire");
-        });
+    if (yaActivo) {
+        // Si ya estaba activo, lo deseleccionamos
+        boton.classList.remove('activo');
 
-        noAsistireBtn.addEventListener("click", () => {
-          noAsistireBtn.classList.add("activo");
-          asistireBtn.classList.remove("activo");
-          interesaBtn.classList.remove("activo");
+        // Manejar icono de estrella solo para "me interesa"
+        if (boton === btnInteresa) {
+            const icon = boton.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-star');
+                icon.classList.add('fa-star-o');
+            }
+        }
 
-          const icon = interesaBtn.querySelector('i');
-          icon.classList.remove('fa-star');
-          icon.classList.add('fa-star-o');
+        // Aquí puedes llamar al backend para quitar la asistencia
+        await enviarAsistencia(eventoId, usuarioEmail, null);
+        return;
+    }
 
-          enviarAsistencia("no_asistire");
-        });
-      }
+    // Si no estaba activo, seleccionamos y desactivamos los otros
+    [btnInteresa, btnAsistire, btnNoAsistire].forEach(b => b?.classList.remove('activo'));
+    boton.classList.add('activo');
+    
+          // icono de estrella
+    if (boton === btnInteresa) {
+        const icon = boton.querySelector('i');
+        if (icon) {
+            icon.classList.add('fa-star');
+            icon.classList.remove('fa-star-o');
+        }
+    }
+
+    await enviarAsistencia(eventoId, usuarioEmail, respuesta);
+};
+
+btnInteresa?.addEventListener('click', () => manejarClick('me_interesa', btnInteresa));
+btnAsistire?.addEventListener('click', () => manejarClick('asistire', btnAsistire));
+btnNoAsistire?.addEventListener('click', () => manejarClick('no_asistire', btnNoAsistire));
     });
   }
 
-  
-  // Envío del formulario para crear evento
+  // Crear evento
   formCrear.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -160,25 +194,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const imagen = document.getElementById('imagen').value;
 
     try {
-      await axios.post('http://localhost:3000/api/eventos', {
-        titulo,
-        fecha,
-        imagen
-      });
-
-      mensaje.textContent = ' Evento creado exitosamente.';
+      await axios.post('http://localhost:3000/api/eventosLeo', { titulo, fecha, imagen });
+      mensaje.textContent = 'Evento creado exitosamente.';
       formCrear.reset();
-      cargarEventos();
-
+      await cargarEventos();
     } catch (error) {
-      console.error(' Error al crear evento:', error);
-      mensaje.textContent = ' Error al crear el evento.';
+      console.error('Error al crear evento:', error);
+      mostrarError(error.response?.data?.error || 'Error al crear evento');
     }
   });
 
-  // Inicializa eventos
+  // Inicializar
   cargarEventos();
 });
-
-
-
