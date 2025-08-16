@@ -12,6 +12,7 @@ const rutasZonas = require('./Routes/comunidadRuta');
 const eventosRouter = require('./Routes/eventosLeo');
 const rutasReporteSugerencias = require('./Routes/reporteSugerencias');
 const gestionUsuariosRouter = require('./Routes/gestionUsuario'); 
+const routesEmprendimientos = require('./Routes/emprendimientos.js');
 
 const Usuario = require('./models/adminUsuarios');
 
@@ -33,12 +34,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Registrar rutas
 app.use('/', routesUsuarios);
 app.use('/api/eventos', routesEventos);
-app.use('/api', rutaAnuncios);
+app.use('/', rutaAnuncios);
 app.use('/api/comunidad', rutasZonas); // << aquí se manejan las zonas
 app.use('/api/eventosLeo', eventosRouter);
 app.use('/api/zonas', require('./Routes/comunidadRuta')); // ← esta línea es la clave
 app.use('/api/reporteSugerencias', rutasReporteSugerencias);
 app.use('/api/usuarios', gestionUsuariosRouter);
+app.use('/', routesEmprendimientos)
 
 
 // Iniciar servidor

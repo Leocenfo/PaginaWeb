@@ -1,5 +1,7 @@
 
-const API_URL = 'http://localhost:3000/api/usuarios'; // Asegúrate que coincide con tu backend
+const API_URL = 'http://localhost:3000/api/usuarios';
+
+
 
 // Registrar nuevo usuario
 const registrarUsuario = async (usuarioData) => {
@@ -7,7 +9,7 @@ const registrarUsuario = async (usuarioData) => {
     const res = await axios.post('http://localhost:3000/postUsuarios', usuarioData);
     return res.data;
   } catch (error) {
-    console.error('❌ Error al registrar usuario:', error);
+    console.error('Error al registrar usuario:', error);
     throw error;
   }
 };
@@ -19,7 +21,7 @@ const obtenerUsuarios = async () => {
     const res = await axios.get(API_URL);
     return res.data;
   } catch (error) {
-    console.error('❌ Error al obtener usuarios:', error);
+    console.error('Error al obtener usuarios:', error);
     throw error;
   }
 };
@@ -31,7 +33,7 @@ const cambiarEstadoUsuario = async (id, nuevoEstado) => {
     const res = await axios.put(`${API_URL}/${id}/estado`, { estado: nuevoEstado });
     return res.data;
   } catch (error) {
-    console.error('❌ Error al cambiar estado:', error);
+    console.error('Error al cambiar estado:', error);
     throw error;
   }
 };
@@ -42,7 +44,7 @@ const cambiarRolUsuario = async (id, nuevoRol) => {
     const res = await axios.put(`${API_URL}/${id}/rol`, { rol: nuevoRol });
     return res.data;
   } catch (error) {
-    console.error('❌ Error al cambiar rol:', error);
+    console.error('Error al cambiar rol:', error);
     throw error;
   }
 };
@@ -53,7 +55,7 @@ const eliminarUsuario = async (id) => {
     const res = await axios.delete(`${API_URL}/${id}`);
     return res.data;
   } catch (error) {
-    console.error('❌ Error al eliminar usuario:', error);
+    console.error('Error al eliminar usuario:', error);
     throw error;
   }
 };

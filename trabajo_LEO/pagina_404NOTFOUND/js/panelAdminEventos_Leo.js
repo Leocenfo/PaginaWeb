@@ -32,17 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return res.json();
       })
       .then(eventos => {
-        tbody.innerHTML = ''; // Limpiar tabla
+        tbody.innerHTML = '';
 
         eventos.forEach(evento => {
           const tr = document.createElement('tr');
 
           const estadoFormateado =
             evento.estado === 'Aprobado'
-              ? '✔️ Aprobado'
+              ? 'Aprobado'
               : evento.estado === 'Rechazado'
-              ? '❌ Rechazado'
-              : '⏳ Pendiente';
+              ? ' Rechazado'
+              : ' Pendiente';
 
           tr.innerHTML = `
             <td data-label="ID">${evento._id}</td>

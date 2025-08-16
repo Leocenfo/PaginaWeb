@@ -33,26 +33,7 @@
         <!--Tarjetas Anuncios-->
         
         <div id="DivTarjetasAnuncios" class="claro">
-            <div class="contenedor-cartas4 ">
-                <!--Tarjeta 1-->
-                <div class="carta centro" data-id = "anuncio1">
-                    <div class="contenedor-imagen-carta"><img src="/trabajo_LEO/imagenes/Anuncio castracion.jpg" alt="Imagen del anuncio" class="imgAnchoCompleto"></div>
-                    <h3 class="rojo">Castracion gratuita!</h3>
-                    <span>Mas info:</span><a href="tel:2222-2222" class="fa fa-phone"></a><span>8888 1111</span>
-                </div>
-                <!--Tarjeta 2-->
-                <div class="carta centro" data-id="anuncio2">
-                    <div class="contenedor-imagen-carta">
-                        <img src="/trabajo_LEO/imagenes/Anuncio venta de garage.jpg" alt="Imagen del anuncio" class="imgAnchoCompleto">
-                    </div>
-                    <h3 class="rojo">Gran venta de Garage</h3>
-                    <span>Mas info:</span>
-                    <a href="tel:2222-2222" class="fa fa-phone"></a>
-                    <span>8888 2222</span>
-                </div>
-
-
-            </div>
+            <div class="contenedor-cartas" id="contenedorAnuncios"></div>
         </div>
 
         
@@ -64,18 +45,18 @@
         <h1 class="BaseAzul">Solicitud para agregar anuncio</h1>
 
         <form id="formularioSolicitud">
-        <label for="nombreCompleto">Nombre Completo:</label>
-        <input type="text" id="nombreCompleto" placeholder="Nombre Completo...">
+        <label for="titulo">Titulo del Anuncio:</label>
+        <input type="text" id="titulo" placeholder="Titulo del Anuncio...">
         <span class="rojo"></span>
 
             <!--Select de tipo de anuncio-->
         <label for="tipoAnuncio">Tipo de anuncio:</label>
         <select name="tipoAnuncio" id="tipoAnuncio" >
-            <option value="" disabled selected>Seleccione Categoria</option>
-            <option value="anunAviso">Anuncio de aviso comunitario</option>
-            <option value="anuncioNegocio">Anuncio de negocio</option>
-            <option value="anunEducativo">Anuncio Educativo</option>
-            <option value="anunServicios">Anuncios de Servicios</option>
+            <option value="" disabled selected>Seleccione el tipo:</option>
+            <option value="comunitario">Anuncio de aviso Comunitario</option>
+            <option value="negocio">Anuncio de Negocio</option>
+            <option value="educativo">Anuncio Educativo</option>
+            <option value="servicios">Anuncios de Servicios</option>
         </select>
         <span class="rojo"></span>
 
@@ -88,7 +69,7 @@
         <span class="rojo"></span>
 
         <label for="linkImagenAnun">Link de la imagen del anuncio:</label>
-        <input type="text" id="linkImagenAnun" placeholder="https://ejemplo.com/imagen.jpg" >
+        <input type="text" id="linkImagenAnun" placeholder="https://ejemplo.com/imagen" >
         <span class="rojo"></span>
 
 

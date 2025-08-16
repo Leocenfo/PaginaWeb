@@ -39,6 +39,7 @@
         <ul>
             <li><a href="usuarios.html">Gestión de Usuarios</a></li>
             <li><a href="anuncios.html" class="activo">Gestión de Anuncios</a></li>
+            <li><a href="emprendimientos.html">Gestión de Emprendimientos</a></li>
             <li><a href="eventos.html">Gestión de Eventos</a></li>
             <li><a href="transporte.html" >Gestión de Transporte</a></li>
             <li><a href="reportes.html"  >Reportes y Sugerencias</a></li>
@@ -46,16 +47,21 @@
     </nav>
 </aside>
 
-<div class="admin_margen">
+<div class="admin_margen-m">
   <h1 class="BaseAzul">Gestión de Anuncios</h1><br>
-  <table id="anunciosTable"> <!--etiqueta para crear la tabla con clase definida para editar en js y darle mas funcionalidad-->
-        <thead> <!--aqui comienza el encabezado-->
-          <tr>  <!--el table row para cada una de las filas-->
-            <th>ID</th>
+
+<div style="overflow-x: auto; width: 100%;">
+
+  <table id="anunciosTable"> 
+        <thead> 
+          <tr>  
             <th>Título</th>
-            <th>Autor</th>       <!--table header , la estrutura de las celdas y los titulos todo siempre dentro del la etiqueta <tr> -->
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Numero</th>      
             <th>Fecha</th>     
             <th>Estado</th>
+            <th>Imagen</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -63,6 +69,7 @@
          
         </tbody>
       </table>
+</div>
     </main>
     <footer>
     <a href="https://www.facebook.com/" class="fa fa-facebook" target="_blank"></a>
@@ -76,6 +83,7 @@
   </footer>
 </div>
   <script src="/trabajo_LEO/pagina_404NOTFOUND/js/cerrarSesion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="/trabajo_LEO/pagina_404NOTFOUND/js/paneldeAdmin_Anuncios.js"></script> <!--aqui linkeamos el java scritp con el html para que sea funcional-->
 </body>
 </html>
