@@ -20,8 +20,8 @@ const Usuario = require('./models/adminUsuarios');
 
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ MongoDB conectado'))
-  .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
+  .then(() => console.log('MongoDB conectado'))
+  .catch(err => console.error('Error al conectar a MongoDB:', err));
 
 // Configuración de Express
 const app = express();
@@ -45,9 +45,10 @@ app.use('/', routesEmprendimientos)
 
 // Iniciar servidor
 app.listen(port, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });
 
 Usuario.find().then(usuarios => {
   console.log('Usuarios en la base de datos:', usuarios.length);
 });
+

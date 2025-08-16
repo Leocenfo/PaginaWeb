@@ -1,6 +1,6 @@
 // CARGA DINÁMICA DE RUTAS DESDE EL BACKEND
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('http://localhost:3000/api/rutas') // Asegúrate de que el backend esté corriendo
+  fetch('http://localhost:3000/api/comunidad/rutas') // Asegúrate de que el backend esté corriendo
     .then(res => res.json())
     .then(rutas => {
       const contenedor = document.getElementById('contenedorRutas');
