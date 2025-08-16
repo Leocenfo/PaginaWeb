@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Registrar rutas
 app.use('/', routesUsuarios);
 app.use('/api/eventos', routesEventos);
-app.use('/api', rutaAnuncios);
+app.use('/', rutaAnuncios);
 app.use('/api/comunidad', rutasZonas); // << aquí se manejan las zonas
 app.use('/api/eventosLeo', eventosRouter);
 app.use('/api/zonas', require('./Routes/comunidadRuta')); // ← esta línea es la clave
