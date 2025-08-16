@@ -103,16 +103,17 @@ document.addEventListener("DOMContentLoaded", () => {
         card.dataset.id = evento._id;
 
         card.innerHTML = `
-          <img src="${evento.imagen || '/ruta/imagen_default.jpg'}" alt="${evento.titulo}">
-          <div class="info">
-            <p class="titulo">${evento.titulo}</p>
-            <p class="fecha">Fecha: ${new Date(evento.fecha).toLocaleDateString()}</p>
-            <div class="acciones">
-              <button class="btn-interesa"><i class="fa fa-star-o"></i> Me interesa</button>
-              <button class="btn-asistire">Asistiré</button>
-              <button class="btn-no-asistire">No asistiré</button>
-            </div>
-          </div>
+        <div class="carta centro">
+                <div class="contenedor-imagen-carta"><img src="${evento.imagen || '/trabajo_LEO/imagenes/default.jpg'}" alt="Evento 1" class="imgAnchoCompleto"></div>
+                    <h3 class="azul">${evento.titulo}</h3>
+                    <p>Fecha: ${new Date(evento.fecha).toLocaleDateString()}</p>
+                    <div class="acciones">
+                            <button class="btn-interesa"" >
+                                <i class="fa fa-star-o" aria-hidden="true""> </i>Me interesa</button><br>
+                            <button class="btn-asistire ">Asistiré</button>
+                            <button class="btn-no-asistire ">No asistiré</button>
+                        </div>
+        </div>
         `;
         container.appendChild(card);
       });
