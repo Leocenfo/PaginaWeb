@@ -774,6 +774,13 @@
     margin-left: 250px;
 }
 
+.cerrarSesion {
+    color: #FFFFFF;
+    background: #D0021B;
+    font-size: 20px;
+    padding: 1px;
+}
+
 /*
 Paleta de colores:
 #4A90E2 - Azul
