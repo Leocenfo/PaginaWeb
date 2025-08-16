@@ -526,7 +526,7 @@
     gap: 20px;
 }
 
-.contenedor-cartas > div {
+/* .contenedor-cartas  div {
     width: 100%;                 
     background-color: #f0f0f0;   
     padding: 10px;
@@ -534,7 +534,7 @@
     flex-direction: column;       
     justify-content: flex-start;  
     overflow: hidden;
-}
+} */
 
 .contenedor-cartas h3 {
     margin-top: 12;                    
@@ -555,8 +555,8 @@
     }
     .contenedor-cartas4 {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 20px; 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
     }
     .contenedor-cartas1 {
         display: grid;
@@ -800,7 +800,7 @@ Paleta de colores:
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
-}
+} */
 
 .btn-interesa {
   background-color: #1f79d3;
@@ -852,7 +852,7 @@ Paleta de colores:
 /*desde aqui agregue esto para corregir los botones del panel de admin si no afecta a ningun boton se mantiene si no lo borramos */
 
 /* Efecto hover para todos los botones */
-.btn-interesa:hover, .btn-asistire:hover, .btn-no-asistire:hover {
+/* .btn-interesa:hover, .btn-asistire:hover, .btn-no-asistire:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
