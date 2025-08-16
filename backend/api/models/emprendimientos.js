@@ -9,7 +9,8 @@ const emprendimientoSchema = new mongoose.Schema({
     nomEmprendimiento:{type:String, required:true},
     descripEmprendimiento:{type:String, required:true},
     linkImagen: { type: String, required: true },
-    redesSociales: { type: String },   
+    redesSociales: { type: String },
+    fecha: {type: Date, default: Date.now},   
     estado:{type:String, default:'inactivo', emun:['inactivo','activo'] }
 })
 

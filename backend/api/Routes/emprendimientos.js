@@ -15,10 +15,8 @@ router.get('/emprendimientos',async(req,res)=>{
                 resultado:"false"
             })
         }
-        res.json({
-            lista_emprendimiento:listaEmprendimientosEnBD,
-            mensaje:"Emprendimientos recuperados exitosamente"
-        })
+        res.json(listaEmprendimientosEnBD);
+
     } catch (error) {
         res.json({
             mensaje:"Ocurrio un error",
@@ -89,109 +87,72 @@ router.post('/solicitud', async (req,res)=>{
 
 //PUT-actualiza recursos existentes
 //http://localhost:3000/actualizar
-router.put('/actualizar',async(req,res)=>{
-
-    //encontrar el emprendimiento a actualizar
-    const id_busqueda = req.query.id
-    console.log(id_busqueda)
+// PUT - Cambiar estado del emprendimiento
+// http://localhost:3000/emprendimientos/:id/estado
+router.put('/emprendimientos/:id/estado', async (req, res) => {
+    const { id } = req.params;
+    const { estado } = req.body;
 
     try {
-        const emprendimientoActualizado = await Emprendimiento.findByIdAndUpdate(id_busqueda, req.body, {new:true})
-        //si el emprendimiento no existe
-        if(!emprendimientoActualizado){
-            return res.json({
-                msj:"Emprendimiento no existe"
-            })
+        const emprendimiento = await Emprendimiento.findByIdAndUpdate(
+            id,
+            { estado },
+            { new: true }
+        );
+
+        if (!emprendimiento) {
+            return res.status(404).json({
+                mensaje: "Emprendimiento no encontrado",
+                resultado: "false"
+            });
         }
 
-        //si el emprendimiento si existe
         res.json({
-            emprendimiento_actualizado:emprendimientoActualizado,
-            mensaje:"Informacion actualizada exitosamente",
-            resultado:"true"
-        })
+            mensaje: "Estado actualizado correctamente",
+            resultado: "true",
+            emprendimiento
+        });
     } catch (error) {
-        res.json({
-            mensaje:"Ocurrio un error",
-            error
-        })
+        res.status(500).json({
+            mensaje: "Error al actualizar el estado",
+            error,
+            resultado: "false"
+        });
     }
-    
+});
 
-})
 
 //DELETE-elemina el recurso
 //http://localhost:3000/eliminar
-router.delete('/eliminar',async(req,res)=>{
+// DELETE - Eliminar emprendimiento por ID
+// http://localhost:3000/emprendimientos/:id
+router.delete('/emprendimientos/:id', async (req, res) => {
+    const { id } = req.params;
 
     try {
-        const emprendimientoEliminado = await Emprendimiento.findByIdAndDelete(req.query.id)
-        if(!emprendimientoEliminado){
-            return res.json({
-                mensaje:"El emprendimiento no existe"
-            })
+        const eliminado = await Emprendimiento.findByIdAndDelete(id);
+
+        if (!eliminado) {
+            return res.status(404).json({
+                mensaje: "Emprendimiento no encontrado",
+                resultado: "false"
+            });
         }
 
         res.json({
-            emprendimiento_eliminado:emprendimientoEliminado,
-            mensaje:"Emprendimiento eliminado exitosamente"
-        })
-
+            mensaje: "Emprendimiento eliminado correctamente",
+            resultado: "true",
+            emprendimiento_eliminado: eliminado
+        });
     } catch (error) {
-        res.json({
-            mensaje:"No se pudo eliminar el emprendimiento, ocurrio un error",
-            error
-        })
+        res.status(500).json({
+            mensaje: "Error al eliminar el emprendimiento",
+            error,
+            resultado: "false"
+        });
     }
+});
 
-})
-
-//endpoint filtrar por fecha
-//http://localhost:3000/filtrarfecha
-// router.get('/filtrarfecha', async(req,res)=>{
-//     try {
-        
-//         //crear un rango de fechas
-//         const fecha = req.query.fecha
-//         const desde = req.query.desde
-//         const hasta = req.query.hasta
-
-//         //inicilizar un filtro
-//         let filtro={}
-
-//         //si especificamos una fecha exacta (2025-06-27)
-//         if(fecha){
-//             const dia = new Date(fecha)
-//             const siguienteDia = new Date(dia)
-//             siguienteDia.setDate(siguienteDia.getDate()+1)
-
-//             filtro.fechaRegistro = {$gte:dia, $lt:siguienteDia}
-//         }
-//         else if(desde || hasta){
-//             filtro.fechaRegistro ={}
-//             if(desde){
-//                 filtro.fechaRegistro.$gte = new Date(desde)
-//             }
-//             if(hasta){
-//                 filtro.fechaRegistro.$lte = new Date(hasta)
-//             }
-//         }
-
-//         console.log(filtro)
-
-//         const lista_personas_filtradas = await Persona.find(filtro)
-
-//         res.json({
-//             mensaje:"Personas recuperadas",
-//             lista:lista_personas_filtradas
-//         })
-//     } catch (error) {
-//         res.json({
-//             msj:"Ocurrio un error",
-//             error
-//         })
-//     }
-// })
 
 
 module.exports = router;
