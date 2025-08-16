@@ -31,6 +31,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// steven admi RyS
+app.use('/api/reporteSugerencias',       require('./Routes/reporteSugerencias'));        // público
+app.use('/api/admin/reporteSugerencias', require('./Routes/reporteSugerencias.admin'));  // panel
+
+
 // Registrar rutas
 app.use('/', routesUsuarios);
 app.use('/api/eventos', routesEventos);

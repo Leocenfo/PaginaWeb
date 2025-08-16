@@ -4,6 +4,6 @@ const controlador = require('../controladores/reporteSugerenciasControlador');
 
 // Ruta base: /api/reporteSugerencias
 router.post('/', controlador.crearPublicacion);
-router.get('/', controlador.obtenerPublicaciones);
+router.get('/',  controlador.obtenerPublicaciones); // ahora devuelve SOLO aprobadas
 
 module.exports = router;
