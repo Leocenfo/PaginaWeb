@@ -41,12 +41,25 @@ const inputs ={
 //logica de validacion
 const validations = {
     nombreCompleto: (input)=> /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim()) ? true : "El nombre solo puede contener letras.",
+
     correo:(input)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()) ? true : "El formato de correo no es valido.",
+
     numTel: (input) => /^\d{8}$/.test(input.value.replace(/[\s-]/g, '')) ? true : "El número telefónico debe ser de 8 dígitos y solo contener números.",
+
     tipoEmprendimiento: (input) => input.value !== "" ? true : "Debe seleccionar una categoría de emprendimiento.",
+
     nomEmprendimiento:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese un nombre valido.",
-    descripEmprendimiento:(input)=>/^[a-zA-Z0-9\s]+$/.test(input.value.trim()) ? true : "Ingrese una descripcion valida.",
-    linkImagen: (input) => /^https?:\/\/.*\.(jpg|jpeg|png)$/i.test(input.value.trim()) ? true : "Ingrese un enlace válido de imagen (.jpg, .jpeg o .png).",
+
+    descripEmprendimiento: (input) =>
+    /^[\w\s.,áéíóúÁÉÍÓÚñÑ¡¿!@#$%&()*+\-:;'"/\\?]+$/.test(input.value.trim()) && input.value.trim().length <= 180 ? true : "Ingrese una descripción válida (máximo 180 caracteres, puede incluir letras, números y algunos caracteres especiales).",
+
+    linkImagenAnun: (input) =>
+        /^https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|.*)$/i.test(
+            input.value.trim()
+        )
+            ? true
+            : "Ingrese un enlace válido de imagen.",
+
     redesSociales: (input) => {
         if (input.value.trim() === "") return true; // Si está vacío, lo aceptamos (opcional)
         return /^https?:\/\/[^\s]+$/i.test(input.value.trim()) ? true : "Ingrese una URL válida para redes sociales."}
@@ -92,6 +105,8 @@ const ValidarFormulario =()=>{
     }
     return primerError;
 };
+
+
 
 
 form.addEventListener("submit", (e) => {
