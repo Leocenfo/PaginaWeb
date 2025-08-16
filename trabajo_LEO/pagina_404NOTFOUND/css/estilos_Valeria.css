@@ -374,6 +374,7 @@
 /* IMAGENES */
     .imgAnchoCompleto {
         width: 100%;
+        height: auto;
         aspect-ratio: 16 / 4; /* O cualquier proporción que desees */
     }
 
@@ -387,7 +388,7 @@
     .contenedor-imagen-carta {
         overflow: hidden;     /* Oculta el desbordamiento */
         position: relative;
-        height:30%;
+        height:40%;
         min-height: 100px;
         border-radius: 8px;
         width: 100%;
@@ -519,11 +520,35 @@
 
 /* CARTAS */
     /* Contenedor de las cartas */
-    .contenedor-cartas {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 20px; 
-    }
+   .contenedor-cartas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.contenedor-cartas > div {
+    width: 100%;                 
+    height: 550px;                
+    background-color: #f0f0f0;   
+    padding: 10px;
+    display: flex;
+    flex-direction: column;       
+    justify-content: flex-start;  
+    overflow: hidden;
+}
+
+.contenedor-cartas h3 {
+    margin-top: 12;                    
+    font-size: 20px;
+}
+
+.contenedor-cartas p {
+    margin: 10px ;               
+    font-size: 20px;
+    color: #333;
+    flex-grow: 1;                 
+}
+
     .contenedor-cartas2 {
         display: grid;
         grid-template-columns: repeat(2, 1fr); 
@@ -833,32 +858,42 @@ Paleta de colores:
 
 /* Estilos para los botones */
 .btn {
-  padding: 5px 10px;
-  margin: 0 3px;
+  padding: 6px 10px;
+  margin: 3px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: all 0.3s;
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
 }
 
+/* Efecto hover general */
 .btn:hover {
-  opacity: 0.8;
+  transform: scale(1.05);
+  opacity: 0.95;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 }
 
-.aceptar { 
-  background-color: #2ecc71; 
-  color: white; 
+/* Botón Aprobar */
+.aceptar {
+  background-color: #2ecc71;
 }
 
-.rechazar { 
-  background-color: #1879e9; 
-  color: white; 
+/* Botón Rechazar */
+.rechazar {
+  background-color: #3498db;
 }
 
-.eliminar { 
-  background-color: #df3b26; 
-  color: white; 
+/* Botón Eliminar */
+.eliminar {
+  background-color: #e74c3c;
 }
+
 
 /* Notificaciones */
 .notificacion {
@@ -887,4 +922,58 @@ Paleta de colores:
 #formCrearEvento,
 #tituloCrearEvento {
   display: none;
+}
+
+#anunciosTable td:nth-child(3) {
+  white-space: normal;      
+  word-wrap: break-word;    
+  max-width: 250px;         
+}
+
+#anunciosTable td, #anunciosTable th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.admin_margen-m {
+    margin-left: 10%;
+}
+
+.admin_margen-m h1{
+    text-align: center;
+}
+
+.info-contacto {
+    display: flex;
+    align-items: center;  
+    gap: 2px;            
+    margin-top: 10px;     
+    white-space: nowrap;
+}
+
+.info-contacto .fa-phone {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;  
+    align-items: center;    
+    transition: transform 0.3s ease;
+}
+
+.info-contacto span {
+    font-size: 16px;      
+}
+
+.info-contacto a{
+    padding: 12px;
+}
+
+#emprendimientosTable td:nth-child(3) {
+  white-space: normal;      
+  word-wrap: break-word;    
+  max-width: 250px;         
+}
+
+#emprendimientosTable td, #emprendimientosTable th {
+  text-align: center;
+  vertical-align: middle;
 }
