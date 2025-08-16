@@ -1,31 +1,39 @@
 // models/anuncios.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const anuncioSchema = new mongoose.Schema({
   titulo: {
     type: String,
-    required: [true, 'El título es obligatorio'],
-    trim: true
+    required: [true, "El título es obligatorio"],
   },
-  autor: {
+  tipoAnuncio: {
     type: String,
-    required: [true, 'El autor es obligatorio'],
-    trim: true
+    required: [true, "El tipo de anuncio es obligatorio"],
+    enum: ["servicios", "educativo", "negocio", "comunitario"],
+    default: "servicios",
   },
-  fecha: {
-    type: Date,
-    required: [true, 'La fecha es obligatoria'],
-    default: Date.now
-  },
-  contenido: {
+  descripcion: {
     type: String,
-    required: [true, 'El contenido es obligatorio']
+    required: [true, "La descripción es obligatoria"],
+  },
+  telefono: {
+    type: String,
+    unique: true,
+    required: [true, "El teléfono es obligatorio"],
+  },
+  linkImagen: {
+    type: String,
+    required: [true, "El link de la imagen es obligatorio"],
   },
   estado: {
     type: String,
-    enum: ['Pendiente', 'Aprobado', 'Rechazado'],
-    default: 'Pendiente'
-  }
+    default: "inactivo",
+    enum: ["inactivo", "activo"],
+  },
+  fecha: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('Anuncio', anuncioSchema);
+module.exports = mongoose.model("Anuncio", anuncioSchema);
