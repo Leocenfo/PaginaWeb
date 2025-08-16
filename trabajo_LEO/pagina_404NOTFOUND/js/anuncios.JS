@@ -28,7 +28,7 @@ const btnEnviar = document.getElementById("btnEnviarRegistro");
 
 //referencias a los inputs del formulario
 const input = {
-    nombreCompleto: document.getElementById("nombreCompleto"),
+    titulo: document.getElementById("titulo"),
     tipoAnuncio: document.getElementById("tipoAnuncio"),
     descripAnun: document.getElementById("descripAnun"),
     numTelAnun: document.getElementById("numTelAnun"),
@@ -37,26 +37,30 @@ const input = {
 
 //logica de validacion
 const validations = {
-    nombreCompleto: (input) =>
+    titulo: (input) =>
         /^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(input.value.trim())
             ? true
-            : "El nombre solo puede contener letras.",
+            : "El titulo solo puede contener letras.",
     tipoAnuncio: (input) =>
         input.value !== ""
             ? true
             : "Debe seleccionar una categoría de emprendimiento.",
     descripAnun: (input) =>
-        /^[a-zA-Z0-9\s]+$/.test(input.value.trim())
-            ? true
-            : "Ingrese una descripcion valida.",
+    /^[\w\s.,áéíóúÁÉÍÓÚñÑ¡¿!@#$%&()*+\-:;'"/\\?]+$/.test(input.value.trim()) &&
+    input.value.trim().length <= 180
+        ? true
+        : "Ingrese una descripción válida (máximo 180 caracteres, puede incluir letras, números y algunos caracteres especiales).",
+
     numTelAnun: (input) =>
         /^\d{8}$/.test(input.value.replace(/[\s-]/g, ""))
             ? true
             : "El número telefónico debe ser de 8 dígitos y solo contener números.",
     linkImagenAnun: (input) =>
-        /^https?:\/\/.*\.(jpg|jpeg|png)$/i.test(input.value.trim())
+        /^https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|.*)$/i.test(
+            input.value.trim()
+        )
             ? true
-            : "Ingrese un enlace válido de imagen (.jpg, .jpeg o .png).",
+            : "Ingrese un enlace válido de imagen.",
 };
 
 //Funcion para mostrar u ocultar errores en el span correspondiente
@@ -97,9 +101,48 @@ const ValidarFormulario = () => {
     return primerError;
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.getElementById("contenedorAnuncios");
+
+    fetch("http://localhost:3000/anuncios")
+        .then((response) => response.json())
+        .then((anuncios) => {
+            const activos = anuncios.filter((anuncio) => anuncio.estado === "activo");
+
+            if (activos.length === 0) {
+                contenedor.innerHTML = "<p>No hay anuncios activos actualmente.</p>";
+                return;
+            }
+
+            activos.forEach((anuncio) => {
+                const tarjeta = document.createElement("div");
+                tarjeta.classList.add("carta", "centro");
+                tarjeta.setAttribute("data-id", anuncio.id);
+
+                tarjeta.innerHTML = `
+                    <div class="contenedor-imagen-carta">
+                        <img src="${anuncio.linkImagen
+                    }" alt="Imagen del anuncio" class="imgAnchoCompleto-m">
+                    </div>
+                    <h3 class="rojo">${anuncio.titulo}</h3>
+                    <p>${anuncio.descripcion || "No posee descripcion"}</p>
+                    <div class="info-contacto">
+                    <span>Más info:</span>
+                    <a href="tel:${anuncio.telefono}" class="fa fa-phone"></a>
+                    <span>${anuncio.telefono}</span>
+                    </div>
+                `;
+
+                contenedor.appendChild(tarjeta);
+            });
+        })
+        .catch((error) => {
+            console.error("Error al cargar anuncios:", error);
+            contenedor.innerHTML = "<p>Error al cargar los anuncios.</p>";
+        });
+});
+
 // Listener para el boton de "Enviar"
-
-
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -114,14 +157,14 @@ form.addEventListener("submit", (e) => {
         });
     } else {
         const data = {
-            nombreCompleto: input.nombreCompleto.value.trim(),
+            titulo: input.titulo.value.trim(),
             tipoAnuncio: input.tipoAnuncio.value.trim(),
-            descripAnun: input.descripAnun.value.trim(),
-            numTelAnun: input.numTelAnun.value.trim(),
-            linkImagenAnun: input.linkImagenAnun.value.trim(),
+            descripcion: input.descripAnun.value.trim(),
+            telefono: input.numTelAnun.value.trim(),
+            linkImagen: input.linkImagenAnun.value.trim(),
         };
 
-        fetch("http://localhost:3000/api/anuncios", {
+        fetch("http://localhost:3000/anuncios", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
