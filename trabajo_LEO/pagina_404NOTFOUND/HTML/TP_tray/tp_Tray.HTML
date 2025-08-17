@@ -95,7 +95,7 @@
 <!-- Script para cargar rutas desde el backend -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3000/api/rutas') // Ajusta si tu backend está en otro puerto
+    fetch('http://localhost:3000/api/comunidad/rutas') // Ajusta si tu backend está en otro puerto
       .then(res => res.json())
       .then(rutas => {
         const contenedor = document.getElementById('contenedorRutas');

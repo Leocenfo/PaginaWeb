@@ -1,127 +1,183 @@
-// Verificar usuario logueado al cargar el archivo
-const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-if (!usuario || !usuario.id) {
-  alert("Debes estar logueado para ver tus publicaciones");
-  window.location.href = "/trabajo_LEO/pagina_404NOTFOUND/HTML/login.html"; // CAMBIA la ruta si es otra
+console.log('reportes_sugerencias.js cargado v4');
+
+// ====== CONFIG ======
+const HOST = location.hostname || 'localhost';
+const API_BASE = `http://${HOST}:3000`; // backend Express
+
+// ====== SESIÓN (ajusta si tu login guarda otra clave) ======
+const usuario = (() => {
+  try { return JSON.parse(localStorage.getItem('usuarioLogueado') || 'null'); }
+  catch { return null; }
+})();
+const USER_ID = usuario && (usuario.id || usuario._id || usuario.uid || usuario.userId || usuario.usuarioId || null);
+
+if (!USER_ID) {
+  alert('Debes estar logueado para ver tus publicaciones');
+  // Cambia la ruta si tu login está en otro lugar:
+  window.location.href = "/trabajo_LEO/pagina_404NOTFOUND/HTML/login.html";
 }
 
+// ====== HELPERS ======
+async function fetchJSON(url, opts = {}) {
+  const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...opts });
+  if (!res.ok) {
+    const text = await res.text().catch(()=> '');
+    throw new Error(`HTTP ${res.status} ${res.statusText} - ${text}`);
+  }
+  try { return await res.json(); } catch { return null; }
+}
+
+function fechaBonita(iso) {
+  return iso ? new Date(iso).toLocaleString() : '';
+}
+
+// Carta pública (sin botones)
+function cardPublica(pub) {
+  return `
+    <div class="carta">
+      <h4>${pub?.tema ?? '-'} <small>(${pub?.categoria ?? '-'})</small></h4>
+      <p>${pub?.contenido ?? '-'}</p>
+      <small>${fechaBonita(pub?.fecha)}</small>
+    </div>
+  `;
+}
+
+// Carta mía (con botón eliminar al lado de la hora)
+function cardMia(pub) {
+  return `
+    <div class="carta" data-id="${pub?._id || ''}">
+      <h4>${pub?.tema ?? '-'} <small>(${pub?.categoria ?? '-'})</small></h4>
+      <p>${pub?.contenido ?? '-'}</p>
+      <div class="fila-meta">
+        <small>${fechaBonita(pub?.fecha)}</small>
+        <button class="btn-eliminar BaseRojo" data-id="${pub?._id || ''}">Eliminar</button>
+      </div>
+    </div>
+  `;
+}
+
+// ====== DOM ======
 document.addEventListener('DOMContentLoaded', function () {
-// Menú responsive
-    const menuToggle = document.getElementById("menuCambio");
-    const menu = document.getElementById("menu");
+  // Menú responsive
+  const menuToggle = document.getElementById("menuCambio");
+  const menu = document.getElementById("menu");
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", function (e) {
+      e.preventDefault(); e.stopPropagation();
+      menu.classList.toggle("active");
+    });
+    menu.addEventListener("click", function (e) { e.stopPropagation(); });
+    document.addEventListener("click", function () { menu.classList.remove("active"); });
+  }
 
-    if (menuToggle && menu) {
-        // Abrir/cerrar menú al hacer clic en el icono
-        menuToggle.addEventListener("click", function (e) {
-            e.stopPropagation(); // Evita que el clic se propague y lo cierre inmediatamente
-            menu.classList.toggle("active");
-        });
-
-        // Evitar que clics dentro del menú lo cierren
-        menu.addEventListener("click", function (e) {
-            e.stopPropagation();
-        });
-
-        // Cerrar si se hace clic fuera
-        document.addEventListener("click", function () {
-            menu.classList.remove("active");
-        });
-    }
-    
-  // Referencias DOM
   const form = document.getElementById("form-publicacion");
   const publicacionesContainer = document.getElementById("contenedor-publicaciones");
   const misPublicacionesContainer = document.getElementById("mis-publicaciones");
 
-  // Envío del formulario al backend
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  // ====== FORM: crear (queda PENDIENTE) ======
+  if (form) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const categoria = document.getElementById("categoria").value;
-    const tema = document.getElementById("tema").value.trim();
-    const contenido = document.getElementById("contenido").value.trim();
+      const categoria = (document.getElementById("categoria")?.value || '').trim();
+      const tema = (document.getElementById("tema")?.value || '').trim();
+      const contenido = (document.getElementById("contenido")?.value || '').trim();
 
-    if (!["Reporte", "Sugerencia"].includes(categoria)) {
-      alert("Solo puedes seleccionar 'Reporte' o 'Sugerencia'");
-      return;
-    }
+      if (!categoria || !tema || !contenido) {
+        alert("Debes llenar correctamente todos los campos.");
+        return;
+      }
 
-    if (tema.length < 3 || contenido.length < 10) {
-      alert("Debes llenar correctamente todos los campos.");
-      return;
-    }
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
 
-    try {
-      const res = await fetch("http://localhost:3000/api/reporteSugerencias", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ categoria, tema, contenido, usuarioId: usuario.id })
-      });
+      try {
+        const body = { categoria, tema, contenido, usuarioId: USER_ID };
+        const res = await fetchJSON(`${API_BASE}/api/reporteSugerencias`, {
+          method: "POST",
+          body: JSON.stringify(body),
+        });
+        console.log('[RyS][crear][ok]', res);
+        alert("Enviado. Queda pendiente hasta aprobación del administrador.");
+        form.reset();
+        // recargas (no aparecerá hasta que aprueben)
+        cargarPublicaciones();
+        cargarMisPublicaciones();
+      } catch (error) {
+        console.error("Error al enviar la publicación:", error);
+        alert("Hubo un problema al enviar la publicación.");
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Publicar'; }
+      }
+    });
+  }
 
-      if (!res.ok) throw new Error("Error al enviar publicación");
-      alert("¡Publicación enviada!");
-      form.reset();
-      cargarPublicaciones();
-      cargarMisPublicaciones();
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Hubo un problema al enviar la publicación.");
-    }
-  });
-
-  
-
-  // Cargar TODAS las publicaciones
+  // ====== TODAS (aprobadas) ======
   async function cargarPublicaciones() {
+    if (!publicacionesContainer) return;
+    publicacionesContainer.innerHTML = '<p>Cargando...</p>';
     try {
-      const res = await fetch("http://localhost:3000/api/reporteSugerencias");
-      const publicaciones = await res.json();
-
-      publicacionesContainer.innerHTML = "";
-
-      publicaciones.forEach(pub => {
-        const div = document.createElement("div");
-        div.className = "carta";
-        div.innerHTML = `
-          <h4>${pub.categoria}</h4>
-          <h5>${pub.tema}</h5>
-          <p>${pub.contenido}</p>
-          <small>${new Date(pub.fecha).toLocaleDateString()}</small>
-        `;
-        publicacionesContainer.appendChild(div);
-      });
+      // endpoint público devuelve SOLO aprobadas
+      const data = await fetchJSON(`${API_BASE}/api/reporteSugerencias`);
+      const items = Array.isArray(data) ? data : (data && data.data ? data.data : []);
+      publicacionesContainer.innerHTML = items.length
+        ? items.map(cardPublica).join('')
+        : '<p>No hay publicaciones aún.</p>';
     } catch (error) {
       console.error("Error al cargar publicaciones:", error);
+      publicacionesContainer.innerHTML = '<p style="color:#c00">Error cargando publicaciones.</p>';
     }
   }
 
-  // Cargar solo MIS publicaciones
+  // ====== MIS (aprobadas del usuario) ======
   async function cargarMisPublicaciones() {
+    if (!misPublicacionesContainer) return;
+    misPublicacionesContainer.innerHTML = '<p>Cargando...</p>';
+
     try {
-      const res = await fetch("http://localhost:3000/api/reporteSugerencias");
-      const publicaciones = await res.json();
-
-      const mias = publicaciones.filter(pub => pub.usuarioId && pub.usuarioId.toString() === usuario.id);
-
-      misPublicacionesContainer.innerHTML = "";
-
-      mias.forEach(pub => {
-        const div = document.createElement("div");
-        div.className = "carta";
-        div.innerHTML = `
-          <h4>${pub.categoria}</h4>
-          <h5>${pub.tema}</h5>
-          <p>${pub.contenido}</p>
-          <small>${new Date(pub.fecha).toLocaleDateString()}</small>
-        `;
-        misPublicacionesContainer.appendChild(div);
-      });
+      // filtra desde el backend por usuarioId (aprobadas)
+      const data = await fetchJSON(`${API_BASE}/api/reporteSugerencias?usuarioId=${encodeURIComponent(USER_ID)}`);
+      const items = Array.isArray(data) ? data : (data && data.data ? data.data : []);
+      misPublicacionesContainer.innerHTML = items.length
+        ? items.map(cardMia).join('')
+        : '<p>No tienes publicaciones aprobadas.</p>';
     } catch (error) {
       console.error("Error al cargar MIS publicaciones:", error);
+      misPublicacionesContainer.innerHTML = '<p style="color:#c00">Error cargando tus publicaciones.</p>';
     }
   }
+
+  // ====== Delegación: eliminar mi publicación ======
+  document.addEventListener('click', async (e) => {
+    if (!e.target.classList.contains('btn-eliminar')) return;
+
+    const id = e.target.dataset.id;
+    if (!id) return;
+
+    if (!confirm('¿Eliminar esta publicación?')) return;
+
+    try {
+      const url = `${API_BASE}/api/reporteSugerencias/${encodeURIComponent(id)}?usuarioId=${encodeURIComponent(USER_ID)}`;
+      const res = await fetch(url, { method: 'DELETE' });
+      if (!res.ok) throw new Error(await res.text());
+
+      // quita la carta del DOM
+      const carta = e.target.closest('.carta');
+      if (carta) carta.remove();
+
+      // refresca ambas listas por si esa publicación estaba en "todas"
+      cargarPublicaciones();
+      cargarMisPublicaciones();
+    } catch (err) {
+      console.error(err);
+      alert('No se pudo eliminar: ' + err.message);
+    }
+  });
 
   // Inicializar
   cargarPublicaciones();
   cargarMisPublicaciones();
+
+  // (opcional) refresco periódico
+  // setInterval(() => { cargarPublicaciones(); cargarMisPublicaciones(); }, 15000);
 });
