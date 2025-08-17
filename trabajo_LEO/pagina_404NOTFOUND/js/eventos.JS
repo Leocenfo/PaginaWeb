@@ -187,23 +187,28 @@ btnNoAsistire?.addEventListener('click', () => manejarClick('no_asistire', btnNo
   }
 
   // Crear evento
-  formCrear.addEventListener('submit', async (e) => {
-    e.preventDefault();
+ formCrear.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    const titulo = document.getElementById('titulo').value;
-    const fecha = document.getElementById('fecha').value;
-    const imagen = document.getElementById('imagen').value;
+  const titulo = document.getElementById('titulo').value;
+  const fecha = document.getElementById('fecha').value;
+  const imagen = document.getElementById('imagen').value;
 
-    try {
-      await axios.post('http://localhost:3000/api/eventosLeo', { titulo, fecha, imagen });
-      mensaje.textContent = 'Evento creado exitosamente.';
-      formCrear.reset();
-      await cargarEventos();
-    } catch (error) {
-      console.error('Error al crear evento:', error);
-      mostrarError(error.response?.data?.error || 'Error al crear evento');
-    }
-  });
+  try {
+    await axios.post('http://localhost:3000/api/eventosLeo', {
+      titulo,
+      fecha,
+      imagen,
+      aprobado: false,
+    });
+
+    mensaje.textContent = 'Evento enviado. Esperando aprobación del administrador.';
+    formCrear.reset(); 
+  } catch (error) {
+    console.error('Error al crear evento:', error);
+    mostrarError(error.response?.data?.error || 'Error al crear evento');
+  }
+});
 
   // Inicializar
   cargarEventos();
