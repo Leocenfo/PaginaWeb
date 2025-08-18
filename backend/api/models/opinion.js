@@ -1,4 +1,4 @@
-// models/Opinion.js
+// backend/api/models/opinion.js
 const mongoose = require('mongoose');
 
 const OpinionSchema = new mongoose.Schema(
@@ -26,7 +26,6 @@ const OpinionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Búsquedas frecuentes
 OpinionSchema.index({ estado: 1, createdAt: -1 });
 
-module.exports = mongoose.model("Opinion", OpinionSchema)
+module.exports = mongoose.model('Opinion', OpinionSchema);

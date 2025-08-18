@@ -1,17 +1,17 @@
-const API_OPINIONES_ADMIN = 'http://localhost:3000/api/opiniones/pendientes';
-const API_OPINIONES_ACCIONES = 'http://localhost:3000/api/admin/OpinionController';
+// trabajo_LEO/pagina_404NOTFOUND/js/panelAdminTranspote.js
+const API_BASE = 'http://localhost:3000/api/opiniones';
 
 document.addEventListener('DOMContentLoaded', () => {
-  cargarOpinionesPendientes();
+  cargarPendientes();
+  prepararMenuResponsive();
 });
 
-// Cargar opiniones pendientes
-async function cargarOpinionesPendientes() {
+async function cargarPendientes() {
   const contenedor = document.querySelector('.admin_margen');
-
   try {
-    const res = await fetch(API_OPINIONES_ADMIN);
-    const opiniones = await res.json();
+    const r = await fetch(`${API_BASE}/pendientes`);
+    if (!r.ok) throw new Error(await r.text());
+    const opiniones = await r.json();
 
     if (!opiniones.length) {
       contenedor.innerHTML += `<p>No hay opiniones pendientes.</p>`;
@@ -20,7 +20,6 @@ async function cargarOpinionesPendientes() {
 
     const tabla = document.createElement('table');
     tabla.classList.add('tabla-admin');
-
     tabla.innerHTML = `
       <thead>
         <tr>
@@ -41,79 +40,52 @@ async function cargarOpinionesPendientes() {
             <td>${'★'.repeat(op.calificacion)}${'☆'.repeat(5 - op.calificacion)}</td>
             <td>${new Date(op.createdAt).toLocaleString()}</td>
             <td>
-              <button class="aceptar">Aceptar</button>
-              <button class="rechazar">Rechazar</button>
+              <button class="btn-aprobar" data-action="aprobar">Aceptar</button>
+              <button class="btn-rechazar" data-action="rechazar">Rechazar</button>
             </td>
           </tr>
         `).join('')}
       </tbody>
     `;
-
     contenedor.appendChild(tabla);
   } catch (err) {
-    console.error('Error al cargar opiniones:', err);
+    console.error('Error al cargar pendientes:', err);
     contenedor.innerHTML += `<p style="color:red;">Error al cargar opiniones pendientes.</p>`;
   }
 }
 
-// Manejo de botones
-document.addEventListener('click', async function (e) {
-  const btn = e.target;
+// Delegación: aprobar/rechazar
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if (!btn) return;
+
   const fila = btn.closest('tr');
   const id = fila?.dataset?.id;
-
+  const action = btn.dataset.action; // 'aprobar' | 'rechazar'
   if (!id) return;
 
-  if (btn.classList.contains('aceptar')) {
-    try {
-      const res = await fetch(`${API_OPINIONES_ACCIONES}/${id}/aprobar`, {
-        method: 'PUT'
-      });
+  try {
+    const r = await fetch(`${API_BASE}/${id}/${action}`, { method: 'PUT' });
+    if (!r.ok) throw new Error(`${r.status} ${await r.text()}`);
+    fila.remove();
 
-      if (!res.ok) throw new Error('Error al aprobar');
-      fila.remove();
-    } catch (err) {
-      alert('Error al aprobar la opinión');
-      console.error(err);
+    const tbody = document.querySelector('.tabla-admin tbody');
+    if (tbody && !tbody.querySelector('tr')) {
+      document.querySelector('.tabla-admin')?.remove();
+      document.querySelector('.admin_margen').innerHTML += `<p>No hay opiniones pendientes.</p>`;
     }
-  }
-
-  if (btn.classList.contains('rechazar')) {
-    try {
-      const res = await fetch(`${API_OPINIONES_ACCIONES}/${id}/rechazar`, {
-        method: 'PUT'
-      });
-
-      if (!res.ok) throw new Error('Error al rechazar');
-      fila.remove();
-    } catch (err) {
-      alert('Error al rechazar la opinión');
-      console.error(err);
-    }
+  } catch (err) {
+    console.error(`Error al ${action}:`, err);
+    alert(`Error al ${action} la opinión`);
   }
 });
 
-
-// Menú responsive
-document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.getElementById("menuCambio");
-    const menu = document.getElementById("menu");
-
-    if (menuToggle && menu) {
-        // Abrir/cerrar menú al hacer clic en el icono
-        menuToggle.addEventListener("click", function (e) {
-            e.stopPropagation(); // Evita que el clic se propague y lo cierre inmediatamente
-            menu.classList.toggle("active");
-        });
-
-        // Evitar que clics dentro del menú lo cierren
-        menu.addEventListener("click", function (e) {
-            e.stopPropagation();
-        });
-
-        // Cerrar si se hace clic fuera
-        document.addEventListener("click", function () {
-            menu.classList.remove("active");
-        });
-    }
-});
+function prepararMenuResponsive() {
+  const menuToggle = document.getElementById("menuCambio");
+  const menu = document.getElementById("menu");
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", (e) => { e.stopPropagation(); menu.classList.toggle("active"); });
+    menu.addEventListener("click", (e) => e.stopPropagation());
+    document.addEventListener("click", () => menu.classList.remove("active"));
+  }
+}
