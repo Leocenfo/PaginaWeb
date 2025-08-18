@@ -986,65 +986,33 @@ Paleta de colores:
   vertical-align: middle;
 }
 
-style>
-  /* Cabecera de perfil: imagen a la izquierda, texto a la derecha */
-  .ImagenConTexto.perfil-header{
-    display:flex;
-    gap:24px;
-    align-items:flex-start;
-    padding:16px 0;
-  }
+/* Estilos para perfil-header */
+.ImagenConTexto.perfil-header {
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+  padding:16px 0;
+}
 
-  .ImagenConTexto.perfil-header .DivImagen{
-    flex:0 0 260px;   /* ancho fijo de la columna de imagen */
-  }
+/* ... (resto de reglas CSS sin etiquetas HTML) ... */
 
-  .ImagenConTexto.perfil-header .DivImagen img{
-    width:260px;
-    height:260px;
-    object-fit:cover; /* recorta sin deformar */
-    display:block;
-    margin:0;         /* neutraliza márgenes heredados */
-    border-radius:12px;
-  }
+/* Estilos para footer */
+footer { 
+  border-top: none; 
+  position: relative; 
+}
 
-  .ImagenConTexto.perfil-header .DivTexto{
-    flex:1;
-    min-width:0;      /* evita overflow en títulos largos */
-  }
+footer::before {
+  content:"";
+  position:absolute;
+  top:-4px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  height:4px;
+  background:#F2C400;
+}
 
-  /* Responsive */
-  @media (max-width: 700px){
-    .ImagenConTexto.perfil-header{
-      flex-direction:column;
-      align-items:center;
-      text-align:left;
-    }
-    .ImagenConTexto.perfil-header .DivImagen{
-      flex:0 0 auto;
-    }
-    .ImagenConTexto.perfil-header .DivImagen img{
-      width:200px;
-      height:200px;
-    }
-  }
-</style>
-<style>
-  /* Quita el borde si lo tenías para no duplicar la línea */
-  footer { border-top: none; position: relative; }
-
-  /* Línea amarilla full-width arriba del footer */
-  footer::before{
-    content:"";
-    position:absolute;
-    top:-4px;
-    left:50%;
-    transform:translateX(-50%);
-    width:100vw;      /* ocupa todo el viewport */
-    height:4px;
-    background:#F2C400; /* amarillo */
-  }
-
-  /* evita scroll horizontal por el 100vw */
-  html, body { overflow-x: hidden; }
-</style>
+html, body { 
+  overflow-x: hidden; 
+}
