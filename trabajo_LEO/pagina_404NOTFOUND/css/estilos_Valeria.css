@@ -481,6 +481,8 @@
         background-color: rgba(0,0,0,0.5);
         justify-content: center;
         align-items: center;
+        overflow-y: auto;
+        padding-top: 200px;
     }
 
     /* Estilo del contenido del formulario */

@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }).join("");
                         })()
                     || "N/A"}</td>
-                    }</td>
+                    </td>
           <td>${new Date(
             emprendimiento.fecha || emprendimiento.createdAt
           ).toLocaleDateString()}</td>

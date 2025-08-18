@@ -53,8 +53,8 @@ const validations = {
     descripEmprendimiento: (input) =>
     /^[\w\s.,áéíóúÁÉÍÓÚñÑ¡¿!@#$%&()*+\-:;'"/\\?]+$/.test(input.value.trim()) && input.value.trim().length <= 180 ? true : "Ingrese una descripción válida (máximo 180 caracteres, puede incluir letras, números y algunos caracteres especiales).",
 
-    linkImagenAnun: (input) =>
-        /^https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|.*)$/i.test(
+    linkImagen: (input) =>
+        /^https?:\/\/.*\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|.*)$/.test(
             input.value.trim()
         )
             ? true
@@ -62,7 +62,7 @@ const validations = {
 
     redesSociales: (input) => {
         if (input.value.trim() === "") return true; // Si está vacío, lo aceptamos (opcional)
-        return /^https?:\/\/[^\s]+$/i.test(input.value.trim()) ? true : "Ingrese una URL válida para redes sociales."}
+        return /^https?:\/\/[^\s]+$/.test(input.value.trim()) ? true : "Ingrese una URL válida para redes sociales."}
 };
 
 //Funcion para mostrar u ocultar errores en el span correspondiente
