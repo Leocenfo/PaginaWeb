@@ -138,10 +138,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>
             <button class="btn aceptar" data-id="${
               emprendimiento._id
-            }">Aprobar</button>
+            }">Activar</button>
             <button class="btn rechazar" data-id="${
               emprendimiento._id
-            }">Rechazar</button>
+            }">Inactivar</button>
             <button class="btn eliminar" data-id="${
               emprendimiento._id
             }">Eliminar</button>
