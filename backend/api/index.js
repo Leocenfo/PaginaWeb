@@ -13,7 +13,7 @@ const eventosRouter = require('./Routes/eventosLeo');
 const rutasReporteSugerencias = require('./Routes/reporteSugerencias');
 const gestionUsuariosRouter = require('./Routes/gestionUsuario');
 const routesEmprendimientos = require('./Routes/emprendimientos.js');
-
+const routesopiniones = require('./Routes/opiniones.js')
 const Usuario = require('./models/adminUsuarios');
 
 // 🔹 NUEVO: rutas admin de Reportes & Sugerencias (solo require aquí)
@@ -42,13 +42,14 @@ app.use('/api/zonas', require('./Routes/comunidadRuta')); // lo de tu compa lo d
 app.use('/api/reporteSugerencias', rutasReporteSugerencias);
 app.use('/api/usuarios', gestionUsuariosRouter);
 app.use('/', routesEmprendimientos);
+app.use('/api/opiniones',routesopiniones)
 
 // 🔹 AQUÍ va el app.use de admin (después de crear app)
 app.use('/api/admin/reporteSugerencias', rutasReporteSugerenciasAdmin);
 
 // Iniciar servidor
 app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
+  console.log("Servidor corriendo en http://localhost:${port}");
 });
 
 // (Solo informativo)

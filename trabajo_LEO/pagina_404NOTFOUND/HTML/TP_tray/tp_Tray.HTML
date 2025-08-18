@@ -105,6 +105,55 @@
   <p>info@comunidadconectada.ac.cr</p><br>
   <p>&copy; Comunidad Conectada 2025. Todos los derechos reservados.</p>
 </footer>
+<script> document.addEventListener('DOMContentLoaded', async () => {
+      const frm = $('#frmOpinion');
+      const nombre = $('#opNombre');
+      const califica = $('#opCalif');
+      const ruta = $('#opRuta');
+      const comentario = $('#opComentario');
+
+      // Cargar solicitudes si ya hay email escrito (o luego de enviar)
+      async function recargar() {
+        try {
+         // const data = await listarMisSolicitudes(email.value.trim());
+         // renderSolicitudes(data);
+         console.log("Debo actualizar las opiniones")
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      frm.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const payload = {
+          nombre: nombre.value.trim(),
+          ruta: email.value.trim(),
+          calificacion: rol.value.trim(),
+          comentario: motivo.value.trim()
+        };
+        if (!payload.nombre || !payload.ruta || !payload.calificacion || !payload.comentario) {
+          return Swal.fire('Campos requeridos', 'Completá todos los campos.', 'info');
+        }
+        $('#btnEnviarSolicitud').disabled = true;
+        try {
+          await crearSolicitud(payload);
+          await Swal.fire('¡Listo!', 'Tu opinion fue enviada y está en estado "pendiente".', 'success');
+          frm.reset();
+          await recargar();
+        } catch (err) {
+          console.error(err);
+          Swal.fire('Error', 'No se pudo enviar la solicitud (puede que ya exista una pendiente con ese email y rol).', 'error');
+        } finally {
+          $('#btnEnviarSolicitud').disabled = false;
+        }
+      });
+
+      // Al salir del email, carga sus solicitudes
+      email.addEventListener('blur', recargar);
+      // Carga inicial (por si ya viene con valor)
+      recargar();
+    });
+</script>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
