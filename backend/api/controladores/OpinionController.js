@@ -91,7 +91,7 @@ async function aprobar (req, res) {
     const { id } = req.params;
     await Opinion.findByIdAndUpdate(
       id,
-      { estado: 'aprobada', aprobada: true },
+      { estado: 'aprobada', aprobado: true },
       { new: true }
     );
     res.json({ ok: true });
@@ -106,7 +106,7 @@ async function rechazar  (req, res)  {
     const { id } = req.params;
     await Opinion.findByIdAndUpdate(
       id,
-      { estado: 'rechazada', aprobada: false },
+      { estado: 'rechazado', aprobada: false },
       { new: true }
     );
     res.json({ ok: true });

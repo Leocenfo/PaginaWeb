@@ -6,6 +6,8 @@
 
 /* ====== CONFIG ====== */
 const API_OPINIONES = 'http://localhost:3000/api/opiniones';
+const API_OPINIONES_ADMIN = 'http://localhost:3000/api/opiniones/pendientes';
+const API_OPINIONES_ACCIONES = 'http://localhost:3000/api/opiniones';
 const HV_EMBED =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.08950106349!2d-84.03100398500974!3d9.917647876191204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2bbf279e5df%3A0x6a1d7cfad788490b!2sHacienda%20Vieja%2C%20Curridabat!5e0!3m2!1ses-419!2scr!4v1710012345678';
 

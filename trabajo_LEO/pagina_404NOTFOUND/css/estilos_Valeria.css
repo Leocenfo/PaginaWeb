@@ -1016,3 +1016,33 @@ footer::before {
 html, body { 
   overflow-x: hidden; 
 }
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.tabla-admin button {
+  margin: 0 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.aceptar {
+  background-color: #1b83d8;
+  color: white;
+  border: none;
+}
+
+.rechazar {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}

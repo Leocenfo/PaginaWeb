@@ -42,7 +42,7 @@ app.use('/api/zonas', require('./Routes/comunidadRuta')); // lo de tu compa lo d
 app.use('/api/reporteSugerencias', rutasReporteSugerencias);
 app.use('/api/usuarios', gestionUsuariosRouter);
 app.use('/', routesEmprendimientos);
-app.use('/api/opiniones',routesopiniones)
+app.use('/api/opiniones',routesopiniones);
 
 // 🔹 AQUÍ va el app.use de admin (después de crear app)
 app.use('/api/admin/reporteSugerencias', rutasReporteSugerenciasAdmin);
