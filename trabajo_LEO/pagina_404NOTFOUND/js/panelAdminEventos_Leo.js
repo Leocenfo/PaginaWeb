@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(eventos => {
         tbody.innerHTML = '';
-
+        eventos
+         .filter(evento => evento.estado === 'Aprobado')  // ✅ Ahora sí está bien
         eventos.forEach(evento => {
           const tr = document.createElement('tr');
 

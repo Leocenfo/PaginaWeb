@@ -31,7 +31,9 @@ exports.crearEvento = async (req, res) => {
 //Obtener todos los eventos
 exports.obtenerEventos = async (req, res) => {
   try {
-    const eventos = await Evento.find();
+    const { estado } = req.query;
+    const filtro = estado ? { estado } : {}; 
+    const eventos = await Evento.find(filtro);
     res.json(eventos);
   } catch (error) {
     console.error('Error al obtener eventos:', error);

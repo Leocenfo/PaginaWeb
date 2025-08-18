@@ -4,7 +4,7 @@ const Asistencia = require('../models/Asistencia');
 // Obtener todos los eventos
 exports.obtenerEventos = async (req, res) => {
   try {
-    const eventos = await Evento.find();
+    const eventos = await Evento.find({ estado: 'Aprobado' });
     res.json(eventos);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener eventos' });

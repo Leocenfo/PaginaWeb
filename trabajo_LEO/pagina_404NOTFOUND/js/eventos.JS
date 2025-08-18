@@ -89,12 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Cargar eventos
+
   async function cargarEventos() {
     if (!container) return;
 
     container.innerHTML = '';
     try {
-      const response = await axios.get('http://localhost:3000/api/eventosLeo');
+     const response = await axios.get('http://localhost:3000/api/eventosLeo?estado=Aprobado');
       const eventos = response.data;
 
       eventos.forEach(evento => {
