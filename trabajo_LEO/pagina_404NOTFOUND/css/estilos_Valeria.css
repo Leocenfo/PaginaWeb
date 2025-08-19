@@ -986,15 +986,6 @@ Paleta de colores:
   vertical-align: middle;
 }
 
-/* Estilos para perfil-header */
-.ImagenConTexto.perfil-header {
-  display:flex;
-  gap:24px;
-  align-items:flex-start;
-  padding:16px 0;
-}
-
-/* ... (resto de reglas CSS sin etiquetas HTML) ... */
 
 /* Estilos para footer */
 footer { 
