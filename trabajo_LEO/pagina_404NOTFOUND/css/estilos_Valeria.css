@@ -1035,14 +1035,14 @@ html, body {
   cursor: pointer;
 }
 
-.aceptar {
+.btn-aprobar {
   background-color: #1b83d8;
   color: white;
   border: none;
 }
 
-.rechazar {
-  background-color: #f44336;
+.btn-rechazar {
+  background-color: #af2d05;
   color: white;
   border: none;
 }
